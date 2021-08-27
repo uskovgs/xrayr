@@ -63,3 +63,9 @@ ggplot(xray_spec, aes(color = telescope)) +
   theme_xray_plot()
 ```
 
+# Get NHI for target position
+
+```{r}
+nh(213.162500, -65.392778, r_arcmin = 5, showInfo = T)
+```
+
