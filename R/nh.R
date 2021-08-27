@@ -1,6 +1,6 @@
 #' Calculate the HI Column Density for a Sky Position
 #'
-#' nH calculated using all points (from https://vizier.u-strasbg.fr site.) within `r_arcmin`
+#' nH is calculated using all points (from https://vizier.u-strasbg.fr site.) within `r_arcmin`
 #'
 #' @param ra RA in degrees
 #' @param dec DEC in degrees
