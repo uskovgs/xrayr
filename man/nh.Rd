@@ -19,10 +19,10 @@ nh(ra, dec, r_arcmin = 10, showInfo = T)
 
 }
 \description{
-nH calculated using all points (from https://vizier.u-strasbg.fr site.) within \code{r_arcmin}
+nH is calculated using all points (from https://vizier.u-strasbg.fr site.) within \code{r_arcmin}
 }
 \examples{
 \dontrun{
-nh(213.162500, -65.392778, r_arcmin = 30, showInfo = T)
+nh(213.2, -65.4, r_arcmin = 30, showInfo = T)
 }
 }

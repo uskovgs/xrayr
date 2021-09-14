@@ -12,9 +12,11 @@
 #'
 #' @examples
 #' \dontrun{
-#' nh(213.162500, -65.392778, r_arcmin = 30, showInfo = T)
+#' nh(213.2, -65.4, r_arcmin = 30, showInfo = T)
 #' }
 nh <- function(ra, dec, r_arcmin = 10, showInfo = T){
+  ra <- ra[1]
+  dec <- dec[1]
 
   # Inverse distance weighting
   # https://www.geo.fu-berlin.de/en/v/soga/Geodata-analysis/geostatistics/Inverse-Distance-Weighting/index.html
