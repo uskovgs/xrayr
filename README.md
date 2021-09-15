@@ -1,3 +1,5 @@
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+
 ```R
 devtools::install_github("uskovgs/xrayr")
 ```
@@ -31,3 +33,8 @@ nh(213.1612728, -65.38967664, r_arcmin=5, showInfo = T)
 ```
 
 <sup>Created on 2021-08-28 by the [reprex package](https://reprex.tidyverse.org) (v2.0.0)</sup>
+
+
+
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+  By participating in this project you agree to abide by its terms.
