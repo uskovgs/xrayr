@@ -1,9 +1,17 @@
 Package: xrayr
 Title: Tools for xray astronomy
 Version: 0.0.0.9000
-Authors@R: person('Grigory', 'Uskov', email = 'uskov.russia@gmail.com', role = c('cre', 'aut'))
+Authors@R: 
+    person(given = "Grigory",
+           family = "Uskov",
+           role = c("cre", "aut"),
+           email = "uskov.russia@gmail.com")
 Description: Tools for xray astronomy.
 License: MIT + file LICENSE
 URL: https://github.com/uskovgs/xrayr/
 BugReports: {{ BugReports }}
+Imports: 
+    ggplot2,
+    pillar,
+    vctrs
 Encoding: UTF-8
