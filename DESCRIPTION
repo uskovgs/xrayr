@@ -1,27 +1,13 @@
 Package: xrayr
-Title: What the Package Does (One Line, Title Case)
+Title: Tools for xray astronomy
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: MIT + file LICENSE
+Authors@R: person('Grigory', 'Uskov', email = 'uskov.russia@gmail.com, role = c('cre', 'aut'))
+Description: Tools for xray astronomy
+License: {{ License }}
+URL: https://github.com/uskovgs/xrayr/
+BugReports: {{ BugReports }}
 Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
-Suggests: 
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
-VignetteBuilder: knitr
-Depends: 
-    R (>= 2.10)
 Imports: 
-    vctrs,
     ggplot2,
-    pillar
-Config/testthat/edition: 3
+    pillar,
+    vctrs
