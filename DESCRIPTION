@@ -11,7 +11,13 @@ License: MIT + file LICENSE
 URL: https://github.com/uskovgs/xrayr/
 BugReports: {{ BugReports }}
 Imports: 
+    attempt,
+    curl,
     ggplot2,
+    httr,
+    jsonlite,
     pillar,
+    purrr,
     vctrs
 Encoding: UTF-8
+RoxygenNote: 7.1.1

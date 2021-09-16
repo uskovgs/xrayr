@@ -4,7 +4,7 @@
 \alias{nh}
 \title{Calculate the HI Column Density for a Sky Position}
 \usage{
-nh(ra, dec, r_arcmin = 10, showInfo = T)
+nh(ra = NULL, dec = NULL, r_arcmin = 10, showInfo = FALSE)
 }
 \arguments{
 \item{ra}{RA in degrees}
@@ -13,16 +13,16 @@ nh(ra, dec, r_arcmin = 10, showInfo = T)
 
 \item{r_arcmin}{search radius in arcmin}
 
-\item{showInfo}{show additional information ? Default=true}
+\item{showInfo}{show additional information ? Default=false}
 }
 \value{
-
+weighted nH
 }
 \description{
-nH is calculated using all points (from https://vizier.u-strasbg.fr site.) within \code{r_arcmin}
+nH is calculated using all points (from https://vizier.u-strasbg.fr site.) within `r_arcmin`
 }
 \examples{
 \dontrun{
-nh(213.2, -65.4, r_arcmin = 30, showInfo = T)
+ xrayr::nh(213.2, -65.4, r_arcmin = 30, showInfo = T)
 }
 }

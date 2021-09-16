@@ -1,63 +1,72 @@
+idw <- function(x,y,z, x_target, y_target, beta=2){
+  # Inverse distance weighting
+  # https://www.geo.fu-berlin.de/en/v/soga/Geodata-analysis/geostatistics/Inverse-Distance-Weighting/index.html
+
+  distance <- function(x1, y1, x2, y2){
+    sqrt((x1-x2)^2+(y1-y2)^2)
+  }
+
+  w <- distance(x, y, x_target, y_target)^(-beta)
+  w_sum <- sum(w)
+
+  wz <- sum(w*z)
+
+  return(wz / w_sum)
+}
+
+
 #' Calculate the HI Column Density for a Sky Position
+#'
 #'
 #' nH is calculated using all points (from https://vizier.u-strasbg.fr site.) within `r_arcmin`
 #'
 #' @param ra RA in degrees
 #' @param dec DEC in degrees
 #' @param r_arcmin search radius in arcmin
-#' @param showInfo show additional information ? Default=true
+#' @param showInfo show additional information ? Default=false
 #'
-#' @return
+#'
+#' @importFrom attempt stop_if_any
 #' @export
+#'
+#' @return weighted nH
 #'
 #' @examples
 #' \dontrun{
-#' nh(213.2, -65.4, r_arcmin = 30, showInfo = T)
+#'  xrayr::nh(213.2, -65.4, r_arcmin = 30, showInfo = T)
 #' }
-nh <- function(ra, dec, r_arcmin = 10, showInfo = T){
-  ra <- ra[1]
-  dec <- dec[1]
+nh <- function(ra=NULL, dec=NULL, r_arcmin = 10, showInfo = FALSE){
 
-  # Inverse distance weighting
-  # https://www.geo.fu-berlin.de/en/v/soga/Geodata-analysis/geostatistics/Inverse-Distance-Weighting/index.html
-  idw <- function(x,y,z, x_target, y_target, beta=2){
+  stop_if_any(c(ra, dec), is.null, "You need to specify ra/dec")
 
-    distance <- function(x1, y1, x2, y2){
-      sqrt((x1-x2)^2+(y1-y2)^2)
-    }
+  check_internet()
 
-    w <- distance(x, y, x_target, y_target)^(-beta)
-    w_sum <- sum(w)
+  target <- paste(sprintf('%.8f', c(ra[1], dec[1])),
+                  collapse = ' ')
 
-    wz <- sum(w*z)
 
-    return(wz / w_sum)
-  }
+  base_url <- 'http://vizier.u-strasbg.fr/viz-bin/asu-tsv'
+  args <- list('-source' = "J/A+A/594/A116/nhi_hpx", # nh_table
+               '-c' = target,
+               '-c.rm' = r_arcmin,
+               '-out' = '_r RAJ2000 DEJ2000 NHI', #  get all columns
+               '-sort' = '_r',
+               '-mime' = '|'
+               )
+
+
 
   # arguments for query you can find on webpage:
   # https://vizier.u-strasbg.fr/vizier/vizHelp/args.htx
   vr <- httr::GET(url = 'http://vizier.u-strasbg.fr/viz-bin/asu-tsv', # Astronomical Server URL
-                  query =
-                    list('-source' = "J/A+A/594/A116/nhi_hpx", # nh_table
-                         '-c' = paste(ra, dec, sep = ','),
-                         '-c.u' = 'arcmin',
-                         '-c.eq' = 'J2000',
-                         '-c.r' = as.character(r_arcmin),
-                         '-out' = '**', #  get all columns
-                         '-out.add' = '_r', # calculated disance from ra,dec to the nearest point in table
-                         '-sort' = '_r', # sort table by distance
-                         # '-out.max' = '5',
-                         'mime' = 'tsv'))
+                  query = args)
 
+  check_status(vr)
 
-  if(httr::status_code(vr) == 200){
-
-    data_vizier_df <- vr |>
-      httr::content(as = 'text', encoding = "ISO-8859-1")
-
-    v <- vr |>
-      httr::content(as = 'text', encoding = "ISO-8859-1") |>
-      readr::read_delim(data_vizier_df, delim = '\t', comment = '#', show_col_types = FALSE)
+    v <- vr$content |>
+      readr::read_delim(delim = '|',
+                        comment = '#',
+                        show_col_types = FALSE)
 
 
     v_units <- v[1, ] |> as.character()
@@ -70,7 +79,11 @@ nh <- function(ra, dec, r_arcmin = 10, showInfo = T){
     )
 
     nh_average <- mean(v$NHI)
-    nh_weighted <- idw(v$RAJ2000, v$DEJ2000, v$NHI, x_target = as.numeric(ra), y_target = as.numeric(dec))
+    nh_weighted <- idw(x = v$RAJ2000,
+                       y = v$DEJ2000,
+                       z = v$NHI,
+                       x_target = as.numeric(ra),
+                       y_target = as.numeric(dec))
 
     if(showInfo){
       print(v_units)
@@ -95,9 +108,5 @@ nh <- function(ra, dec, r_arcmin = 10, showInfo = T){
     }
 
     return(nh_weighted)
-  }
-  else{
-    warning("server doesn't response or bad reqeast, visit http://vizier.u-strasbg.fr/vizier")
-  }
 
 }
