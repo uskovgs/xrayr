@@ -34,7 +34,27 @@ nh(213.1612728, -65.38967664, r_arcmin=5, showInfo = T)
 #> [1] 5.108978e+21
 ```
 
-<sup>Created on 2021-08-28 by the [reprex package](https://reprex.tidyverse.org) (v2.0.0)</sup>
+``` r
+library(xrayr)
+
+# in degreed
+x1 <- ra_dec(ra = 213.1, dec = -75.1)
+# in hms dms
+x2 <- radec('14h1m1s -75d15m23.68s')
+
+# separation in arcsec
+separation(x1, x2)
+#> [1] 2680.447
+
+
+# get RA value
+ra(x2)
+#> [1] 210.2542
+# get DEC value
+dec(x2)
+#> [1] -75.25658
+```
+
 
 
 
