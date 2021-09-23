@@ -4,7 +4,7 @@
 \alias{vec_ptype_abbr.astro_radec}
 \title{Title}
 \usage{
-vec_ptype_abbr.astro_radec(x)
+\method{vec_ptype_abbr}{astro_radec}(x)
 }
 \arguments{
 \item{x}{}

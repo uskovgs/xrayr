@@ -4,10 +4,10 @@
 \alias{format.astro_radec}
 \title{Title}
 \usage{
-\method{format}{astro_radec}(x, formatter = formatter_hmsdms, nsec = 1, isplain = T, ...)
+\method{format}{astro_radec}(x, formatter = formatter_hmsdms, nsec = 1, color = F, ...)
 }
 \arguments{
-\item{isplain}{}
+\item{color}{print color?}
 }
 \value{
 

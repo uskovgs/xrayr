@@ -7,11 +7,15 @@
 radec(radec = character())
 }
 \arguments{
-\item{radec}{}
+\item{radec}{in "hms dms"}
 }
 \value{
 
 }
 \description{
 Title
+}
+\examples{
+radec('12 34 56 -76  54 3.210')
+radec('12 34 56 -76  54 3.210') \%>\% tibble::tibble()
 }

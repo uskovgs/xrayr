@@ -4,48 +4,79 @@
 
 # Main function -----------------------------------------------------------
 
+
+#' @importFrom vctrs vec_assert
+#' @importFrom vctrs new_rcrd
 new_radec <- function(ra = double(), dec = double()){
-  vctrs::vec_assert(ra, double())
-  vctrs::vec_assert(dec, double())
-  vctrs::new_rcrd(list(ra = ra, dec = dec), class = "astro_radec")
+  vec_assert(ra, double())
+  vec_assert(dec, double())
+
+  i_valid <- which(!is.na(ra) & !is.na(dec))
+
+
+  validate_ra(ra[i_valid])
+  validate_dec(dec[i_valid])
+
+  new_rcrd(list(ra = ra, dec = dec), class = "astro_radec")
+}
+
+validate_ra <- function(ra = double()){
+  if(any(ra > 360 | ra < 0)){
+    stop("RA should fall into the range 0 to 360.",
+         .call = FALSE)
+  }
+}
+validate_dec <- function(dec = double()){
+  if(any(dec > 90 | dec < -90)){
+    stop("DEC should fall into the range -90 to +90.",
+         .call = FALSE)
+  }
 }
 
 
 
 # Helpers -----------------------------------------------------------------
 
-#' Title
+#' Create RA DEC object
 #'
-#' @param ra
-#' @param dec
+#' @param ra in degrees
+#' @param dec in degrees
 #'
 #' @return
 #' @export
 #'
-#' @examples
+#' @importFrom vctrs vec_cast
+#'
+#' @examples ra_dec(ra = 213.1, dec=65.3)
 ra_dec <- function(ra=double(), dec = double()){
-  ra <- vctrs::vec_cast(ra, double())
-  dec <- vctrs::vec_cast(dec, double())
+  ra <- vec_cast(ra, double())
+  dec <- vec_cast(dec, double())
   new_radec(ra, dec)
 }
 
 #' Title
 #'
-#' @param radec
+#' @param radec in "hms dms"
 #'
 #' @return
 #' @export
 #'
+#' @importFrom vctrs vec_cast
+#' @importFrom purrr map_dbl
+#'
+#'
 #' @examples
+#' radec('12 34 56 -76  54 3.210')
+#' radec('12 34 56 -76  54 3.210') %>% tibble::tibble()
 radec <- function(radec = character()) {
-  radec <- vctrs::vec_cast(radec, character())
+  radec <- vec_cast(radec, character())
 
   radec_parsed <- stringr::str_match_all(radec, pattern = "^([\\d\\.]*)[\\s:h]?\\s?([\\d\\.]*)?[\\s:m]?\\s?([\\d\\.]*)?s?\\s([+-])?\\s?([\\d\\.]*)[\\s:d]?\\s?([\\d\\.]*)?[\\s:m]?\\s?([\\d\\.]*)?s?")
-  ra <- purrr::map_dbl(radec_parsed, ~ (as.numeric(.x[1,2:4])/c(1, 60, 3600)) |> sum(na.rm = T))
+  ra <- map_dbl(radec_parsed, ~ (as.numeric(.x[1,2:4])/c(1, 60, 3600)) |> sum(na.rm = T))
   ra <- ra * 15 # 1 hour = 15 degrees
 
-  dec_sign <- purrr::map_dbl(radec_parsed, ~ifelse(.x[5] == '+' | is.na(.x[5]), 1, -1))
-  dec <- purrr::map_dbl(radec_parsed, ~ (as.numeric(.x[1,6:8])/c(1, 60, 3600)) |> sum(na.rm = T))
+  dec_sign <- map_dbl(radec_parsed, ~ifelse(.x[5] == '+' | is.na(.x[5]), 1, -1))
+  dec <- map_dbl(radec_parsed, ~ (as.numeric(.x[1,6:8])/c(1, 60, 3600)) |> sum(na.rm = T))
   dec <- dec_sign * dec
 
   new_radec(ra, dec)
@@ -53,14 +84,8 @@ radec <- function(radec = character()) {
 
 # Get RA and DEC ----------------------------------------------------------
 
-#' Title
-#'
-#' @param x
-#'
-#' @return
+
 #' @export
-#'
-#' @examples
 ra <- function(x){
   UseMethod('ra')
 }
@@ -68,12 +93,14 @@ ra.default <- function(x, ...){
   x
 }
 
-#' Title
+#' Get RA
 #'
 #' @param x
 #'
 #' @return
 #' @export
+#'
+#' @importFrom vctrs vec_data
 #'
 #' @examples
 ra.astro_radec <- function(x){
@@ -81,26 +108,22 @@ ra.astro_radec <- function(x){
   vctrs::vec_data(x)$ra
 }
 
-#' Title
-#'
-#' @param x
-#'
-#' @return
+
 #' @export
-#'
-#' @examples
 dec <- function(x){
   UseMethod('dec')
 }
 dec.default <- function(x, ...){
   x
 }
-#' Title
+#' Get DEC
 #'
 #' @param x
 #'
 #' @return
 #' @export
+#'
+#' @importFrom vctrs vec_data
 #'
 #' @examples
 dec.astro_radec <- function(x){
@@ -110,15 +133,8 @@ dec.astro_radec <- function(x){
 
 
 # Separation --------------------------------------------------------------
-#' Title
-#'
-#' @param x
-#' @param y
-#'
-#' @return
+
 #' @export
-#'
-#' @examples
 separation <- function(x, y){
   UseMethod('separation')
 }
@@ -144,10 +160,14 @@ separation.astro_radec <- function(x, y){
   ra_y <- ra(y) * pi / 180
   dec_y <- dec(y) * pi / 180
 
-  numerator <- (cos(dec_y)*sin(ra_x-ra_y))^2 + (cos(dec_x)*sin(dec_y) - sin(dec_x)*cos(dec_y)*cos(ra_x-ra_y))^2
-  denomin <- sin(dec_x)*sin(dec_y) + cos(dec_x)*cos(dec_y)*cos(ra_x - ra_y)
+  del_l <- abs(ra_x - ra_y)
+  # del_l <- ifelse(del_l > pi, del_l - pi, del_l)
 
-  return(atan(sqrt(numerator) / denomin) * 3600 * 180 / pi)
+  numerator <- (cos(dec_y)*sin(del_l))^2 + (cos(dec_x)*sin(dec_y) - sin(dec_x)*cos(dec_y)*cos(del_l))^2
+  denomin <- sin(dec_x)*sin(dec_y) + cos(dec_x)*cos(dec_y)*cos(del_l)
+
+  r <- atan2(sqrt(numerator), denomin) * 3600 * 180 / pi
+  return(r)
 }
 
 
@@ -175,20 +195,25 @@ is_radec <- function(x){
 #' @param ...
 #' @param formatter
 #' @param nsec
-#' @param isplain
+#' @param color print color?
 #'
 #' @return
 #' @export
 #'
+#' @importFrom vctrs field
+#' @importFrom vctrs vec_size
+#'
 #' @examples
-format.astro_radec <- function(x,formatter = formatter_hmsdms, nsec=1, isplain=T, ...){
+format.astro_radec <- function(x, formatter = formatter_hmsdms, nsec=1, color=F, ...){
   x_valid <- which(!is.na(x))
 
-  ra <- vctrs::field(x, 'ra')[x_valid]
-  dec <- vctrs::field(x, 'dec')[x_valid]
+  ra <- field(x, 'ra')[x_valid]
+  dec <- field(x, 'dec')[x_valid]
 
-  ret <- rep(NA_character_, vctrs::vec_size(x))
-  ret[x_valid] <- paste0(formatter(ra, 'ra', nsec, isplain), " ", formatter(dec, 'dec', nsec, isplain))
+  ret <- rep(NA_character_, vec_size(x))
+  ret[x_valid] <- paste0(formatter(ra, 'ra', nsec, color=color),
+                         " ",
+                         formatter(dec, 'dec', nsec, color=color))
   ret
 }
 
@@ -197,57 +222,70 @@ format.astro_radec <- function(x,formatter = formatter_hmsdms, nsec=1, isplain=T
 #' @param x
 #' @param ra_or_dec
 #' @param nsec
-#' @param isplain
+#' @param color print with color?
 #' @param ...
 #'
 #' @return
 #' @export
 #'
+#' @importFrom pillar style_subtle
+#'
 #' @examples
-formatter_hmsdms <- function(x, ra_or_dec, nsec=1, isplain=T, ...){
+formatter_hmsdms <- function(x, ra_or_dec, nsec=1, color=FALSE, ...){
 
   if(ra_or_dec == 'ra') x <- x / 15
 
+  ra_units <- c("h","m","s")
+  dec_units <- c("°", "'", '"')
 
-  ra_units <- c(pillar::style_subtle("h"),
-                pillar::style_subtle("m"),
-                pillar::style_subtle("s"))
-  if(isplain) ra_units <- c('h', 'm', 's')
-
-  dec_units <- c(pillar::style_subtle("°"),
-                 pillar::style_subtle("'"),
-                 pillar::style_subtle('"'))
-  if(isplain) dec_units <- c("°", "'", '"')
-
-  units <- if(ra_or_dec == 'ra') ra_units else dec_units
-
-  sign_x <- if(ra_or_dec == 'dec') ifelse(sign(x) > 0, '+', '-')
 
   x0 <- abs(x)
   x1 <- as.integer(x0)
-  x2_tmp <- x2_tmp <- sprintf("%.10f",(x0 - x1) * 60) |> as.numeric()
+  x2_tmp <- x2_tmp <- sprintf("%.10f",(x0 - x1) * 60) %>% as.numeric()
   x2 <- as.integer(x2_tmp)
   x3 <- (x2_tmp - x2) * 60
 
-  ret <- paste0(sign_x, x1, units[1], x2, units[2], sprintf("%." %s% nsec %s% "f",x3), units[3])
+  if(ra_or_dec == 'ra'){
+    units <- ra_units
+    if(color) {
+      units <- style_subtle(units)
+    }
+    ret <- sprintf(fmt = paste0("%02d%s%02d%s%0", nsec+3, ".", nsec, "f%s"),
+                   x1,
+                   units[1],
+                   x2,
+                   units[2],
+                   x3,
+                   units[3])
+
+  }
+  if(ra_or_dec == 'dec'){
+    sign_x <- ifelse(sign(x) > 0, '+', '-')
+    units <- dec_units
+    if(color) {
+      units <- style_subtle(units)
+      sign_x <- style_subtle(sign_x)
+    }
+
+
+
+
+    ret <- sprintf(fmt = paste0("%s%02d%s%02d%s%0", nsec+3, ".", nsec, "f%s"),
+                   sign_x,
+                   x1,
+                   units[1],
+                   x2,
+                   units[2],
+                   x3,
+                   units[3])
+
+
+  }
+
+
   format(ret, justify='right')
 }
 
-#' Title
-#'
-#' @param x
-#' @param ra_or_dec
-#' @param nsec
-#' @param ...
-#'
-#' @return
-#' @export
-#'
-#' @examples
-formatter_deg <- function(x, ra_or_dec, nsec=4, ...){
-  ret <- paste0(sprintf("%." %s% nsec %s% "f", x), pillar::style_subtle("°"))
-  format(ret, justify='right')
-}
 
 #' Title
 #'
@@ -261,6 +299,8 @@ formatter_deg <- function(x, ra_or_dec, nsec=4, ...){
 #'
 #' @examples
 formatter_latex <- function(x, ra_or_dec, nsec=1, ...){
+
+  warning('Test function')
 
   if(ra_or_dec == 'ra') x <- x / 15
 
@@ -285,13 +325,15 @@ formatter_latex <- function(x, ra_or_dec, nsec=1, ...){
 #' @param ...
 #'
 #' @return
-#' @importFrom pillar pillar_shaft
 #' @export
+#'
+#' @importFrom pillar new_pillar_shaft_simple
+#' @importFrom pillar pillar_shaft
 #'
 #' @examples
 pillar_shaft.astro_radec <- function(x, ...) {
-  out <- format(x, formatter = formatter_hmsdms, nsec=1, isplain = F)
-  pillar::new_pillar_shaft_simple(out, align = "left")
+  out <- format(x, formatter = formatter_hmsdms, color=T, nsec=2)
+  new_pillar_shaft_simple(out, align = "left")
 }
 
 
@@ -303,6 +345,8 @@ pillar_shaft.astro_radec <- function(x, ...) {
 #'
 #' @return
 #' @export
+#'
+#' @importFrom vctrs vec_ptype_abbr
 #'
 #' @examples
 vec_ptype_abbr.astro_radec <- function(x) {

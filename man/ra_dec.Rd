@@ -2,16 +2,21 @@
 % Please edit documentation in R/radec.R
 \name{ra_dec}
 \alias{ra_dec}
-\title{Title}
+\title{Create RA DEC object}
 \usage{
 ra_dec(ra = double(), dec = double())
 }
 \arguments{
-\item{dec}{}
+\item{ra}{in degrees}
+
+\item{dec}{in degrees}
 }
 \value{
 
 }
 \description{
-Title
+Create RA DEC object
+}
+\examples{
+ra_dec(ra = 213.1, dec=65.3)
 }

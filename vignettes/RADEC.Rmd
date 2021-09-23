@@ -1,0 +1,67 @@
+---
+title: "RADEC manipulation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{RADEC}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(xrayr)
+library(tibble)
+library(dplyr)
+```
+
+# Creating RADEC vectors
+
+To create RADEC vector using values in *deg* use `ra_dec` function.
+
+```{r}
+n <- 5
+x <- ra_dec(ra = runif(n, 0, 360), 
+            dec = runif(n, -90, 90))
+
+y <- ra_dec(ra = runif(n, 0, 360), 
+            dec = runif(n, -90, 90))
+x
+```
+
+Also we can create RADEC vectors using `radec` function. Coords in the 'hms dms' format
+
+```{r}
+coords <- c("21h16m19.6s -16d30m31.2s", "12 14 19.6 34 1 1.2s")
+radec(coords)
+```
+
+At the current time NAs support is limited.
+
+```{r}
+ra_dec(c(NA, 2), dec=c(NA, 29))
+```
+
+
+
+# Show in tibble
+
+```{r}
+t <- tibble(x = x) %>% 
+  bind_cols(tibble(y = y))
+t
+```
+
+# Calc separation between two points
+
+Great circle distance in arcseconds
+
+```{r}
+t %>% 
+  mutate(sep = separation(x, y))
+```

@@ -4,9 +4,11 @@
 \alias{formatter_hmsdms}
 \title{Title}
 \usage{
-formatter_hmsdms(x, ra_or_dec, nsec = 1, isplain = T, ...)
+formatter_hmsdms(x, ra_or_dec, nsec = 1, color = FALSE, ...)
 }
 \arguments{
+\item{color}{print with color?}
+
 \item{...}{}
 }
 \value{

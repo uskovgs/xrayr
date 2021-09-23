@@ -2,7 +2,7 @@
 % Please edit documentation in R/radec.R
 \name{ra.astro_radec}
 \alias{ra.astro_radec}
-\title{Title}
+\title{Get RA}
 \usage{
 \method{ra}{astro_radec}(x)
 }
@@ -13,5 +13,5 @@
 
 }
 \description{
-Title
+Get RA
 }

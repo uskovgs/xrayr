@@ -16,8 +16,14 @@ Imports:
     ggplot2,
     httr,
     jsonlite,
-    pillar,
     purrr,
-    vctrs
+    vctrs,
+    pillar,
+    magrittr
 Encoding: UTF-8
 RoxygenNote: 7.1.1
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr
+LazyData: true
