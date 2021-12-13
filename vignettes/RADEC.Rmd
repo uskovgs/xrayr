@@ -37,7 +37,7 @@ x
 Also we can create RADEC vectors using `radec` function. Coords in the 'hms dms' format
 
 ```{r}
-coords <- c("21h16m19.6s -16d30m31.2s", "12 14 19.6 34 1 1.2s")
+coords <- c("21h16m19.6s -16d30m31.2s", "12 14 19.6 34 1 1.2s", "J112233.44+551122.33")
 radec(coords)
 ```
 

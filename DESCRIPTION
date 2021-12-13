@@ -19,7 +19,8 @@ Imports:
     purrr,
     vctrs,
     pillar,
-    magrittr
+    magrittr,
+    stringr
 Encoding: UTF-8
 RoxygenNote: 7.1.2
 Suggests: 

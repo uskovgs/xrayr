@@ -63,7 +63,8 @@ ra_dec <- function(ra=double(), dec = double()){
 #'
 #' @importFrom vctrs vec_cast
 #' @importFrom purrr map_dbl
-#'
+#' @importFrom stringr str_match
+#' @importFrom stringr str_match_all
 #'
 #' @examples
 #' radec('12 34 56 -76  54 3.210')
@@ -71,7 +72,26 @@ ra_dec <- function(ra=double(), dec = double()){
 radec <- function(radec = character()) {
   radec <- vec_cast(radec, character())
 
-  radec_parsed <- stringr::str_match_all(radec, pattern = "^([\\d\\.]*)[\\s:h]?\\s?([\\d\\.]*)?[\\s:m]?\\s?([\\d\\.]*)?s?\\s([+-])?\\s?([\\d\\.]*)[\\s:d°]?\\s?([\\d\\.]*)?[\\s:m’]?\\s?([\\d\\.]*)?s?")
+  j <- grepl('^J', radec)
+  if(any(j)){
+    ra <- str_match(radec[j], 'J(.+)[+-]')[,2]
+    ra1 <- paste0(substr(ra, 1,2),
+                  ":",
+                  substr(ra, 3,4),
+                  ":",
+                  substr(ra, 5, nchar(ra)))
+
+    dec <- str_match(radec[j], "J.+([+-].+)")[,2]
+    dec1 <- paste0(substr(dec, 1,3),
+                   ":",
+                   substr(dec, 4,5),
+                   ":",
+                   substr(dec,6, nchar(dec))
+    )
+    radec[j] <- paste(ra1, dec1)
+  }
+
+  radec_parsed <- str_match_all(radec, pattern = "^([\\d\\.]*)[\\s:h]?\\s?([\\d\\.]*)?[\\s:m]?\\s?([\\d\\.]*)?s?\\s([+-])?\\s?([\\d\\.]*)[\\s:d°]?\\s?([\\d\\.]*)?[\\s:m’]?\\s?([\\d\\.]*)?s?")
   ra <- map_dbl(radec_parsed, ~ (as.numeric(.x[1,2:4])/c(1, 60, 3600)) |> sum(na.rm = T))
   ra <- ra * 15 # 1 hour = 15 degrees
 
