@@ -37,7 +37,7 @@ nh(213.1612728, -65.38967664, r_arcmin=5, showInfo = T)
 ``` r
 library(xrayr)
 
-# in degreed
+# in degrees
 x1 <- ra_dec(ra = 213.1, dec = -75.1)
 # in hms dms
 x2 <- radec('14h1m1s -75d15m23.68s')

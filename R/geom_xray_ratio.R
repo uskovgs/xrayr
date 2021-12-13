@@ -21,7 +21,7 @@ StatXrayRatio <- ggplot2::ggproto("StatXrayRatio", ggplot2::Stat,
                            data$ymin <- (data$obs - data$obs_err) / data$model
                            data$ymax <- (data$obs + data$obs_err) / data$model
 
-                           warning('***Warning: do not scale y axis')
+                           warning('***Warning: do not scale y axis, `xray_ratio`')
 
 
 

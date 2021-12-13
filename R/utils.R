@@ -10,3 +10,4 @@ check_status <- function(res){
               .p = ~ .x == 200,
               msg = "The API returned an error")
 }
+

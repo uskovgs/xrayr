@@ -4,10 +4,12 @@
 \alias{formatter_hmsdms}
 \title{Title}
 \usage{
-formatter_hmsdms(x, ra_or_dec, nsec = 1, color = FALSE, ...)
+formatter_hmsdms(x, ra_or_dec, nsec = 1, color = FALSE, isPlain = F, ...)
 }
 \arguments{
 \item{color}{print with color?}
+
+\item{isPlain}{units - white spaces}
 
 \item{...}{}
 }

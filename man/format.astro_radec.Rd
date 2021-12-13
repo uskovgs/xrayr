@@ -4,10 +4,12 @@
 \alias{format.astro_radec}
 \title{Title}
 \usage{
-\method{format}{astro_radec}(x, formatter = formatter_hmsdms, nsec = 1, color = F, ...)
+\method{format}{astro_radec}(x, formatter = formatter_hmsdms, nsec = 1, color = F, isPlain = F, ...)
 }
 \arguments{
 \item{color}{print color?}
+
+\item{isPlain}{units - white spaces}
 }
 \value{
 

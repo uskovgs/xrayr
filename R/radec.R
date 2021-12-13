@@ -71,7 +71,7 @@ ra_dec <- function(ra=double(), dec = double()){
 radec <- function(radec = character()) {
   radec <- vec_cast(radec, character())
 
-  radec_parsed <- stringr::str_match_all(radec, pattern = "^([\\d\\.]*)[\\s:h]?\\s?([\\d\\.]*)?[\\s:m]?\\s?([\\d\\.]*)?s?\\s([+-])?\\s?([\\d\\.]*)[\\s:d]?\\s?([\\d\\.]*)?[\\s:m]?\\s?([\\d\\.]*)?s?")
+  radec_parsed <- stringr::str_match_all(radec, pattern = "^([\\d\\.]*)[\\s:h]?\\s?([\\d\\.]*)?[\\s:m]?\\s?([\\d\\.]*)?s?\\s([+-])?\\s?([\\d\\.]*)[\\s:d°]?\\s?([\\d\\.]*)?[\\s:m’]?\\s?([\\d\\.]*)?s?")
   ra <- map_dbl(radec_parsed, ~ (as.numeric(.x[1,2:4])/c(1, 60, 3600)) |> sum(na.rm = T))
   ra <- ra * 15 # 1 hour = 15 degrees
 
@@ -196,6 +196,7 @@ is_radec <- function(x){
 #' @param formatter
 #' @param nsec
 #' @param color print color?
+#' @param isPlain units - white spaces
 #'
 #' @return
 #' @export
@@ -204,16 +205,16 @@ is_radec <- function(x){
 #' @importFrom vctrs vec_size
 #'
 #' @examples
-format.astro_radec <- function(x, formatter = formatter_hmsdms, nsec=1, color=F, ...){
+format.astro_radec <- function(x, formatter = formatter_hmsdms, nsec=1, color=F,isPlain=F, ...){
   x_valid <- which(!is.na(x))
 
   ra <- field(x, 'ra')[x_valid]
   dec <- field(x, 'dec')[x_valid]
 
   ret <- rep(NA_character_, vec_size(x))
-  ret[x_valid] <- paste0(formatter(ra, 'ra', nsec, color=color),
+  ret[x_valid] <- paste0(formatter(ra, 'ra', nsec, color=color, isPlain=isPlain),
                          " ",
-                         formatter(dec, 'dec', nsec, color=color))
+                         formatter(dec, 'dec', nsec, color=color, isPlain=isPlain))
   ret
 }
 
@@ -223,6 +224,7 @@ format.astro_radec <- function(x, formatter = formatter_hmsdms, nsec=1, color=F,
 #' @param ra_or_dec
 #' @param nsec
 #' @param color print with color?
+#' @param isPlain units - white spaces
 #' @param ...
 #'
 #' @return
@@ -231,12 +233,17 @@ format.astro_radec <- function(x, formatter = formatter_hmsdms, nsec=1, color=F,
 #' @importFrom pillar style_subtle
 #'
 #' @examples
-formatter_hmsdms <- function(x, ra_or_dec, nsec=1, color=FALSE, ...){
+formatter_hmsdms <- function(x, ra_or_dec, nsec=1, color=FALSE, isPlain=F, ...){
 
   if(ra_or_dec == 'ra') x <- x / 15
 
   ra_units <- c("h","m","s")
   dec_units <- c("°", "'", '"')
+
+  if(isPlain) {
+    ra_units <- c(" ", " ", " ")
+    dec_units <- c(" ", " ", " ")
+  }
 
 
   x0 <- abs(x)
@@ -270,14 +277,24 @@ formatter_hmsdms <- function(x, ra_or_dec, nsec=1, color=FALSE, ...){
 
 
 
-    ret <- sprintf(fmt = paste0("%s%02d%s%02d%s%0", nsec+3, ".", nsec, "f%s"),
-                   sign_x,
-                   x1,
-                   units[1],
-                   x2,
-                   units[2],
-                   x3,
-                   units[3])
+    # ret <- sprintf(fmt = paste0("%s%02d%s%02d%s%0", nsec+3, ".", nsec, "f%s"),
+    #                sign_x,
+    #                x1,
+    #                units[1],
+    #                x2,
+    #                units[2],
+    #                x3,
+    #                units[3])
+
+    fmt_par <- paste0("%0", (ifelse(nsec==0, 2, 3) +nsec), ".", nsec, "f")
+
+    ret <- paste0(sign_x,
+                  sprintf('%02d', x1),
+                  units[1],
+                  sprintf('%02d', x2),
+                  units[2],
+                  sprintf(fmt = fmt_par, round(x3, nsec)),
+                  units[3])
 
 
   }
@@ -312,8 +329,22 @@ formatter_latex <- function(x, ra_or_dec, nsec=1, ...){
   x2 <- as.integer(x2_tmp)
   x3 <- (x2_tmp - x2) * 60
 
-  if(ra_or_dec == 'dec') ret <- paste0(sign_x, x1, ' ', x2, ' ', sprintf("%.0f", x3))
-  if(ra_or_dec == 'ra') ret <- paste0(sign_x, x1, ' ', x2, ' ', sprintf("%." %s% nsec %s% "f",x3))
+  fmt_par <- paste0("%0", (ifelse(nsec==0, 2, 3) +nsec), ".", (nsec), "f")
+
+  if(ra_or_dec == 'dec') ret <- paste0('$',
+                                       sign_x,
+                                       sprintf('%02d', x1), '~',
+                                       sprintf('%02d', x2), '~',
+                                       sprintf(fmt = fmt_par, round(x3, nsec)),
+                                       '$')
+
+  # sprintf("%07.2f", 1.2)
+  if(ra_or_dec == 'ra') ret <- paste0('$',
+                                      sign_x,
+                                      sprintf('%02d', x1), '~',
+                                      sprintf('%02d', x2), '~',
+                                      sprintf(fmt = fmt_par, round(x3, nsec)),
+                                      '$')
 
   format(ret, justify='right')
 }

@@ -1,0 +1,157 @@
+---
+title: "Latex-Tables"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Latex-Tables}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(xrayr)
+library(tibble)
+library(dplyr)
+```
+
+
+```{r}
+x <- c(NA,1:10)
+x <- x + rnorm(length(x))
+err <- rnorm(length(x))
+df <- tibble(best = x,
+             min = x + err,
+             max = x - err)
+df
+```
+
+## Symmetric error case
+
+```{r}
+df %>% 
+  dplyr::mutate(latex=latex_range(best, min, max, ndigits = 2))
+```
+
+
+```{r}
+df %>% 
+  dplyr::mutate(latex=latex_range(best, min, max, ndigits = 2, na = ''))
+```
+
+## Unsymmetric case
+
+```{r}
+df %>% 
+  dplyr::mutate(max = max + 1e-2*max) %>% 
+  dplyr::mutate(latex=latex_range(best, min, max, ndigits = 1))
+```
+
+# Scientific notation
+
+## Symmetric case
+
+
+```{r}
+x <- c(NA, 1e21, 3e22, 1e23)
+err <- c(NA, 0.1234e21, 0.2345e21, 0.6789e23)
+
+df <- tibble(best= x,
+             min = best - err,
+             max = best + err) 
+
+df1 <- df %>% 
+  mutate(latex = latex_range_sci(best, min, max, ndigits = 2, symmetry = TRUE))
+  
+df1
+```
+### HTML output
+
+```{r}
+df1 %>% 
+  select(latex) %>% 
+  knitr::kable(format = 'html', 
+               escape = FALSE,
+               booktabs = TRUE,
+               linesep='')
+```
+
+### Latex output
+
+```{r}
+df1 %>% 
+  select(latex) %>%
+  knitr::kable(format = 'latex', 
+               escape = FALSE,
+               booktabs = TRUE,
+               linesep='') %>% 
+  cat()
+```
+
+## Unsymmetric output
+
+```{r}
+df2 <- df %>% 
+  mutate(max = max*1.1) %>% 
+  mutate(latex = latex_range_sci(best, min, max, ndigits = 2))
+df2 %>% 
+  select(latex) %>% 
+  knitr::kable(format = 'html', 
+               escape = FALSE,
+               booktabs = TRUE,
+               linesep='')
+```
+
+## The same power for all values `base_pow`
+
+```{r}
+df3 <- df %>% 
+  mutate(max = 1.1*max) %>% 
+  mutate(latex = latex_range_sci(best, min, max, ndigits = 2, base_pow=22))
+df3 %>% 
+  select(latex) %>% 
+  knitr::kable(format = 'html', 
+               escape = FALSE,
+               booktabs = TRUE,
+               linesep='')
+```
+
+
+# Row-oriented workflow
+
+```{r}
+df <- tribble(~param_name, ~x, ~xmin, ~xmax,
+        'nH', 1e21, 0.81e21, 1.2e21,
+        'p', 1.7, 1.6, 2.5)
+df
+```
+
+```{r}
+foo <- function(best, min, max, param_name, param_options=list(nH=c(2,T),
+                                                        phoind=c(1,F))){
+  
+  purrr::pmap_chr(list(best, min, max, param_name), function(best, min, max, param_name){
+    
+    if(param_options[[param_name]][2]){
+      latex_range_sci(best, min, max, ndigits = param_options[[param_name]][1])
+    } else{
+      latex_range(best, min, max, ndigits = param_options[[param_name]][1])
+    }
+    
+  })
+}
+
+df %>% 
+  dplyr::mutate(latex = foo(x, xmin, xmax, param_name, param_options = list(nH=c(1,T), p=c(2,F)))) %>% 
+  knitr::kable(format = 'html', 
+               escape = FALSE,
+               booktabs = TRUE,
+               linesep=''
+               )
+```
+

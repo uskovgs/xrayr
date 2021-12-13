@@ -78,10 +78,12 @@ nh <- function(ra=NULL, dec=NULL, r_arcmin = 10, showInfo = FALSE){
         readr::type_convert()
     )
 
+
+
     nh_average <- mean(v$NHI)
-    nh_weighted <- idw(x = v$RAJ2000,
-                       y = v$DEJ2000,
-                       z = v$NHI,
+    nh_weighted <- idw(x = v$RAJ2000 %>% as.numeric(),
+                       y = v$DEJ2000 %>% as.numeric(),
+                       z = v$NHI %>% as.numeric(),
                        x_target = as.numeric(ra),
                        y_target = as.numeric(dec))
 
