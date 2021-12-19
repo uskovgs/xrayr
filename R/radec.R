@@ -267,26 +267,35 @@ formatter_hmsdms <- function(x, ra_or_dec, nsec=1, color=FALSE, isPlain=F, ...){
 
 
   x0 <- abs(x)
-  x1 <- as.integer(x0)
-  x2_tmp <- x2_tmp <- sprintf("%.10f",(x0 - x1) * 60) %>% as.numeric()
-  x2 <- as.integer(x2_tmp)
-  x3 <- (x2_tmp - x2) * 60
+  x1 <- as.integer(x0) # h
+  x2_tmp <- sprintf("%.10f",(x0 - x1) * 60) %>% as.numeric()
+  x2 <- as.integer(x2_tmp) # m
+  x3 <- round((x2_tmp - x2) * 60, nsec+1)
 
   if(ra_or_dec == 'ra'){
     units <- ra_units
     if(color) {
       units <- style_subtle(units)
     }
-    ret <- sprintf(fmt = paste0("%02d%s%02d%s%0", nsec+3, ".", nsec, "f%s"),
-                   x1,
-                   units[1],
-                   x2,
-                   units[2],
-                   x3,
-                   units[3])
+    # fmt_par <- paste0("%02d%s%02d%s%0", nsec+3, ".", nsec, "f%s")
+    # ret <- sprintf(fmt = fmt_par,
+    #                x1,
+    #                units[1],
+    #                x2,
+    #                units[2],
+    #                x3,
+    #                units[3])
+    fmt_par <- paste0("%0", (ifelse(nsec == 0, 2, 3) +nsec), ".", nsec, "f")
+    ret <- paste0(sprintf('%02d', x1),
+                  units[1],
+                  sprintf('%02d', x2),
+                  units[2],
+                  sprintf(fmt = fmt_par, round(x3, nsec)),
+                  units[3])
 
   }
   if(ra_or_dec == 'dec'){
+    nsec <- ifelse(nsec > 0, nsec-1, nsec)
     sign_x <- ifelse(sign(x) > 0, '+', '-')
     units <- dec_units
     if(color) {
@@ -383,7 +392,7 @@ formatter_latex <- function(x, ra_or_dec, nsec=1, ...){
 #'
 #' @examples
 pillar_shaft.astro_radec <- function(x, ...) {
-  out <- format(x, formatter = formatter_hmsdms, color=T, nsec=2)
+  out <- format(x, formatter = formatter_hmsdms, color=T, nsec=1)
   new_pillar_shaft_simple(out, align = "left")
 }
 
