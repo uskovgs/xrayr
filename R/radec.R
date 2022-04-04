@@ -102,6 +102,18 @@ radec <- function(radec = character()) {
   new_radec(ra, dec)
 }
 
+#' Title
+#'
+#' @param x
+#'
+#' @return
+#' @export
+#'
+#' @examples
+is_radec <- function(x){
+  inherits(x, "astro_radec")
+}
+
 # Get RA and DEC ----------------------------------------------------------
 
 
@@ -191,17 +203,53 @@ separation.astro_radec <- function(x, y){
 }
 
 
+# Convert to galactic coords ----------------------------------------------
 
-#' Title
+#' @export
+to_galactic <- function(x, obs_epoch="J2000"){
+  UseMethod('to_galactic')
+}
+to_galactic.default <- function(x, obs_epoch="J2000"){
+  stop('Not radec obj')
+}
+
+#' Convert radec to galactic coords.
 #'
-#' @param x
+#' See formula from www.atnf.csiro.au/people/Tobias.Westmeier/tools_coords.php
+#'
+#' @param x radec obj
+#' @param epoch "J2000" (default) or "B1950"
 #'
 #' @return
 #' @export
 #'
 #' @examples
-is_radec <- function(x){
-  inherits(x, "astro_radec")
+to_galactic.astro_radec <- function(x, obs_epoch = "J2000"){
+  checkmate::checkChoice(obs_epoch, c("J2000", "B1950"))
+
+  cat("***Experimental function `to_galactic`\n")
+  # Coords of galactic north pole
+  if(obs_epoch == 'B1950'){
+    ra_gal <- 192.25 * pi / 180
+    dec_gal <- 27.40 * pi / 180
+    l_gal <- 123.00 * pi / 180
+  } else {
+    ra_gal <- 192.85947916666665947 * pi / 180
+    dec_gal <- 27.128250000000001307 * pi / 180
+    l_gal <- 122.932192 * pi / 180
+  }
+
+  ra_x <- ra(x) * pi / 180
+  dec_x <- dec(x) * pi / 180
+
+  n1 <- cos(dec_x) * sin(ra_x - ra_gal)
+  d1 <- sin(dec_x) * cos(dec_gal) - cos(dec_x) * sin(dec_gal) * cos(ra_x - ra_gal)
+  l <- l_gal - atan(n1/d1)
+
+  b <- asin(sin(dec_x) * sin(dec_gal) + cos(dec_x) * cos(dec_gal) * cos(ra_x-ra_gal))
+
+  return(list(l = l * 180 / pi,
+              b = b * 180 / pi))
 }
 
 

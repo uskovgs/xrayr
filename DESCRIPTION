@@ -20,7 +20,10 @@ Imports:
     vctrs,
     pillar,
     magrittr,
-    stringr
+    stringr,
+    checkmate,
+    magicaxis,
+    plotrix
 Encoding: UTF-8
 RoxygenNote: 7.1.2
 Suggests: 
