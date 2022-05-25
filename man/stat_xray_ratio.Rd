@@ -32,9 +32,6 @@ stat_xray_ratio(
 
 \item{...}{invisible args}
 }
-\value{
-
-}
 \description{
 Title
 }

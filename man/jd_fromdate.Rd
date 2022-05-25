@@ -9,9 +9,6 @@ jd_fromdate(date)
 \arguments{
 \item{date}{}
 }
-\value{
-
-}
 \description{
 Convert greg to JD astronomical. At first it converts to UTC.
 }

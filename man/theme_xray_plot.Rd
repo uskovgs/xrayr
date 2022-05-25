@@ -11,9 +11,6 @@ theme_xray_plot(is_transparent = T, ...)
 
 \item{...}{invisible args}
 }
-\value{
-
-}
 \description{
 Title
 }

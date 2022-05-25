@@ -11,9 +11,6 @@ ra_dec(ra = double(), dec = double())
 
 \item{dec}{in degrees}
 }
-\value{
-
-}
 \description{
 Create RA DEC object
 }

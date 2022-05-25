@@ -17,9 +17,6 @@ read_qdp(
 
 \item{col_names}{default: c('energy', 'err_energy', 'flux_obs', 'err_obs', 'flux_model')}
 }
-\value{
-
-}
 \description{
 Title
 }

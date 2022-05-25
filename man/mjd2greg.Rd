@@ -10,9 +10,6 @@ mjd2greg(mjd)
 \arguments{
 \item{mjd}{}
 }
-\value{
-
-}
 \description{
 MJD to greg
 MJD = JD − 2400000.5

@@ -9,9 +9,6 @@ formatter_latex(x, ra_or_dec, nsec = 1, ...)
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Title
 }

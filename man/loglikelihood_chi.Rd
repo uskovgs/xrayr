@@ -13,9 +13,6 @@ loglikelihood_chi(obs, model)
 
 see https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/XSappendixStatistics.html}
 }
-\value{
-
-}
 \description{
 Likelihood for Gaussian data
 }

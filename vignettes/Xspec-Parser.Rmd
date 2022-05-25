@@ -1,0 +1,44 @@
+---
+title: "Xspec-Parser"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Xspec-Parser}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(xrayr)
+library(tidyverse)
+```
+
+### Example of XSpec output
+
+Use built-in dataset `xspec_output`or try to read xspec output file using `readr::read_lines`
+
+```{r}
+xspec_output
+```
+
+Now lets try to parse this file
+
+### General function
+
+```{r}
+xrayr::xspec_parse_output(xspec_output)
+```
+
+### Parse model, fit params and err confidence
+
+```{r}
+print(xrayr::xspec_parse_model(xspec_output))
+print(xrayr::xspec_parse_params(xspec_output))
+print(xrayr::xspec_parse_conf_errors(xspec_output))
+```

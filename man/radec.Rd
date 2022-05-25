@@ -9,9 +9,6 @@ radec(radec = character())
 \arguments{
 \item{radec}{in "hms dms"}
 }
-\value{
-
-}
 \description{
 Title
 }

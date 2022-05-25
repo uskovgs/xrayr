@@ -98,13 +98,13 @@ nh <- function(ra=NULL, dec=NULL, r_arcmin = 10, showInfo = FALSE){
       ra_range <- range(v$RAJ2000)
       dec_range <- range(v$DEJ2000)
       cat(paste0('RA range [',
-                 format(ra_range[1], digits=0, nsmall=4),
+                 format(ra_range[1], digits=1, nsmall=4),
                  ', ',
-                 format(ra_range[2], digits=0, nsmall=4), ']\n'))
+                 format(ra_range[2], digits=1, nsmall=4), ']\n'))
       cat(paste0('DEC range [',
-                 format(dec_range[1], digits=0, nsmall=4),
+                 format(dec_range[1], digits=1, nsmall=4),
                  ', ',
-                 format(dec_range[2], digits=0, nsmall=4), ']\n'))
+                 format(dec_range[2], digits=1, nsmall=4), ']\n'))
       cat(paste('Average mean nH (cm**-2):', format(nh_average, scientific=T, digits=4), '\n'))
       cat(paste('Weighted average nH (cm**-2):', format(nh_weighted, scientific=T, digits=4), '\n'))
     }

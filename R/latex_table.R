@@ -24,7 +24,7 @@ check_ndigits <- function(x, ndigits=0){
 #' latex_range(best = x, min = x - err, max = x + 2*err, ndigits = 2, na='')
 #'
 latex_range <- function(best, min, max, ndigits=0, na='-'){
-  is_na <- is.na(best)
+  is_na <- is.na(best) | is.na(min) | is.na(max)
   n <- length(best)
 
   best <- best[!is_na]
@@ -84,7 +84,7 @@ latex_range <- function(best, min, max, ndigits=0, na='-'){
 latex_range_sci <- function(best, min, max, ndigits=0,
                             na='-', symmetry=FALSE, base_pow=NULL){
   # symmetry if available
-  is_na <- is.na(best)
+  is_na <- is.na(best) | is.na(min) | is.na(max)
   n <- length(best)
 
   pow <- if(is.null(base_pow)) trunc(log10(abs(best))) else rep(base_pow, n)

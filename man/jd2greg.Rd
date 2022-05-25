@@ -9,9 +9,6 @@ jd2greg(jd)
 \arguments{
 \item{jd}{}
 }
-\value{
-
-}
 \description{
 JD to greg.
 }

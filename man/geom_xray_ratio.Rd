@@ -18,9 +18,6 @@ geom_xray_ratio(
 \arguments{
 \item{...}{invisible args}
 }
-\value{
-
-}
 \description{
 Title
 }

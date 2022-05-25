@@ -11,9 +11,6 @@
 
 \item{isPlain}{units - white spaces}
 }
-\value{
-
-}
 \description{
 Title
 }

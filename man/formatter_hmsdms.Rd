@@ -13,9 +13,6 @@ formatter_hmsdms(x, ra_or_dec, nsec = 1, color = FALSE, isPlain = F, ...)
 
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Title
 }

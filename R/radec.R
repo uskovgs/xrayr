@@ -230,23 +230,25 @@ to_galactic.astro_radec <- function(x, obs_epoch = "J2000"){
   cat("***Experimental function `to_galactic`\n")
   # Coords of galactic north pole
   if(obs_epoch == 'B1950'){
-    ra_gal <- 192.25 * pi / 180
+    ra_gal <- 282.25 * pi / 180
     dec_gal <- 27.40 * pi / 180
-    l_gal <- 123.00 * pi / 180
+    l_gal <- 33.00 * pi / 180
   } else {
-    ra_gal <- 192.85947916666665947 * pi / 180
+    ra_gal <- 282.855 * pi / 180
     dec_gal <- 27.128250000000001307 * pi / 180
-    l_gal <- 122.932192 * pi / 180
+    l_gal <- 32.932192 * pi / 180
   }
 
   ra_x <- ra(x) * pi / 180
   dec_x <- dec(x) * pi / 180
 
-  n1 <- cos(dec_x) * sin(ra_x - ra_gal)
-  d1 <- sin(dec_x) * cos(dec_gal) - cos(dec_x) * sin(dec_gal) * cos(ra_x - ra_gal)
-  l <- l_gal - atan(n1/d1)
+  # n1 <- sin(dec_x) * cos(dec_gal) + cos(dec_x) * sin(dec_gal) * sin(ra_x - ra_gal)
+  # d1 <- cos(dec_x) * cos(ra_x - ra_gal)
+  # l <- l_gal + atan2(n1, d1)
 
-  b <- asin(sin(dec_x) * sin(dec_gal) + cos(dec_x) * cos(dec_gal) * cos(ra_x-ra_gal))
+  b <- asin(sin(dec_x) * sin(dec_gal) -
+              cos(dec_x) * cos(dec_gal) * sin(ra_x - ra_gal))
+  l <- l_gal + acos(cos(ra_x - ra_gal) * cos(dec_x) / cos(b))
 
   return(list(l = l * 180 / pi,
               b = b * 180 / pi))

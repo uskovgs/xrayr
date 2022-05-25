@@ -18,9 +18,6 @@ geom_xray_stepcount(
 \arguments{
 \item{...}{invisible args}
 }
-\value{
-
-}
 \description{
 Title
 }

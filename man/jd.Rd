@@ -11,9 +11,6 @@ jd(year, month, day, hour, min, sec)
 
 \item{sec}{}
 }
-\value{
-
-}
 \description{
 Convert greg to JD astronomical
 }

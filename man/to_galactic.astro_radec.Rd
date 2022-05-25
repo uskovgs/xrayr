@@ -11,9 +11,6 @@
 
 \item{epoch}{"J2000" (default) or "B1950"}
 }
-\value{
-
-}
 \description{
 See formula from www.atnf.csiro.au/people/Tobias.Westmeier/tools_coords.php
 }

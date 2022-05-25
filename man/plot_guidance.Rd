@@ -62,9 +62,6 @@ plot_guidance(
 
 \item{show_image_scale}{If FALSE, do not show scale legend on image. If TRUE show the legend of scale on image...}
 }
-\value{
-
-}
 \description{
 Make guidance image
 }

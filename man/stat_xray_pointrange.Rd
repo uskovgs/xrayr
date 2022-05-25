@@ -22,9 +22,6 @@ stat_xray_pointrange(
 
 \item{...}{invisible args}
 }
-\value{
-
-}
 \description{
 Title
 }
