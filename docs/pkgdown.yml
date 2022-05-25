@@ -1,0 +1,10 @@
+pandoc: 2.17.1.1
+pkgdown: 2.0.3
+pkgdown_sha: ~
+articles:
+  Latex-Tables: Latex-Tables.html
+  RADEC: RADEC.html
+  Xspec-Parser: Xspec-Parser.html
+  more_details: more_details.html
+last_built: 2022-05-25T22:00Z
+
