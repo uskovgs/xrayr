@@ -25,7 +25,6 @@ Imports:
     magicaxis,
     plotrix,
     constants,
-    units,
     tibble,
     stringi,
     dplyr,

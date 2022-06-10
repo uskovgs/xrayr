@@ -232,27 +232,29 @@ fix_header_ps1 <- function(header) {
 
 
 
+#'
+#' #' Convert angstrom to keV.
+#' #'
+#' #' @param x value
+#' #' @param x_unit unit of value (default="angstrom")
+#' #'
+#' #' @return photon energy in keV units
+#' #' @export
+#' #'
+#' #' @import units
+#' #' @import constants
+#' #' @examples
+#' angstrom_to_keV <- function(x, x_unit = "angstrom"){
+#'   h <- set_units(x = constants::lookup("hev")$value,
+#'                  value = constants::lookup("hev")$unit,
+#'                  mode = "standard") %>%
+#'     set_units("eV*s")
+#'   speed_of_light <- set_units(x = constants::lookup("speed")$value,
+#'                               value = constants::lookup("speed")$unit,
+#'                               mode = "standard")
+#'   res <- h * speed_of_light / set_units(x, x_unit, mode = "standard")
+#'
+#'   set_units(res, keV)
+#' }
+#'
 
-#' Convert angstrom to keV.
-#'
-#' @param x value
-#' @param x_unit unit of value (default="angstrom")
-#'
-#' @return photon energy in keV units
-#' @export
-#'
-#' @import units
-#' @import constants
-#' @examples
-angstrom_to_keV <- function(x, x_unit = "angstrom"){
-  h <- set_units(x = constants::lookup("hev")$value,
-                 value = constants::lookup("hev")$unit,
-                 mode = "standard") %>%
-    set_units("eV*s")
-  speed_of_light <- set_units(x = constants::lookup("speed")$value,
-                              value = constants::lookup("speed")$unit,
-                              mode = "standard")
-  res <- h * speed_of_light / set_units(x, x_unit, mode = "standard")
-
-  set_units(res, keV)
-}
