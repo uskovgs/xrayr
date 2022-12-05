@@ -68,7 +68,8 @@ GeomXrayStepCount <- ggplot2::ggproto("GeomXrayStepCount", ggplot2::Geom,
                                  y1 = coords$y,
                                  gp = grid::gpar(lwd = coords$size,
                                                  col = coords$colour,
-                                                 alpha = coords$alpha))
+                                                 alpha = coords$alpha)
+                                 )
 
                                if (n > 1){
                                  diff_y <- diff(coords$y)

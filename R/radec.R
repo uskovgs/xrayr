@@ -70,7 +70,13 @@ ra_dec <- function(ra=double(), dec = double()){
 #' radec('12 34 56 -76  54 3.210')
 #' radec('12 34 56 -76  54 3.210') %>% tibble::tibble()
 radec <- function(radec = character()) {
+
+  is_na <- is.na(radec)
+  N <- length(radec)
+
   radec <- vec_cast(radec, character())
+  radec_orig <- radec
+  radec <- radec_orig[!is_na]
 
   j <- grepl('^J', radec)
   if(any(j)){
@@ -99,7 +105,16 @@ radec <- function(radec = character()) {
   dec <- map_dbl(radec_parsed, ~ (as.numeric(.x[1,6:8])/c(1, 60, 3600)) |> sum(na.rm = T))
   dec <- dec_sign * dec
 
-  new_radec(ra, dec)
+  ra1 <- vector("double", N)
+  dec1 <- vector("double", N)
+
+  ra1 <- NA
+  dec1 <- NA
+
+  ra1[!is_na] <- ra
+  dec1[!is_na] <- dec
+
+  new_radec(ra1, dec1)
 }
 
 #' Title
