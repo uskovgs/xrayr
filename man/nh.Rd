@@ -19,7 +19,7 @@ nh(ra = NULL, dec = NULL, r_arcmin = 10, showInfo = FALSE)
 weighted nH
 }
 \description{
-nH is calculated using all points (from https://vizier.u-strasbg.fr site.) within `r_arcmin`
+nH is calculated using all points (from https://vizier.u-strasbg.fr site.) within \code{r_arcmin}
 }
 \examples{
 \dontrun{

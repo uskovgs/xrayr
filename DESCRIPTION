@@ -1,6 +1,6 @@
 Package: xrayr
 Title: Tools for xray astronomy
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person(given = "Grigory",
            family = "Uskov",
@@ -28,9 +28,10 @@ Imports:
     tibble,
     stringi,
     dplyr,
-    tidyr
+    tidyr,
+    lifecycle
 Encoding: UTF-8
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Suggests: 
     rmarkdown,
     knitr
@@ -38,3 +39,4 @@ VignetteBuilder: knitr
 LazyData: true
 Depends: 
     R (>= 2.10)
+Roxygen: list(markdown = TRUE)
