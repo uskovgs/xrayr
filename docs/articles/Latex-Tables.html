@@ -112,25 +112,25 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">err</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">err</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>best <span class="op">=</span> <span class="va">x</span>,</span>
-<span>             min <span class="op">=</span> <span class="va">x</span> <span class="op">+</span> <span class="va">err</span>,</span>
-<span>             max <span class="op">=</span> <span class="va">x</span> <span class="op">-</span> <span class="va">err</span><span class="op">)</span></span>
+<span>             min <span class="op">=</span> <span class="va">x</span> <span class="op">-</span> <span class="va">err</span>,</span>
+<span>             max <span class="op">=</span> <span class="va">x</span> <span class="op">+</span> <span class="va">err</span><span class="op">)</span></span>
 <span><span class="va">df</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 3</span></span></span>
-<span><span class="co">#&gt;      best   min   max</span></span>
-<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.148  2.49 -<span style="color: #BB0000;">2.19</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  1.33   1.08  1.58</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  5.16   5.54  4.78</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  3.48   3.46  3.50</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  4.42   5.57  3.27</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  4.13   3.67  4.59</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  6.96   5.89  8.03</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  8.00   9.43  6.57</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  9.31  10.1   8.48</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  9.13   9.12  9.14</span></span></code></pre></div>
+<span><span class="co">#&gt;      best    min   max</span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.807  0.321  1.29</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  0.918  0.306  1.53</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  2.95   2.51   3.39</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  5.54   5.44   5.63</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  5.84   5.48   6.20</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  6.34   5.92   6.77</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  6.89   6.35   7.43</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  7.33   7.02   7.65</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  8.94   8.88   9.00</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  9.89   9.42  10.4</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="symmetric-error-case">Symmetric error case<a class="anchor" aria-label="anchor" href="#symmetric-error-case"></a>
 </h3>
@@ -138,36 +138,36 @@
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex<span class="op">=</span><span class="fu"><a href="../reference/latex_range.html">latex_range</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 4</span></span></span>
-<span><span class="co">#&gt;      best   min   max latex            </span></span>
-<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>$-$<span style="color: #949494;">"</span>            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.148  2.49 -<span style="color: #BB0000;">2.19</span> <span style="color: #949494;">"</span>$0.15\\pm-2.34$<span style="color: #949494;">"</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  1.33   1.08  1.58 <span style="color: #949494;">"</span>$1.33\\pm0.25$<span style="color: #949494;">"</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  5.16   5.54  4.78 <span style="color: #949494;">"</span>$5.16\\pm-0.38$<span style="color: #949494;">"</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  3.48   3.46  3.50 <span style="color: #949494;">"</span>$3.48\\pm0.02$<span style="color: #949494;">"</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  4.42   5.57  3.27 <span style="color: #949494;">"</span>$4.42\\pm-1.15$<span style="color: #949494;">"</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  4.13   3.67  4.59 <span style="color: #949494;">"</span>$4.13\\pm0.46$<span style="color: #949494;">"</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  6.96   5.89  8.03 <span style="color: #949494;">"</span>$6.96\\pm1.07$<span style="color: #949494;">"</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  8.00   9.43  6.57 <span style="color: #949494;">"</span>$8.00\\pm-1.43$<span style="color: #949494;">"</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  9.31  10.1   8.48 <span style="color: #949494;">"</span>$9.31\\pm-0.83$<span style="color: #949494;">"</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  9.13   9.12  9.14 <span style="color: #949494;">"</span>$9.13\\pm0.01$<span style="color: #949494;">"</span></span></span></code></pre></div>
+<span><span class="co">#&gt;      best    min   max latex           </span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>$-$<span style="color: #949494;">"</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.807  0.321  1.29 <span style="color: #949494;">"</span>$0.81\\pm0.49$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  0.918  0.306  1.53 <span style="color: #949494;">"</span>$0.92\\pm0.61$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  2.95   2.51   3.39 <span style="color: #949494;">"</span>$2.95\\pm0.44$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  5.54   5.44   5.63 <span style="color: #949494;">"</span>$5.54\\pm0.09$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  5.84   5.48   6.20 <span style="color: #949494;">"</span>$5.84\\pm0.36$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  6.34   5.92   6.77 <span style="color: #949494;">"</span>$6.34\\pm0.42$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  6.89   6.35   7.43 <span style="color: #949494;">"</span>$6.89\\pm0.54$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  7.33   7.02   7.65 <span style="color: #949494;">"</span>$7.33\\pm0.31$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  8.94   8.88   9.00 <span style="color: #949494;">"</span>$8.94\\pm0.06$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  9.89   9.42  10.4  <span style="color: #949494;">"</span>$9.89\\pm0.47$<span style="color: #949494;">"</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex<span class="op">=</span><span class="fu"><a href="../reference/latex_range.html">latex_range</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">2</span>, na <span class="op">=</span> <span class="st">''</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 4</span></span></span>
-<span><span class="co">#&gt;      best   min   max latex            </span></span>
-<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>$$<span style="color: #949494;">"</span>             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.148  2.49 -<span style="color: #BB0000;">2.19</span> <span style="color: #949494;">"</span>$0.15\\pm-2.34$<span style="color: #949494;">"</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  1.33   1.08  1.58 <span style="color: #949494;">"</span>$1.33\\pm0.25$<span style="color: #949494;">"</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  5.16   5.54  4.78 <span style="color: #949494;">"</span>$5.16\\pm-0.38$<span style="color: #949494;">"</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  3.48   3.46  3.50 <span style="color: #949494;">"</span>$3.48\\pm0.02$<span style="color: #949494;">"</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  4.42   5.57  3.27 <span style="color: #949494;">"</span>$4.42\\pm-1.15$<span style="color: #949494;">"</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  4.13   3.67  4.59 <span style="color: #949494;">"</span>$4.13\\pm0.46$<span style="color: #949494;">"</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  6.96   5.89  8.03 <span style="color: #949494;">"</span>$6.96\\pm1.07$<span style="color: #949494;">"</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  8.00   9.43  6.57 <span style="color: #949494;">"</span>$8.00\\pm-1.43$<span style="color: #949494;">"</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  9.31  10.1   8.48 <span style="color: #949494;">"</span>$9.31\\pm-0.83$<span style="color: #949494;">"</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  9.13   9.12  9.14 <span style="color: #949494;">"</span>$9.13\\pm0.01$<span style="color: #949494;">"</span></span></span></code></pre></div>
+<span><span class="co">#&gt;      best    min   max latex           </span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>$$<span style="color: #949494;">"</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.807  0.321  1.29 <span style="color: #949494;">"</span>$0.81\\pm0.49$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  0.918  0.306  1.53 <span style="color: #949494;">"</span>$0.92\\pm0.61$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  2.95   2.51   3.39 <span style="color: #949494;">"</span>$2.95\\pm0.44$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  5.54   5.44   5.63 <span style="color: #949494;">"</span>$5.54\\pm0.09$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  5.84   5.48   6.20 <span style="color: #949494;">"</span>$5.84\\pm0.36$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  6.34   5.92   6.77 <span style="color: #949494;">"</span>$6.34\\pm0.42$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  6.89   6.35   7.43 <span style="color: #949494;">"</span>$6.89\\pm0.54$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  7.33   7.02   7.65 <span style="color: #949494;">"</span>$7.33\\pm0.31$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  8.94   8.88   9.00 <span style="color: #949494;">"</span>$8.94\\pm0.06$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  9.89   9.42  10.4  <span style="color: #949494;">"</span>$9.89\\pm0.47$<span style="color: #949494;">"</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="unsymmetric-case">Unsymmetric case<a class="anchor" aria-label="anchor" href="#unsymmetric-case"></a>
@@ -176,22 +176,20 @@
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>max <span class="op">=</span> <span class="va">max</span> <span class="op">+</span> <span class="fl">1e-2</span><span class="op">*</span><span class="va">max</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex<span class="op">=</span><span class="fu"><a href="../reference/latex_range.html">latex_range</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in check_ndigits(x = c(lo, up), ndigits): Is argument `ndigits` too</span></span>
-<span><span class="co">#&gt; small?</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 4</span></span></span>
-<span><span class="co">#&gt;      best   min   max latex              </span></span>
-<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    $-$                </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.148  2.49 -<span style="color: #BB0000;">2.21</span> $0.1_{2.3}^{+-2.4}$</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  1.33   1.08  1.60 $1.3_{-0.3}^{+0.3}$</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  5.16   5.54  4.83 $5.2_{0.4}^{+-0.3}$</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  3.48   3.46  3.54 $3.5_{-0.0}^{+0.1}$</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  4.42   5.57  3.31 $4.4_{1.1}^{+-1.1}$</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  4.13   3.67  4.63 $4.1_{-0.5}^{+0.5}$</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  6.96   5.89  8.11 $7.0_{-1.1}^{+1.1}$</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  8.00   9.43  6.63 $8.0_{1.4}^{+-1.4}$</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  9.31  10.1   8.56 $9.3_{0.8}^{+-0.7}$</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  9.13   9.12  9.23 $9.1_{-0.0}^{+0.1}$</span></span></code></pre></div>
+<span><span class="co">#&gt;      best    min   max latex              </span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    $-$                </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.807  0.321  1.31 $0.8_{-0.5}^{+0.5}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  0.918  0.306  1.54 $0.9_{-0.6}^{+0.6}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  2.95   2.51   3.42 $2.9_{-0.4}^{+0.5}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  5.54   5.44   5.69 $5.5_{-0.1}^{+0.1}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  5.84   5.48   6.26 $5.8_{-0.4}^{+0.4}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  6.34   5.92   6.83 $6.3_{-0.4}^{+0.5}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  6.89   6.35   7.51 $6.9_{-0.5}^{+0.6}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  7.33   7.02   7.72 $7.3_{-0.3}^{+0.4}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  8.94   8.88   9.09 $8.9_{-0.1}^{+0.2}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  9.89   9.42  10.5  $9.9_{-0.5}^{+0.6}$</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="scientific-notation">Scientific notation<a class="anchor" aria-label="anchor" href="#scientific-notation"></a>
@@ -212,12 +210,12 @@
 <span>  </span>
 <span><span class="va">df1</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
-<span><span class="co">#&gt;    best      min      max latex                            </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #949494;">"</span>$-$<span style="color: #949494;">"</span>                            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  1<span style="color: #949494;">e</span>21  8.77<span style="color: #949494;">e</span>20  1.12<span style="color: #949494;">e</span>21 <span style="color: #949494;">"</span>$(1.00\\pm0.12)~\\times10^{21}$<span style="color: #949494;">"</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  3<span style="color: #949494;">e</span>22  2.98<span style="color: #949494;">e</span>22  3.02<span style="color: #949494;">e</span>22 <span style="color: #949494;">"</span>$(3.00\\pm0.02)~\\times10^{22}$<span style="color: #949494;">"</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  1<span style="color: #949494;">e</span>23  3.21<span style="color: #949494;">e</span>22  1.68<span style="color: #949494;">e</span>23 <span style="color: #949494;">"</span>$(1.00\\pm0.68)~\\times10^{23}$<span style="color: #949494;">"</span></span></span></code></pre></div>
+<span><span class="co">#&gt;    best      min      max latex</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   $-$  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  1<span style="color: #949494;">e</span>21  8.77<span style="color: #949494;">e</span>20  1.12<span style="color: #949494;">e</span>21 $-$  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  3<span style="color: #949494;">e</span>22  2.98<span style="color: #949494;">e</span>22  3.02<span style="color: #949494;">e</span>22 $-$  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  1<span style="color: #949494;">e</span>23  3.21<span style="color: #949494;">e</span>22  1.68<span style="color: #949494;">e</span>23 $-$</span></span></code></pre></div>
 <div class="section level4">
 <h4 id="html-output">HTML output<a class="anchor" aria-label="anchor" href="#html-output"></a>
 </h4>
@@ -242,17 +240,17 @@ latex
 </tr>
 <tr>
 <td style="text-align:left;">
-<span class="math inline">\((1.00\pm0.12)~\times10^{21}\)</span>
+<span class="math inline">\(-\)</span>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-<span class="math inline">\((3.00\pm0.02)~\times10^{22}\)</span>
+<span class="math inline">\(-\)</span>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-<span class="math inline">\((1.00\pm0.68)~\times10^{23}\)</span>
+<span class="math inline">\(-\)</span>
 </td>
 </tr>
 </tbody>
@@ -275,9 +273,9 @@ latex
 <span><span class="co">#&gt; latex\\</span></span>
 <span><span class="co">#&gt; \midrule</span></span>
 <span><span class="co">#&gt; $-$\\</span></span>
-<span><span class="co">#&gt; $(1.00\pm0.12)~\times10^{21}$\\</span></span>
-<span><span class="co">#&gt; $(3.00\pm0.02)~\times10^{22}$\\</span></span>
-<span><span class="co">#&gt; $(1.00\pm0.68)~\times10^{23}$\\</span></span>
+<span><span class="co">#&gt; $-$\\</span></span>
+<span><span class="co">#&gt; $-$\\</span></span>
+<span><span class="co">#&gt; $-$\\</span></span>
 <span><span class="co">#&gt; \bottomrule</span></span>
 <span><span class="co">#&gt; \end{tabular}</span></span></code></pre></div>
 </div>
@@ -309,17 +307,17 @@ latex
 </tr>
 <tr>
 <td style="text-align:left;">
-<span class="math inline">\(1.00_{-0.12}^{+0.24}~\times10^{21}\)</span>
+<span class="math inline">\(-\)</span>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-<span class="math inline">\(3.00_{-0.02}^{+0.33}~\times10^{22}\)</span>
+<span class="math inline">\(-\)</span>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-<span class="math inline">\(1.00_{-0.68}^{+0.85}~\times10^{23}\)</span>
+<span class="math inline">\(-\)</span>
 </td>
 </tr>
 </tbody>
@@ -352,17 +350,17 @@ latex
 </tr>
 <tr>
 <td style="text-align:left;">
-<span class="math inline">\(0.10_{-0.01}^{+0.02}~\times10^{22}\)</span>
+<span class="math inline">\(-\)</span>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-<span class="math inline">\(3.00_{-0.02}^{+0.33}~\times10^{22}\)</span>
+<span class="math inline">\(-\)</span>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-<span class="math inline">\(10.00_{-6.79}^{+8.47}~\times10^{22}\)</span>
+<span class="math inline">\(-\)</span>
 </td>
 </tr>
 </tbody>
@@ -378,10 +376,10 @@ latex
 <span>        <span class="st">'p'</span>, <span class="fl">1.7</span>, <span class="fl">1.6</span>, <span class="fl">2.5</span><span class="op">)</span></span>
 <span><span class="va">df</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 4</span></span></span>
-<span><span class="co">#&gt;   param_name      x   xmin   xmax</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> nH         1  <span style="color: #949494;">e</span>21 8.1<span style="color: #949494;">e</span>20 1.2<span style="color: #949494;">e</span>21</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> p          1.7<span style="color: #949494;">e</span> 0 1.6<span style="color: #949494;">e</span> 0 2.5<span style="color: #949494;">e</span> 0</span></span></code></pre></div>
+<span><span class="co">#&gt;   param_name      x    xmin    xmax</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> nH         1  <span style="color: #949494;">e</span>21 8.10<span style="color: #949494;">e</span>20 1.20<span style="color: #949494;">e</span>21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> p          1.7<span style="color: #949494;">e</span> 0 1.6 <span style="color: #949494;">e</span> 0 2.5 <span style="color: #949494;">e</span> 0</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">foo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, <span class="va">param_name</span>, <span class="va">param_options</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>nH<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="cn">T</span><span class="op">)</span>,</span>
 <span>                                                        phoind<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="cn">F</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>

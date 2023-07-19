@@ -43,7 +43,7 @@ latex_range <- function(best, min, max, ndigits = 'auto', na='-') {
   if (length(ndigits) == 1L) check_ndigits(x = c(lo, up), ndigits)
 
   out <- character(n)
-  fmt_par <- paste0('%.', ndigits, 'f')
+  # fmt_par <- paste0('%.', ndigits, 'f')
 
 
   if(all(lo == up)){
@@ -80,7 +80,7 @@ latex_range <- function(best, min, max, ndigits = 'auto', na='-') {
 #' @param best best value
 #' @param min lower boundary value
 #' @param max upper boundary value
-#' @param ndigits number of digits after decimal point
+#' @param ndigits 'auto' (default) or number of digits after decimal point
 #' @param na show NA value as na. default na='-'
 #' @param symmetry if errors are symmetric show as value+/-err
 #' @param base_pow set to numeric if you want to make column with the same power.
@@ -98,41 +98,67 @@ latex_range <- function(best, min, max, ndigits = 'auto', na='-') {
 #'
 #' latex_range_sci(x, x - err, x + err, ndigits = 2, base_pow=21)
 #'
-latex_range_sci <- function(best, min, max, ndigits=0,
+latex_range_sci <- function(best, min, max, ndigits = 'auto',
                             na='-', symmetry=FALSE, base_pow=NULL){
   # symmetry if available
-  is_na <- any(is.na(c(best, min, max)))
+  is_na <- is.na(best) | is.na(min) | is.na(max)
   n <- length(best)
 
-  pow <- if(is.null(base_pow)) trunc(log10(abs(best))) else rep(base_pow, n)
-  # pow <- ife(base_pow, log10(abs(best)), rep(base))
-  #   base_pow %||% trunc(log10(abs(best)))
+  x <- best[!is_na]
+  xmin <- min[!is_na]
+  xmax <- max[!is_na]
+  delta_min <- x - xmin
+  delta_max <- xmax - x
 
-  best <- best / 10^pow
-  min <- min / 10^pow
-  max <- max / 10^pow
+  if (is.null(base_pow)){
+    pow <- trunc(log10(abs(xmin))) + 1
+  } else {
+    pow <- rep(base_pow, length(xmin))
+  }
 
-  best <- best[!is_na]
-  lo <- round(min[!is_na]-best, ndigits)
-  up <- round(max[!is_na]-best, ndigits)
-  check_ndigits(c(lo, up), ndigits)
+  if (ndigits == 'auto') {
+    err_min <- pmin(xmax - x, x - xmin)
+    ndigits <- calc_signif_digits(err_min / 10^pow)
+  }
+
+  x <- x / 10^pow
+  xmin <- xmin / 10^pow
+  xmax <- xmax / 10^pow
+
+
+
+  lo <- round(x - xmin, ndigits)
+  up <- round(xmax - x, ndigits)
+
+  if (length(ndigits) == 1L) check_ndigits(x = c(lo, up), ndigits)
 
   out <- character(n)
-  fmt_par <- paste0('%.', ndigits, 'f')
+  # fmt_par <- paste0('%.', ndigits, 'f')
 
 
-  if(all(-lo == up) & symmetry){
+  if(all(delta_min == delta_max) & symmetry){
+    # out[!is_na] <- paste0("$(",
+    #                       sprintf(fmt = fmt_par, best),
+    #                       "\\pm", sprintf(fmt=fmt_par, up),
+    #                       ")~\\times10^{",pow[!is_na], "}",
+    #                       "$")
     out[!is_na] <- paste0("$(",
-                          sprintf(fmt = fmt_par, best),
-                          "\\pm", sprintf(fmt=fmt_par, up),
-                          ")~\\times10^{",pow[!is_na], "}",
+                          format_number(x, ndigits),
+                          "\\pm", format_number(lo, ndigits),
+                          ")~\\times10^{", pow , "}",
                           "$")
   } else{
+    # out[!is_na] <- paste0("$",
+    #                       sprintf(fmt = fmt_par, best),
+    #                       "_{", sprintf(fmt=fmt_par, lo),
+    #                       "}^{+", sprintf(fmt=fmt_par, up),
+    #                       "}~\\times10^{",pow[!is_na], "}",
+    #                       "$")
     out[!is_na] <- paste0("$",
-                          sprintf(fmt = fmt_par, best),
-                          "_{", sprintf(fmt=fmt_par, lo),
-                          "}^{+", sprintf(fmt=fmt_par, up),
-                          "}~\\times10^{",pow[!is_na], "}",
+                          format_number(x, ndigits),
+                          "_{-", format_number(lo, ndigits),
+                          "}^{+", format_number(up, ndigits),
+                          "}~\\times10^{",pow, "}",
                           "$")
   }
 

@@ -72,7 +72,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">latex_range</span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">0</span>, na <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">latex_range</span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="st">"auto"</span>, na <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -90,7 +90,7 @@
 
 
 <dt>ndigits</dt>
-<dd><p>number of digits after decimal point</p></dd>
+<dd><p>'auto' (default) or number of digits after decimal point</p></dd>
 
 
 <dt>na</dt>
@@ -111,19 +111,17 @@
 <span class="r-in"><span><span class="va">err</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">latex_range</span><span class="op">(</span>best <span class="op">=</span> <span class="va">x</span>, min <span class="op">=</span> <span class="va">x</span> <span class="op">-</span> <span class="va">err</span>, max <span class="op">=</span> <span class="va">x</span> <span class="op">+</span> <span class="va">err</span>, ndigits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Is argument `ndigits` too small?</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "$-$"              "$1.67\\pm0.62$"   "$3.94\\pm-0.00$"  "$3.72\\pm-0.22$" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "$3.83\\pm-0.39$"  "$5.90\\pm2.44$"   "$4.93\\pm-1.02$"  "$4.58\\pm-0.14$" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "$7.83\\pm-0.71$"  "$11.01\\pm-0.42$" "$8.86\\pm-0.47$"  "$-$"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "$-$"             "$0.60\\pm2.03$"  "$0.63\\pm-0.59$" "$3.16\\pm-0.68$"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "$2.66\\pm-0.77$" "$5.27\\pm0.65$"  "$6.55\\pm0.80$"  "$6.63\\pm-0.17$"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "$8.05\\pm-1.07$" "$7.46\\pm0.69$"  "$9.54\\pm-0.77$" "$-$"            </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">latex_range</span><span class="op">(</span>best <span class="op">=</span> <span class="va">x</span>, min <span class="op">=</span> <span class="va">x</span> <span class="op">-</span> <span class="va">err</span>, max <span class="op">=</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="va">err</span>, ndigits <span class="op">=</span> <span class="fl">2</span>, na<span class="op">=</span><span class="st">''</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Is argument `ndigits` too small?</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "$$"                      "$1.67_{-0.62}^{+1.25}$" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "$3.94_{0.00}^{+-0.01}$"  "$3.72_{0.22}^{+-0.44}$" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "$3.83_{0.39}^{+-0.79}$"  "$5.90_{-2.44}^{+4.88}$" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "$4.93_{1.02}^{+-2.04}$"  "$4.58_{0.14}^{+-0.29}$" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "$7.83_{0.71}^{+-1.42}$"  "$11.01_{0.42}^{+-0.84}$"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "$8.86_{0.47}^{+-0.94}$"  "$$"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "$$"                       "$0.60_{-2.03}^{+4.05}$"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "$0.63_{--0.59}^{+-1.17}$" "$3.16_{--0.68}^{+-1.37}$"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "$2.66_{--0.77}^{+-1.54}$" "$5.27_{-0.65}^{+1.30}$"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "$6.55_{-0.80}^{+1.60}$"   "$6.63_{--0.17}^{+-0.34}$"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "$8.05_{--1.07}^{+-2.14}$" "$7.46_{-0.69}^{+1.37}$"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "$9.54_{--0.77}^{+-1.53}$" "$$"                      </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
