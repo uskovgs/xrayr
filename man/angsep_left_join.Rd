@@ -25,7 +25,7 @@ To join by different specific variables on \code{x} and \code{y}, use a named ve
 the \code{sep_col} column in the output data.frame.}
 }
 \value{
-data.frame
+A data.frame containing all rows from \code{x}.
 }
 \description{
 Non-equi join tables by angular distance.

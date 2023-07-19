@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xrayr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -98,188 +98,186 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/uskovgs/xrayr/" class="external-link">xrayr</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: replacing previous import 'constants::syms' by 'dplyr::syms' when</span>
-<span class="co">#&gt; loading 'xrayr'</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── <span style="font-weight: bold;">Attaching packages</span> ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2</span> 3.3.6     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">purrr  </span> 0.3.4</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tibble </span> 3.1.7     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">dplyr  </span> 1.0.9</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tidyr  </span> 1.2.0     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">stringr</span> 1.4.0</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">readr  </span> 2.1.2     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">forcats</span> 0.5.1</span>
-<span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──</span>
-<span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span> masks <span style="color: #0000BB;">stats</span>::filter()</span>
-<span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>    masks <span style="color: #0000BB;">stats</span>::lag()</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/uskovgs/xrayr/" class="external-link">xrayr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Attaching packages</span> ─────────────────────────────────────── tidyverse 1.3.2 ──</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2</span> 3.4.0      <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">purrr  </span> 1.0.0 </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tibble </span> 3.1.8      <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">dplyr  </span> 1.0.10</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tidyr  </span> 1.2.1      <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">stringr</span> 1.5.0 </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">readr  </span> 2.1.3      <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">forcats</span> 0.5.2 </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span> masks <span style="color: #0000BB;">stats</span>::filter()</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>    masks <span style="color: #0000BB;">stats</span>::lag()</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="example-of-xspec-output">Example of XSpec output<a class="anchor" aria-label="anchor" href="#example-of-xspec-output"></a>
 </h3>
 <p>Use built-in dataset <code>xspec_output</code>or try to read xspec
 output file using <code><a href="https://readr.tidyverse.org/reference/read_lines.html" class="external-link">readr::read_lines</a></code></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xspec_output</span>
-<span class="co">#&gt;  [1] "========================================================================"  </span>
-<span class="co">#&gt;  [2] "Model phabs&lt;1&gt;*constant&lt;2&gt;*powerlaw&lt;3&gt; Source No.: 1   Active/On"          </span>
-<span class="co">#&gt;  [3] "Model Model Component  Parameter  Unit     Value"                          </span>
-<span class="co">#&gt;  [4] " par  comp"                                                                </span>
-<span class="co">#&gt;  [5] "                           Data group: 1"                                  </span>
-<span class="co">#&gt;  [6] "   1    1   phabs      nH         10^22    0.491000     frozen"            </span>
-<span class="co">#&gt;  [7] "   2    2   constant   factor              1.00000      frozen"            </span>
-<span class="co">#&gt;  [8] "   3    3   powerlaw   PhoIndex            1.94000      frozen"            </span>
-<span class="co">#&gt;  [9] "   4    3   powerlaw   norm                1.22743E-02  +/-  1.56172E-04  "</span>
-<span class="co">#&gt; [10] "                           Data group: 2"                                  </span>
-<span class="co">#&gt; [11] "   5    1   phabs      nH         10^22    0.491000     = p1"              </span>
-<span class="co">#&gt; [12] "   6    2   constant   factor              0.858327     +/-  4.43129E-02  "</span>
-<span class="co">#&gt; [13] "   7    3   powerlaw   PhoIndex            1.94000      = p3"              </span>
-<span class="co">#&gt; [14] "   8    3   powerlaw   norm                1.22743E-02  = p4"              </span>
-<span class="co">#&gt; [15] "                           Data group: 3"                                  </span>
-<span class="co">#&gt; [16] "   9    1   phabs      nH         10^22    0.491000     = p1"              </span>
-<span class="co">#&gt; [17] "  10    2   constant   factor              1.03250      +/-  6.42836E-02  "</span>
-<span class="co">#&gt; [18] "  11    3   powerlaw   PhoIndex            1.94000      = p3"              </span>
-<span class="co">#&gt; [19] "  12    3   powerlaw   norm                1.22743E-02  = p4"              </span>
-<span class="co">#&gt; [20] "                           Data group: 4"                                  </span>
-<span class="co">#&gt; [21] "  13    1   phabs      nH         10^22    0.491000     = p1"              </span>
-<span class="co">#&gt; [22] "  14    2   constant   factor              0.877461     +/-  4.71135E-02  "</span>
-<span class="co">#&gt; [23] "  15    3   powerlaw   PhoIndex            1.94000      = p3"              </span>
-<span class="co">#&gt; [24] "  16    3   powerlaw   norm                1.22743E-02  = p4"              </span>
-<span class="co">#&gt; [25] "                           Data group: 5"                                  </span>
-<span class="co">#&gt; [26] "  17    1   phabs      nH         10^22    0.491000     = p1"              </span>
-<span class="co">#&gt; [27] "  18    2   constant   factor              0.981950     +/-  4.79727E-02  "</span>
-<span class="co">#&gt; [28] "  19    3   powerlaw   PhoIndex            1.94000      = p3"              </span>
-<span class="co">#&gt; [29] "  20    3   powerlaw   norm                1.22743E-02  = p4"              </span>
-<span class="co">#&gt; [30] "                           Data group: 6"                                  </span>
-<span class="co">#&gt; [31] "  21    1   phabs      nH         10^22    0.491000     = p1"              </span>
-<span class="co">#&gt; [32] "  22    2   constant   factor              1.04055      +/-  4.94828E-02  "</span>
-<span class="co">#&gt; [33] "  23    3   powerlaw   PhoIndex            1.94000      = p3"              </span>
-<span class="co">#&gt; [34] "  24    3   powerlaw   norm                1.22743E-02  = p4"              </span>
-<span class="co">#&gt; [35] "                           Data group: 7"                                  </span>
-<span class="co">#&gt; [36] "  25    1   phabs      nH         10^22    0.491000     = p1"              </span>
-<span class="co">#&gt; [37] "  26    2   constant   factor              0.988650     +/-  4.92517E-02  "</span>
-<span class="co">#&gt; [38] "  27    3   powerlaw   PhoIndex            1.94000      = p3"              </span>
-<span class="co">#&gt; [39] "  28    3   powerlaw   norm                1.22743E-02  = p4"              </span>
-<span class="co">#&gt; [40] "                           Data group: 8"                                  </span>
-<span class="co">#&gt; [41] "  29    1   phabs      nH         10^22    0.491000     = p1"              </span>
-<span class="co">#&gt; [42] "  30    2   constant   factor              0.843237     +/-  4.83731E-02  "</span>
-<span class="co">#&gt; [43] "  31    3   powerlaw   PhoIndex            1.94000      = p3"              </span>
-<span class="co">#&gt; [44] "  32    3   powerlaw   norm                1.22743E-02  = p4"              </span>
-<span class="co">#&gt; [45] "                           Data group: 9"                                  </span>
-<span class="co">#&gt; [46] "  33    1   phabs      nH         10^22    0.491000     = p1"              </span>
-<span class="co">#&gt; [47] "  34    2   constant   factor              1.01853      +/-  1.42428E-02  "</span>
-<span class="co">#&gt; [48] "  35    3   powerlaw   PhoIndex            1.94000      = p3"              </span>
-<span class="co">#&gt; [49] "  36    3   powerlaw   norm                1.22743E-02  = p4"              </span>
-<span class="co">#&gt; [50] "                           Data group: 10"                                 </span>
-<span class="co">#&gt; [51] "  37    1   phabs      nH         10^22    0.491000     = p1"              </span>
-<span class="co">#&gt; [52] "  38    2   constant   factor              1.02379      +/-  1.43999E-02  "</span>
-<span class="co">#&gt; [53] "  39    3   powerlaw   PhoIndex            1.94000      = p3"              </span>
-<span class="co">#&gt; [54] "  40    3   powerlaw   norm                1.22743E-02  = p4"              </span>
-<span class="co">#&gt; [55] "________________________________________________________________________"  </span>
-<span class="co">#&gt; [56] ""                                                                          </span>
-<span class="co">#&gt; [57] ""                                                                          </span>
-<span class="co">#&gt; [58] "Fit statistic  : C-Statistic                  304.86     using 333 bins."  </span>
-<span class="co">#&gt; [59] "                 C-Statistic                   37.72     using 40 bins."   </span>
-<span class="co">#&gt; [60] "                 C-Statistic                   40.74     using 40 bins."   </span>
-<span class="co">#&gt; [61] "                 C-Statistic                   33.40     using 40 bins."   </span>
-<span class="co">#&gt; [62] "                 C-Statistic                   35.95     using 40 bins."   </span>
-<span class="co">#&gt; [63] "                 C-Statistic                   34.48     using 40 bins."   </span>
-<span class="co">#&gt; [64] "                 C-Statistic                   37.60     using 40 bins."   </span>
-<span class="co">#&gt; [65] "                 C-Statistic                   43.21     using 40 bins."   </span>
-<span class="co">#&gt; [66] "                 C-Statistic                  136.87     using 149 bins."  </span>
-<span class="co">#&gt; [67] "                 C-Statistic                  134.33     using 149 bins."  </span>
-<span class="co">#&gt; [68] "Total fit statistic                           839.16     with 901 d.o.f."  </span>
-<span class="co">#&gt; [69] ""                                                                          </span>
-<span class="co">#&gt; [70] "Test statistic : Chi-Squared                  890.43     using 911 bins."  </span>
-<span class="co">#&gt; [71] " Null hypothesis probability of 5.93e-01 with 901 degrees of freedom"      </span>
-<span class="co">#&gt; [72] ""                                                                          </span>
-<span class="co">#&gt; [73] "!XSPEC12&gt;pl ld"                                                            </span>
-<span class="co">#&gt; [74] ""                                                                          </span>
-<span class="co">#&gt; [75] "!XSPEC12&gt;plot ld"                                                          </span>
-<span class="co">#&gt; [76] ""                                                                          </span>
-<span class="co">#&gt; [77] "!XSPEC12&gt;err 6 10 14 18 22 26 30 34 38"                                    </span>
-<span class="co">#&gt; [78] ""                                                                          </span>
-<span class="co">#&gt; [79] "!XSPEC12&gt;error 6 10 14 18 22 26 30 34 38"                                  </span>
-<span class="co">#&gt; [80] " Parameter   Confidence Range (2.706)"                                     </span>
-<span class="co">#&gt; [81] "     6     0.787334     0.933086    (-0.0709923,0.0747598)"                </span>
-<span class="co">#&gt; [82] "    10     0.929766      1.14119    (-0.102735,0.108692)"                  </span>
-<span class="co">#&gt; [83] "    14     0.802051     0.957009    (-0.0754104,0.0795481)"                </span>
-<span class="co">#&gt; [84] "    18     0.905033      1.06282    (-0.0769173,0.0808715)"                </span>
-<span class="co">#&gt; [85] "    22     0.961193      1.12395    (-0.0793531,0.0834028)"                </span>
-<span class="co">#&gt; [86] "    26      0.90973      1.07172    (-0.0789209,0.0830731)"                </span>
-<span class="co">#&gt; [87] "    30     0.765848     0.924946    (-0.077389,0.0817098)"                 </span>
-<span class="co">#&gt; [88] "    34     0.995438       1.0423    (-0.0230939,0.0237635)"                </span>
-<span class="co">#&gt; [89] "    38      1.00044      1.04781    (-0.0233489,0.0240258)"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">xspec_output</span></span>
+<span><span class="co">#&gt;  [1] "========================================================================"  </span></span>
+<span><span class="co">#&gt;  [2] "Model phabs&lt;1&gt;*constant&lt;2&gt;*powerlaw&lt;3&gt; Source No.: 1   Active/On"          </span></span>
+<span><span class="co">#&gt;  [3] "Model Model Component  Parameter  Unit     Value"                          </span></span>
+<span><span class="co">#&gt;  [4] " par  comp"                                                                </span></span>
+<span><span class="co">#&gt;  [5] "                           Data group: 1"                                  </span></span>
+<span><span class="co">#&gt;  [6] "   1    1   phabs      nH         10^22    0.491000     frozen"            </span></span>
+<span><span class="co">#&gt;  [7] "   2    2   constant   factor              1.00000      frozen"            </span></span>
+<span><span class="co">#&gt;  [8] "   3    3   powerlaw   PhoIndex            1.94000      frozen"            </span></span>
+<span><span class="co">#&gt;  [9] "   4    3   powerlaw   norm                1.22743E-02  +/-  1.56172E-04  "</span></span>
+<span><span class="co">#&gt; [10] "                           Data group: 2"                                  </span></span>
+<span><span class="co">#&gt; [11] "   5    1   phabs      nH         10^22    0.491000     = p1"              </span></span>
+<span><span class="co">#&gt; [12] "   6    2   constant   factor              0.858327     +/-  4.43129E-02  "</span></span>
+<span><span class="co">#&gt; [13] "   7    3   powerlaw   PhoIndex            1.94000      = p3"              </span></span>
+<span><span class="co">#&gt; [14] "   8    3   powerlaw   norm                1.22743E-02  = p4"              </span></span>
+<span><span class="co">#&gt; [15] "                           Data group: 3"                                  </span></span>
+<span><span class="co">#&gt; [16] "   9    1   phabs      nH         10^22    0.491000     = p1"              </span></span>
+<span><span class="co">#&gt; [17] "  10    2   constant   factor              1.03250      +/-  6.42836E-02  "</span></span>
+<span><span class="co">#&gt; [18] "  11    3   powerlaw   PhoIndex            1.94000      = p3"              </span></span>
+<span><span class="co">#&gt; [19] "  12    3   powerlaw   norm                1.22743E-02  = p4"              </span></span>
+<span><span class="co">#&gt; [20] "                           Data group: 4"                                  </span></span>
+<span><span class="co">#&gt; [21] "  13    1   phabs      nH         10^22    0.491000     = p1"              </span></span>
+<span><span class="co">#&gt; [22] "  14    2   constant   factor              0.877461     +/-  4.71135E-02  "</span></span>
+<span><span class="co">#&gt; [23] "  15    3   powerlaw   PhoIndex            1.94000      = p3"              </span></span>
+<span><span class="co">#&gt; [24] "  16    3   powerlaw   norm                1.22743E-02  = p4"              </span></span>
+<span><span class="co">#&gt; [25] "                           Data group: 5"                                  </span></span>
+<span><span class="co">#&gt; [26] "  17    1   phabs      nH         10^22    0.491000     = p1"              </span></span>
+<span><span class="co">#&gt; [27] "  18    2   constant   factor              0.981950     +/-  4.79727E-02  "</span></span>
+<span><span class="co">#&gt; [28] "  19    3   powerlaw   PhoIndex            1.94000      = p3"              </span></span>
+<span><span class="co">#&gt; [29] "  20    3   powerlaw   norm                1.22743E-02  = p4"              </span></span>
+<span><span class="co">#&gt; [30] "                           Data group: 6"                                  </span></span>
+<span><span class="co">#&gt; [31] "  21    1   phabs      nH         10^22    0.491000     = p1"              </span></span>
+<span><span class="co">#&gt; [32] "  22    2   constant   factor              1.04055      +/-  4.94828E-02  "</span></span>
+<span><span class="co">#&gt; [33] "  23    3   powerlaw   PhoIndex            1.94000      = p3"              </span></span>
+<span><span class="co">#&gt; [34] "  24    3   powerlaw   norm                1.22743E-02  = p4"              </span></span>
+<span><span class="co">#&gt; [35] "                           Data group: 7"                                  </span></span>
+<span><span class="co">#&gt; [36] "  25    1   phabs      nH         10^22    0.491000     = p1"              </span></span>
+<span><span class="co">#&gt; [37] "  26    2   constant   factor              0.988650     +/-  4.92517E-02  "</span></span>
+<span><span class="co">#&gt; [38] "  27    3   powerlaw   PhoIndex            1.94000      = p3"              </span></span>
+<span><span class="co">#&gt; [39] "  28    3   powerlaw   norm                1.22743E-02  = p4"              </span></span>
+<span><span class="co">#&gt; [40] "                           Data group: 8"                                  </span></span>
+<span><span class="co">#&gt; [41] "  29    1   phabs      nH         10^22    0.491000     = p1"              </span></span>
+<span><span class="co">#&gt; [42] "  30    2   constant   factor              0.843237     +/-  4.83731E-02  "</span></span>
+<span><span class="co">#&gt; [43] "  31    3   powerlaw   PhoIndex            1.94000      = p3"              </span></span>
+<span><span class="co">#&gt; [44] "  32    3   powerlaw   norm                1.22743E-02  = p4"              </span></span>
+<span><span class="co">#&gt; [45] "                           Data group: 9"                                  </span></span>
+<span><span class="co">#&gt; [46] "  33    1   phabs      nH         10^22    0.491000     = p1"              </span></span>
+<span><span class="co">#&gt; [47] "  34    2   constant   factor              1.01853      +/-  1.42428E-02  "</span></span>
+<span><span class="co">#&gt; [48] "  35    3   powerlaw   PhoIndex            1.94000      = p3"              </span></span>
+<span><span class="co">#&gt; [49] "  36    3   powerlaw   norm                1.22743E-02  = p4"              </span></span>
+<span><span class="co">#&gt; [50] "                           Data group: 10"                                 </span></span>
+<span><span class="co">#&gt; [51] "  37    1   phabs      nH         10^22    0.491000     = p1"              </span></span>
+<span><span class="co">#&gt; [52] "  38    2   constant   factor              1.02379      +/-  1.43999E-02  "</span></span>
+<span><span class="co">#&gt; [53] "  39    3   powerlaw   PhoIndex            1.94000      = p3"              </span></span>
+<span><span class="co">#&gt; [54] "  40    3   powerlaw   norm                1.22743E-02  = p4"              </span></span>
+<span><span class="co">#&gt; [55] "________________________________________________________________________"  </span></span>
+<span><span class="co">#&gt; [56] ""                                                                          </span></span>
+<span><span class="co">#&gt; [57] ""                                                                          </span></span>
+<span><span class="co">#&gt; [58] "Fit statistic  : C-Statistic                  304.86     using 333 bins."  </span></span>
+<span><span class="co">#&gt; [59] "                 C-Statistic                   37.72     using 40 bins."   </span></span>
+<span><span class="co">#&gt; [60] "                 C-Statistic                   40.74     using 40 bins."   </span></span>
+<span><span class="co">#&gt; [61] "                 C-Statistic                   33.40     using 40 bins."   </span></span>
+<span><span class="co">#&gt; [62] "                 C-Statistic                   35.95     using 40 bins."   </span></span>
+<span><span class="co">#&gt; [63] "                 C-Statistic                   34.48     using 40 bins."   </span></span>
+<span><span class="co">#&gt; [64] "                 C-Statistic                   37.60     using 40 bins."   </span></span>
+<span><span class="co">#&gt; [65] "                 C-Statistic                   43.21     using 40 bins."   </span></span>
+<span><span class="co">#&gt; [66] "                 C-Statistic                  136.87     using 149 bins."  </span></span>
+<span><span class="co">#&gt; [67] "                 C-Statistic                  134.33     using 149 bins."  </span></span>
+<span><span class="co">#&gt; [68] "Total fit statistic                           839.16     with 901 d.o.f."  </span></span>
+<span><span class="co">#&gt; [69] ""                                                                          </span></span>
+<span><span class="co">#&gt; [70] "Test statistic : Chi-Squared                  890.43     using 911 bins."  </span></span>
+<span><span class="co">#&gt; [71] " Null hypothesis probability of 5.93e-01 with 901 degrees of freedom"      </span></span>
+<span><span class="co">#&gt; [72] ""                                                                          </span></span>
+<span><span class="co">#&gt; [73] "!XSPEC12&gt;pl ld"                                                            </span></span>
+<span><span class="co">#&gt; [74] ""                                                                          </span></span>
+<span><span class="co">#&gt; [75] "!XSPEC12&gt;plot ld"                                                          </span></span>
+<span><span class="co">#&gt; [76] ""                                                                          </span></span>
+<span><span class="co">#&gt; [77] "!XSPEC12&gt;err 6 10 14 18 22 26 30 34 38"                                    </span></span>
+<span><span class="co">#&gt; [78] ""                                                                          </span></span>
+<span><span class="co">#&gt; [79] "!XSPEC12&gt;error 6 10 14 18 22 26 30 34 38"                                  </span></span>
+<span><span class="co">#&gt; [80] " Parameter   Confidence Range (2.706)"                                     </span></span>
+<span><span class="co">#&gt; [81] "     6     0.787334     0.933086    (-0.0709923,0.0747598)"                </span></span>
+<span><span class="co">#&gt; [82] "    10     0.929766      1.14119    (-0.102735,0.108692)"                  </span></span>
+<span><span class="co">#&gt; [83] "    14     0.802051     0.957009    (-0.0754104,0.0795481)"                </span></span>
+<span><span class="co">#&gt; [84] "    18     0.905033      1.06282    (-0.0769173,0.0808715)"                </span></span>
+<span><span class="co">#&gt; [85] "    22     0.961193      1.12395    (-0.0793531,0.0834028)"                </span></span>
+<span><span class="co">#&gt; [86] "    26      0.90973      1.07172    (-0.0789209,0.0830731)"                </span></span>
+<span><span class="co">#&gt; [87] "    30     0.765848     0.924946    (-0.077389,0.0817098)"                 </span></span>
+<span><span class="co">#&gt; [88] "    34     0.995438       1.0423    (-0.0230939,0.0237635)"                </span></span>
+<span><span class="co">#&gt; [89] "    38      1.00044      1.04781    (-0.0233489,0.0240258)"</span></span></code></pre></div>
 <p>Now lets try to parse this file</p>
 </div>
 <div class="section level3">
 <h3 id="general-function">General function<a class="anchor" aria-label="anchor" href="#general-function"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">xrayr</span><span class="fu">::</span><span class="fu"><a href="../reference/xspec_parse_output.html">xspec_parse_output</a></span><span class="op">(</span><span class="va">xspec_output</span><span class="op">)</span>
-<span class="co">#&gt; $model</span>
-<span class="co">#&gt; [1] "phabs&lt;1&gt;*constant&lt;2&gt;*powerlaw&lt;3&gt;"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $fit_params</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 40 × 10</span></span>
-<span class="co">#&gt;    data_group   par n_comp comp   par_comp units  value    error is_frozen tie  </span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1              1      1 phabs  nH       10^22 0.491  <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   +         <span style="color: #BB0000;">NA</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1              2      2 const… factor   <span style="color: #BB0000;">NA</span>    1      <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   +         <span style="color: #BB0000;">NA</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1              3      3 power… PhoIndex <span style="color: #BB0000;">NA</span>    1.94   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   +         <span style="color: #BB0000;">NA</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1              4      3 power… norm     <span style="color: #BB0000;">NA</span>    0.012<span style="text-decoration: underline;">3</span>  1.56<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2              5      1 phabs  nH       10^22 0.491  <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>        =p1  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2              6      2 const… factor   <span style="color: #BB0000;">NA</span>    0.858   4.43<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span> <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2              7      3 power… PhoIndex <span style="color: #BB0000;">NA</span>    1.94   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>        =p3  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2              8      3 power… norm     <span style="color: #BB0000;">NA</span>    0.012<span style="text-decoration: underline;">3</span> <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>        =p4  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 3              9      1 phabs  nH       10^22 0.491  <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>        =p1  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 3             10      2 const… factor   <span style="color: #BB0000;">NA</span>    1.03    6.43<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span> <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>   </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 30 more rows</span></span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $conf_errors</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 4</span></span>
-<span class="co">#&gt;     par error_lo error_hi diff_err              </span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     6    0.787    0.933 (-0.0709923,0.0747598)</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>    10    0.930    1.14  (-0.102735,0.108692)  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>    14    0.802    0.957 (-0.0754104,0.0795481)</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span>    18    0.905    1.06  (-0.0769173,0.0808715)</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span>    22    0.961    1.12  (-0.0793531,0.0834028)</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">6</span>    26    0.910    1.07  (-0.0789209,0.0830731)</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">7</span>    30    0.766    0.925 (-0.077389,0.0817098) </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">8</span>    34    0.995    1.04  (-0.0230939,0.0237635)</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">9</span>    38    1.00     1.05  (-0.0233489,0.0240258)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">xrayr</span><span class="fu">::</span><span class="fu"><a href="../reference/xspec_parse_output.html">xspec_parse_output</a></span><span class="op">(</span><span class="va">xspec_output</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $model</span></span>
+<span><span class="co">#&gt; [1] "phabs&lt;1&gt;*constant&lt;2&gt;*powerlaw&lt;3&gt;"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $fit_params</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 40 × 10</span></span></span>
+<span><span class="co">#&gt;    data_group   par n_comp comp     par_comp units  value    error is_fr…¹ tie  </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1              1      1 phabs    nH       10^22 0.491  <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   +       <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1              2      2 constant factor   <span style="color: #BB0000;">NA</span>    1      <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   +       <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1              3      3 powerlaw PhoIndex <span style="color: #BB0000;">NA</span>    1.94   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   +       <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1              4      3 powerlaw norm     <span style="color: #BB0000;">NA</span>    0.012<span style="text-decoration: underline;">3</span>  1.56<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2              5      1 phabs    nH       10^22 0.491  <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>      =p1  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2              6      2 constant factor   <span style="color: #BB0000;">NA</span>    0.858   4.43<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2              7      3 powerlaw PhoIndex <span style="color: #BB0000;">NA</span>    1.94   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>      =p3  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2              8      3 powerlaw norm     <span style="color: #BB0000;">NA</span>    0.012<span style="text-decoration: underline;">3</span> <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>      =p4  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 3              9      1 phabs    nH       10^22 0.491  <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>      =p1  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 3             10      2 constant factor   <span style="color: #BB0000;">NA</span>    1.03    6.43<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 30 more rows, and abbreviated variable name ¹​is_frozen</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $conf_errors</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 4</span></span></span>
+<span><span class="co">#&gt;     par error_lo error_hi diff_err              </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     6    0.787    0.933 (-0.0709923,0.0747598)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>    10    0.930    1.14  (-0.102735,0.108692)  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>    14    0.802    0.957 (-0.0754104,0.0795481)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>    18    0.905    1.06  (-0.0769173,0.0808715)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>    22    0.961    1.12  (-0.0793531,0.0834028)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>    26    0.910    1.07  (-0.0789209,0.0830731)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span>    30    0.766    0.925 (-0.077389,0.0817098) </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span>    34    0.995    1.04  (-0.0230939,0.0237635)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span>    38    1.00     1.05  (-0.0233489,0.0240258)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="parse-model-fit-params-and-err-confidence">Parse model, fit params and err confidence<a class="anchor" aria-label="anchor" href="#parse-model-fit-params-and-err-confidence"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">xrayr</span><span class="fu">::</span><span class="fu"><a href="../reference/xspec_parse_model.html">xspec_parse_model</a></span><span class="op">(</span><span class="va">xspec_output</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] "phabs&lt;1&gt;*constant&lt;2&gt;*powerlaw&lt;3&gt;"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">xrayr</span><span class="fu">::</span><span class="fu"><a href="../reference/xspec_parse_params.html">xspec_parse_params</a></span><span class="op">(</span><span class="va">xspec_output</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 40 × 10</span></span>
-<span class="co">#&gt;    data_group   par n_comp comp   par_comp units  value    error is_frozen tie  </span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1              1      1 phabs  nH       10^22 0.491  <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   +         <span style="color: #BB0000;">NA</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1              2      2 const… factor   <span style="color: #BB0000;">NA</span>    1      <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   +         <span style="color: #BB0000;">NA</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1              3      3 power… PhoIndex <span style="color: #BB0000;">NA</span>    1.94   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   +         <span style="color: #BB0000;">NA</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1              4      3 power… norm     <span style="color: #BB0000;">NA</span>    0.012<span style="text-decoration: underline;">3</span>  1.56<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2              5      1 phabs  nH       10^22 0.491  <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>        =p1  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2              6      2 const… factor   <span style="color: #BB0000;">NA</span>    0.858   4.43<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span> <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2              7      3 power… PhoIndex <span style="color: #BB0000;">NA</span>    1.94   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>        =p3  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2              8      3 power… norm     <span style="color: #BB0000;">NA</span>    0.012<span style="text-decoration: underline;">3</span> <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>        =p4  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 3              9      1 phabs  nH       10^22 0.491  <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>        =p1  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 3             10      2 const… factor   <span style="color: #BB0000;">NA</span>    1.03    6.43<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span> <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>   </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 30 more rows</span></span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">xrayr</span><span class="fu">::</span><span class="fu"><a href="../reference/xspec_parse_conf_errors.html">xspec_parse_conf_errors</a></span><span class="op">(</span><span class="va">xspec_output</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 4</span></span>
-<span class="co">#&gt;     par error_lo error_hi diff_err              </span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     6    0.787    0.933 (-0.0709923,0.0747598)</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>    10    0.930    1.14  (-0.102735,0.108692)  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>    14    0.802    0.957 (-0.0754104,0.0795481)</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span>    18    0.905    1.06  (-0.0769173,0.0808715)</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span>    22    0.961    1.12  (-0.0793531,0.0834028)</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">6</span>    26    0.910    1.07  (-0.0789209,0.0830731)</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">7</span>    30    0.766    0.925 (-0.077389,0.0817098) </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">8</span>    34    0.995    1.04  (-0.0230939,0.0237635)</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">9</span>    38    1.00     1.05  (-0.0233489,0.0240258)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">xrayr</span><span class="fu">::</span><span class="fu"><a href="../reference/xspec_parse_model.html">xspec_parse_model</a></span><span class="op">(</span><span class="va">xspec_output</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "phabs&lt;1&gt;*constant&lt;2&gt;*powerlaw&lt;3&gt;"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">xrayr</span><span class="fu">::</span><span class="fu"><a href="../reference/xspec_parse_params.html">xspec_parse_params</a></span><span class="op">(</span><span class="va">xspec_output</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 40 × 10</span></span></span>
+<span><span class="co">#&gt;    data_group   par n_comp comp     par_comp units  value    error is_fr…¹ tie  </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1              1      1 phabs    nH       10^22 0.491  <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   +       <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1              2      2 constant factor   <span style="color: #BB0000;">NA</span>    1      <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   +       <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1              3      3 powerlaw PhoIndex <span style="color: #BB0000;">NA</span>    1.94   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   +       <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1              4      3 powerlaw norm     <span style="color: #BB0000;">NA</span>    0.012<span style="text-decoration: underline;">3</span>  1.56<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2              5      1 phabs    nH       10^22 0.491  <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>      =p1  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2              6      2 constant factor   <span style="color: #BB0000;">NA</span>    0.858   4.43<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2              7      3 powerlaw PhoIndex <span style="color: #BB0000;">NA</span>    1.94   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>      =p3  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2              8      3 powerlaw norm     <span style="color: #BB0000;">NA</span>    0.012<span style="text-decoration: underline;">3</span> <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>      =p4  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 3              9      1 phabs    nH       10^22 0.491  <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>      =p1  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 3             10      2 constant factor   <span style="color: #BB0000;">NA</span>    1.03    6.43<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 30 more rows, and abbreviated variable name ¹​is_frozen</span></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">xrayr</span><span class="fu">::</span><span class="fu"><a href="../reference/xspec_parse_conf_errors.html">xspec_parse_conf_errors</a></span><span class="op">(</span><span class="va">xspec_output</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 4</span></span></span>
+<span><span class="co">#&gt;     par error_lo error_hi diff_err              </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     6    0.787    0.933 (-0.0709923,0.0747598)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>    10    0.930    1.14  (-0.102735,0.108692)  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>    14    0.802    0.957 (-0.0754104,0.0795481)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>    18    0.905    1.06  (-0.0769173,0.0808715)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>    22    0.961    1.12  (-0.0793531,0.0834028)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>    26    0.910    1.07  (-0.0789209,0.0830731)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span>    30    0.766    0.925 (-0.077389,0.0817098) </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span>    34    0.995    1.04  (-0.0230939,0.0237635)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span>    38    1.00     1.05  (-0.0233489,0.0240258)</span></span></code></pre></div>
 </div>
   </div>
 
@@ -298,7 +296,7 @@ output file using <code><a href="https://readr.tidyverse.org/reference/read_line
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

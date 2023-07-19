@@ -40,10 +40,19 @@
     <loc>/news/index.html</loc>
   </url>
   <url>
+    <loc>/reference/angsep_left_join.html</loc>
+  </url>
+  <url>
     <loc>/reference/angstrom_to_keV.html</loc>
   </url>
   <url>
+    <loc>/reference/cross_match_r.html</loc>
+  </url>
+  <url>
     <loc>/reference/dec.astro_radec.html</loc>
+  </url>
+  <url>
+    <loc>/reference/energy_conv_factor.html</loc>
   </url>
   <url>
     <loc>/reference/fix_header_ps1.html</loc>
@@ -143,6 +152,9 @@
   </url>
   <url>
     <loc>/reference/xray_spec.html</loc>
+  </url>
+  <url>
+    <loc>/reference/xrayr-package.html</loc>
   </url>
   <url>
     <loc>/reference/xspec_output.html</loc>

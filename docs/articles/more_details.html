@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xrayr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -98,90 +98,88 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/uskovgs/xrayr/" class="external-link">xrayr</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: replacing previous import 'constants::syms' by 'dplyr::syms' when</span>
-<span class="co">#&gt; loading 'xrayr'</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/uskovgs/xrayr/" class="external-link">xrayr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">xray_spec</span>, <span class="fl">5</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 6</span></span>
-<span class="co">#&gt;   energy err_energy flux_obs err_obs flux_model telescope</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  0.400     0.114     0.240  0.015<span style="text-decoration: underline;">3</span>      0.267 eROSITA  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  0.556     0.042<span style="text-decoration: underline;">7</span>    0.584  0.038<span style="text-decoration: underline;">7</span>      0.472 eROSITA  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  0.643     0.044<span style="text-decoration: underline;">2</span>    0.574  0.037<span style="text-decoration: underline;">6</span>      0.572 eROSITA  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  0.723     0.035<span style="text-decoration: underline;">8</span>    0.695  0.045<span style="text-decoration: underline;">9</span>      0.672 eROSITA  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span>  0.796     0.036<span style="text-decoration: underline;">7</span>    0.758  0.047<span style="text-decoration: underline;">3</span>      0.719 eROSITA</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">xray_spec</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 6</span></span></span>
+<span><span class="co">#&gt;   energy err_energy flux_obs err_obs flux_model telescope</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  0.400     0.114     0.240  0.015<span style="text-decoration: underline;">3</span>      0.267 eROSITA  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  0.556     0.042<span style="text-decoration: underline;">7</span>    0.584  0.038<span style="text-decoration: underline;">7</span>      0.472 eROSITA  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  0.643     0.044<span style="text-decoration: underline;">2</span>    0.574  0.037<span style="text-decoration: underline;">6</span>      0.572 eROSITA  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  0.723     0.035<span style="text-decoration: underline;">8</span>    0.695  0.045<span style="text-decoration: underline;">9</span>      0.672 eROSITA  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>  0.796     0.036<span style="text-decoration: underline;">7</span>    0.758  0.047<span style="text-decoration: underline;">3</span>      0.719 eROSITA</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">xray_spec</span>,
-  mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>
-    x <span class="op">=</span> <span class="va">energy</span>,
-    y <span class="op">=</span> <span class="va">flux_model</span>,
-    xwidth <span class="op">=</span> <span class="va">err_energy</span>,
-    color <span class="op">=</span> <span class="va">telescope</span>
-  <span class="op">)</span>
-<span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/geom_xray_stepcount.html">geom_xray_stepcount</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/geom_xray_pointrange.html">geom_xray_pointrange</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flux_obs</span>, ywidth <span class="op">=</span> <span class="va">err_obs</span><span class="op">)</span>, 
-                       upper_nsigma <span class="op">=</span> <span class="fl">3</span>, <span class="co"># default 2 </span>
-                       min_y <span class="op">=</span> <span class="fl">1e-2</span> <span class="co"># default NULL -&gt; automatic</span>
-                       <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_log10</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">12</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_logticks.html" class="external-link">annotation_logticks</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">'Set1'</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">'Energy, keV'</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'cts/s/keV'</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/theme_xray_plot.html">theme_xray_plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">xray_spec</span>,</span>
+<span>  mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">energy</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">flux_model</span>,</span>
+<span>    xwidth <span class="op">=</span> <span class="va">err_energy</span>,</span>
+<span>    color <span class="op">=</span> <span class="va">telescope</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/geom_xray_stepcount.html">geom_xray_stepcount</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/geom_xray_pointrange.html">geom_xray_pointrange</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flux_obs</span>, ywidth <span class="op">=</span> <span class="va">err_obs</span><span class="op">)</span>, </span>
+<span>                       upper_nsigma <span class="op">=</span> <span class="fl">3</span>, <span class="co"># default 2 </span></span>
+<span>                       min_y <span class="op">=</span> <span class="fl">1e-2</span> <span class="co"># default NULL -&gt; automatic</span></span>
+<span>                       <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_log10</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">12</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_logticks.html" class="external-link">annotation_logticks</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">'Set1'</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">'Energy, keV'</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'cts/s/keV'</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_xray_plot.html">theme_xray_plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="more_details_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">xray_spec</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">telescope</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/geom_xray_ratio.html">geom_xray_ratio</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>
-    x <span class="op">=</span> <span class="va">energy</span>,
-    xwidth <span class="op">=</span> <span class="va">err_energy</span>,
-    obs <span class="op">=</span> <span class="va">flux_obs</span>,
-    obs_err <span class="op">=</span> <span class="va">err_obs</span>,
-    model <span class="op">=</span> <span class="va">flux_model</span>
-  <span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_log10</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">12</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_logticks.html" class="external-link">annotation_logticks</a></span><span class="op">(</span>sides <span class="op">=</span> <span class="st">'b'</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">'Energy, keV'</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'obs/model'</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">'Set1'</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/theme_xray_plot.html">theme_xray_plot</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Warning in f(...): ***Warning: do not scale y axis, `xray_ratio`</span>
-
-<span class="co">#&gt; Warning in f(...): ***Warning: do not scale y axis, `xray_ratio`</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">xray_spec</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">telescope</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/geom_xray_ratio.html">geom_xray_ratio</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">energy</span>,</span>
+<span>    xwidth <span class="op">=</span> <span class="va">err_energy</span>,</span>
+<span>    obs <span class="op">=</span> <span class="va">flux_obs</span>,</span>
+<span>    obs_err <span class="op">=</span> <span class="va">err_obs</span>,</span>
+<span>    model <span class="op">=</span> <span class="va">flux_model</span></span>
+<span>  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_log10</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">12</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_logticks.html" class="external-link">annotation_logticks</a></span><span class="op">(</span>sides <span class="op">=</span> <span class="st">'b'</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">'Energy, keV'</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'obs/model'</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">'Set1'</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_xray_plot.html">theme_xray_plot</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in compute_group(...): ***Warning: do not scale y axis, `xray_ratio`</span></span>
+<span></span>
+<span><span class="co">#&gt; Warning in compute_group(...): ***Warning: do not scale y axis, `xray_ratio`</span></span></code></pre></div>
 <p><img src="more_details_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 <div class="section level2">
 <h2 id="get-nhi-for-target-position">Get NHI for target position<a class="anchor" aria-label="anchor" href="#get-nhi-for-target-position"></a>
 </h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/nh.html">nh</a></span><span class="op">(</span><span class="fl">213.162500</span>, <span class="op">-</span><span class="fl">65.392778</span>, r_arcmin <span class="op">=</span> <span class="fl">5</span>, showInfo <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
-<span class="co">#&gt;       _r  RAJ2000  DEJ2000      NHI </span>
-<span class="co">#&gt; "arcmin"    "deg"    "deg"   "cm-2" </span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 4</span></span>
-<span class="co">#&gt;    `_r` RAJ2000 DEJ2000     NHI</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  2.12    213.   -<span style="color: #BB0000;">65.4</span> 5.14<span style="color: #949494;">e</span>21</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  2.25    213.   -<span style="color: #BB0000;">65.4</span> 5.02<span style="color: #949494;">e</span>21</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  2.43    213.   -<span style="color: #BB0000;">65.4</span> 5.03<span style="color: #949494;">e</span>21</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  3.02    213.   -<span style="color: #BB0000;">65.4</span> 5.12<span style="color: #949494;">e</span>21</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span>  4.88    213.   -<span style="color: #BB0000;">65.3</span> 5.13<span style="color: #949494;">e</span>21</span>
-<span class="co">#&gt; ----</span>
-<span class="co">#&gt; This value is derived from the 2D HI4PI map, </span>
-<span class="co">#&gt;  a full-sky HI survey by the HI4PI collaboration 2016,</span>
-<span class="co">#&gt;  Astronomy &amp; Astrophysics, 594, A116.</span>
-<span class="co">#&gt; ----</span>
-<span class="co">#&gt; *RA target: 213.1625</span>
-<span class="co">#&gt; *DEC target: -65.392778</span>
-<span class="co">#&gt; RA range [213.0238, 213.2793]</span>
-<span class="co">#&gt; DEC range [-65.4288, -65.3357]</span>
-<span class="co">#&gt; Average mean nH (cm**-2): 5.09e+21 </span>
-<span class="co">#&gt; Weighted average nH (cm**-2): 5.103e+21</span>
-<span class="co">#&gt; [1] 5.103136e+21</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/nh.html">nh</a></span><span class="op">(</span><span class="fl">213.162500</span>, <span class="op">-</span><span class="fl">65.392778</span>, r_arcmin <span class="op">=</span> <span class="fl">5</span>, showInfo <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       _r  RAJ2000  DEJ2000      NHI </span></span>
+<span><span class="co">#&gt; "arcmin"    "deg"    "deg"   "cm-2" </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 4</span></span></span>
+<span><span class="co">#&gt;    `_r` RAJ2000 DEJ2000     NHI</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  2.12    213.   -<span style="color: #BB0000;">65.4</span> 5.14<span style="color: #949494;">e</span>21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  2.25    213.   -<span style="color: #BB0000;">65.4</span> 5.02<span style="color: #949494;">e</span>21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  2.43    213.   -<span style="color: #BB0000;">65.4</span> 5.03<span style="color: #949494;">e</span>21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  3.02    213.   -<span style="color: #BB0000;">65.4</span> 5.12<span style="color: #949494;">e</span>21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>  4.88    213.   -<span style="color: #BB0000;">65.3</span> 5.13<span style="color: #949494;">e</span>21</span></span>
+<span><span class="co">#&gt; ----</span></span>
+<span><span class="co">#&gt; This value is derived from the 2D HI4PI map, </span></span>
+<span><span class="co">#&gt;  a full-sky HI survey by the HI4PI collaboration 2016,</span></span>
+<span><span class="co">#&gt;  Astronomy &amp; Astrophysics, 594, A116.</span></span>
+<span><span class="co">#&gt; ----</span></span>
+<span><span class="co">#&gt; *RA target: 213.1625</span></span>
+<span><span class="co">#&gt; *DEC target: -65.392778</span></span>
+<span><span class="co">#&gt; RA range [213.0238, 213.2793]</span></span>
+<span><span class="co">#&gt; DEC range [-65.4288, -65.3357]</span></span>
+<span><span class="co">#&gt; Average mean nH (cm**-2): 5.09e+21 </span></span>
+<span><span class="co">#&gt; Weighted average nH (cm**-2): 5.103e+21</span></span>
+<span><span class="co">#&gt; [1] 5.103136e+21</span></span></code></pre></div>
 </div>
   </div>
 
@@ -202,7 +200,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

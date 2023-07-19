@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xrayr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -98,102 +98,100 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/uskovgs/xrayr/" class="external-link">xrayr</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: replacing previous import 'constants::syms' by 'dplyr::syms' when</span>
-<span class="co">#&gt; loading 'xrayr'</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/uskovgs/xrayr/" class="external-link">xrayr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
-<span class="va">err</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>best <span class="op">=</span> <span class="va">x</span>,
-             min <span class="op">=</span> <span class="va">x</span> <span class="op">+</span> <span class="va">err</span>,
-             max <span class="op">=</span> <span class="va">x</span> <span class="op">-</span> <span class="va">err</span><span class="op">)</span>
-<span class="va">df</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 3</span></span>
-<span class="co">#&gt;       best    min     max</span>
-<span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.096<span style="text-decoration: underline;">8</span>  0.234 -<span style="color: #BB0000;">0.040</span><span style="color: #BB0000; text-decoration: underline;">6</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  2.81    0.603  5.02  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  3.87    3.37   4.38  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  4.60    5.01   4.20  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  5.91    6.30   5.53  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  7.41    8.28   6.54  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  5.56    5.36   5.76  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  8.46    8.45   8.47  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  9.03    8.76   9.29  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  8.88   10.5    7.30</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">err</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>best <span class="op">=</span> <span class="va">x</span>,</span>
+<span>             min <span class="op">=</span> <span class="va">x</span> <span class="op">+</span> <span class="va">err</span>,</span>
+<span>             max <span class="op">=</span> <span class="va">x</span> <span class="op">-</span> <span class="va">err</span><span class="op">)</span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 3</span></span></span>
+<span><span class="co">#&gt;      best   min   max</span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.148  2.49 -<span style="color: #BB0000;">2.19</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  1.33   1.08  1.58</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  5.16   5.54  4.78</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  3.48   3.46  3.50</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  4.42   5.57  3.27</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  4.13   3.67  4.59</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  6.96   5.89  8.03</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  8.00   9.43  6.57</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  9.31  10.1   8.48</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  9.13   9.12  9.14</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="symmetric-error-case">Symmetric error case<a class="anchor" aria-label="anchor" href="#symmetric-error-case"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex<span class="op">=</span><span class="fu"><a href="../reference/latex_range.html">latex_range</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 4</span></span>
-<span class="co">#&gt;       best    min     max latex            </span>
-<span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>      <span style="color: #949494;">"</span>$-$<span style="color: #949494;">"</span>            </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.096<span style="text-decoration: underline;">8</span>  0.234 -<span style="color: #BB0000;">0.040</span><span style="color: #BB0000; text-decoration: underline;">6</span> <span style="color: #949494;">"</span>$0.10\\pm-0.14$<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  2.81    0.603  5.02   <span style="color: #949494;">"</span>$2.81\\pm2.21$<span style="color: #949494;">"</span> </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  3.87    3.37   4.38   <span style="color: #949494;">"</span>$3.87\\pm0.50$<span style="color: #949494;">"</span> </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  4.60    5.01   4.20   <span style="color: #949494;">"</span>$4.60\\pm-0.41$<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  5.91    6.30   5.53   <span style="color: #949494;">"</span>$5.91\\pm-0.38$<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  7.41    8.28   6.54   <span style="color: #949494;">"</span>$7.41\\pm-0.87$<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  5.56    5.36   5.76   <span style="color: #949494;">"</span>$5.56\\pm0.20$<span style="color: #949494;">"</span> </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  8.46    8.45   8.47   <span style="color: #949494;">"</span>$8.46\\pm0.01$<span style="color: #949494;">"</span> </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  9.03    8.76   9.29   <span style="color: #949494;">"</span>$9.03\\pm0.26$<span style="color: #949494;">"</span> </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  8.88   10.5    7.30   <span style="color: #949494;">"</span>$8.88\\pm-1.58$<span style="color: #949494;">"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex<span class="op">=</span><span class="fu"><a href="../reference/latex_range.html">latex_range</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 4</span></span></span>
+<span><span class="co">#&gt;      best   min   max latex            </span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>$-$<span style="color: #949494;">"</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.148  2.49 -<span style="color: #BB0000;">2.19</span> <span style="color: #949494;">"</span>$0.15\\pm-2.34$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  1.33   1.08  1.58 <span style="color: #949494;">"</span>$1.33\\pm0.25$<span style="color: #949494;">"</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  5.16   5.54  4.78 <span style="color: #949494;">"</span>$5.16\\pm-0.38$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  3.48   3.46  3.50 <span style="color: #949494;">"</span>$3.48\\pm0.02$<span style="color: #949494;">"</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  4.42   5.57  3.27 <span style="color: #949494;">"</span>$4.42\\pm-1.15$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  4.13   3.67  4.59 <span style="color: #949494;">"</span>$4.13\\pm0.46$<span style="color: #949494;">"</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  6.96   5.89  8.03 <span style="color: #949494;">"</span>$6.96\\pm1.07$<span style="color: #949494;">"</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  8.00   9.43  6.57 <span style="color: #949494;">"</span>$8.00\\pm-1.43$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  9.31  10.1   8.48 <span style="color: #949494;">"</span>$9.31\\pm-0.83$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  9.13   9.12  9.14 <span style="color: #949494;">"</span>$9.13\\pm0.01$<span style="color: #949494;">"</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex<span class="op">=</span><span class="fu"><a href="../reference/latex_range.html">latex_range</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">2</span>, na <span class="op">=</span> <span class="st">''</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 4</span></span>
-<span class="co">#&gt;       best    min     max latex            </span>
-<span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>      <span style="color: #949494;">"</span>$$<span style="color: #949494;">"</span>             </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.096<span style="text-decoration: underline;">8</span>  0.234 -<span style="color: #BB0000;">0.040</span><span style="color: #BB0000; text-decoration: underline;">6</span> <span style="color: #949494;">"</span>$0.10\\pm-0.14$<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  2.81    0.603  5.02   <span style="color: #949494;">"</span>$2.81\\pm2.21$<span style="color: #949494;">"</span> </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  3.87    3.37   4.38   <span style="color: #949494;">"</span>$3.87\\pm0.50$<span style="color: #949494;">"</span> </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  4.60    5.01   4.20   <span style="color: #949494;">"</span>$4.60\\pm-0.41$<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  5.91    6.30   5.53   <span style="color: #949494;">"</span>$5.91\\pm-0.38$<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  7.41    8.28   6.54   <span style="color: #949494;">"</span>$7.41\\pm-0.87$<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  5.56    5.36   5.76   <span style="color: #949494;">"</span>$5.56\\pm0.20$<span style="color: #949494;">"</span> </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  8.46    8.45   8.47   <span style="color: #949494;">"</span>$8.46\\pm0.01$<span style="color: #949494;">"</span> </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  9.03    8.76   9.29   <span style="color: #949494;">"</span>$9.03\\pm0.26$<span style="color: #949494;">"</span> </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  8.88   10.5    7.30   <span style="color: #949494;">"</span>$8.88\\pm-1.58$<span style="color: #949494;">"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex<span class="op">=</span><span class="fu"><a href="../reference/latex_range.html">latex_range</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">2</span>, na <span class="op">=</span> <span class="st">''</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 4</span></span></span>
+<span><span class="co">#&gt;      best   min   max latex            </span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #949494;">"</span>$$<span style="color: #949494;">"</span>             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.148  2.49 -<span style="color: #BB0000;">2.19</span> <span style="color: #949494;">"</span>$0.15\\pm-2.34$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  1.33   1.08  1.58 <span style="color: #949494;">"</span>$1.33\\pm0.25$<span style="color: #949494;">"</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  5.16   5.54  4.78 <span style="color: #949494;">"</span>$5.16\\pm-0.38$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  3.48   3.46  3.50 <span style="color: #949494;">"</span>$3.48\\pm0.02$<span style="color: #949494;">"</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  4.42   5.57  3.27 <span style="color: #949494;">"</span>$4.42\\pm-1.15$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  4.13   3.67  4.59 <span style="color: #949494;">"</span>$4.13\\pm0.46$<span style="color: #949494;">"</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  6.96   5.89  8.03 <span style="color: #949494;">"</span>$6.96\\pm1.07$<span style="color: #949494;">"</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  8.00   9.43  6.57 <span style="color: #949494;">"</span>$8.00\\pm-1.43$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  9.31  10.1   8.48 <span style="color: #949494;">"</span>$9.31\\pm-0.83$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  9.13   9.12  9.14 <span style="color: #949494;">"</span>$9.13\\pm0.01$<span style="color: #949494;">"</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="unsymmetric-case">Unsymmetric case<a class="anchor" aria-label="anchor" href="#unsymmetric-case"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>max <span class="op">=</span> <span class="va">max</span> <span class="op">+</span> <span class="fl">1e-2</span><span class="op">*</span><span class="va">max</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex<span class="op">=</span><span class="fu"><a href="../reference/latex_range.html">latex_range</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Warning in check_ndigits(x = c(lo, up), ndigits): Is argument `ndigits` too</span>
-<span class="co">#&gt; small?</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 4</span></span>
-<span class="co">#&gt;       best    min     max latex              </span>
-<span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>      $-$                </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.096<span style="text-decoration: underline;">8</span>  0.234 -<span style="color: #BB0000;">0.041</span><span style="color: #BB0000; text-decoration: underline;">0</span> $0.1_{0.1}^{+-0.1}$</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  2.81    0.603  5.07   $2.8_{-2.2}^{+2.3}$</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  3.87    3.37   4.42   $3.9_{-0.5}^{+0.5}$</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  4.60    5.01   4.24   $4.6_{0.4}^{+-0.4}$</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  5.91    6.30   5.59   $5.9_{0.4}^{+-0.3}$</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  7.41    8.28   6.61   $7.4_{0.9}^{+-0.8}$</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  5.56    5.36   5.82   $5.6_{-0.2}^{+0.3}$</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  8.46    8.45   8.55   $8.5_{-0.0}^{+0.1}$</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  9.03    8.76   9.38   $9.0_{-0.3}^{+0.4}$</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  8.88   10.5    7.37   $8.9_{1.6}^{+-1.5}$</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>max <span class="op">=</span> <span class="va">max</span> <span class="op">+</span> <span class="fl">1e-2</span><span class="op">*</span><span class="va">max</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex<span class="op">=</span><span class="fu"><a href="../reference/latex_range.html">latex_range</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in check_ndigits(x = c(lo, up), ndigits): Is argument `ndigits` too</span></span>
+<span><span class="co">#&gt; small?</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 4</span></span></span>
+<span><span class="co">#&gt;      best   min   max latex              </span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    $-$                </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  0.148  2.49 -<span style="color: #BB0000;">2.21</span> $0.1_{2.3}^{+-2.4}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  1.33   1.08  1.60 $1.3_{-0.3}^{+0.3}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  5.16   5.54  4.83 $5.2_{0.4}^{+-0.3}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  3.48   3.46  3.54 $3.5_{-0.0}^{+0.1}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  4.42   5.57  3.31 $4.4_{1.1}^{+-1.1}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  4.13   3.67  4.63 $4.1_{-0.5}^{+0.5}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  6.96   5.89  8.11 $7.0_{-1.1}^{+1.1}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  8.00   9.43  6.63 $8.0_{1.4}^{+-1.4}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  9.31  10.1   8.56 $9.3_{0.8}^{+-0.7}$</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  9.13   9.12  9.23 $9.1_{-0.0}^{+0.1}$</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="scientific-notation">Scientific notation<a class="anchor" aria-label="anchor" href="#scientific-notation"></a>
@@ -202,34 +200,34 @@
 <h3 id="symmetric-case">Symmetric case<a class="anchor" aria-label="anchor" href="#symmetric-case"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">1e21</span>, <span class="fl">3e22</span>, <span class="fl">1e23</span><span class="op">)</span>
-<span class="va">err</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">0.1234e21</span>, <span class="fl">0.2345e21</span>, <span class="fl">0.6789e23</span><span class="op">)</span>
-
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>best<span class="op">=</span> <span class="va">x</span>,
-             min <span class="op">=</span> <span class="va">best</span> <span class="op">-</span> <span class="va">err</span>,
-             max <span class="op">=</span> <span class="va">best</span> <span class="op">+</span> <span class="va">err</span><span class="op">)</span> 
-
-<span class="va">df1</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex <span class="op">=</span> <span class="fu"><a href="../reference/latex_range_sci.html">latex_range_sci</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">2</span>, symmetry <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
-  
-<span class="va">df1</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span>
-<span class="co">#&gt;    best      min      max latex                            </span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                            </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #949494;">"</span>$-$<span style="color: #949494;">"</span>                            </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  1<span style="color: #949494;">e</span>21  8.77<span style="color: #949494;">e</span>20  1.12<span style="color: #949494;">e</span>21 <span style="color: #949494;">"</span>$(1.00\\pm0.12)~\\times10^{21}$<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  3<span style="color: #949494;">e</span>22  2.98<span style="color: #949494;">e</span>22  3.02<span style="color: #949494;">e</span>22 <span style="color: #949494;">"</span>$(3.00\\pm0.02)~\\times10^{22}$<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  1<span style="color: #949494;">e</span>23  3.21<span style="color: #949494;">e</span>22  1.68<span style="color: #949494;">e</span>23 <span style="color: #949494;">"</span>$(1.00\\pm0.68)~\\times10^{23}$<span style="color: #949494;">"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">1e21</span>, <span class="fl">3e22</span>, <span class="fl">1e23</span><span class="op">)</span></span>
+<span><span class="va">err</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">0.1234e21</span>, <span class="fl">0.2345e21</span>, <span class="fl">0.6789e23</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>best<span class="op">=</span> <span class="va">x</span>,</span>
+<span>             min <span class="op">=</span> <span class="va">best</span> <span class="op">-</span> <span class="va">err</span>,</span>
+<span>             max <span class="op">=</span> <span class="va">best</span> <span class="op">+</span> <span class="va">err</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex <span class="op">=</span> <span class="fu"><a href="../reference/latex_range_sci.html">latex_range_sci</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">2</span>, symmetry <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="va">df1</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
+<span><span class="co">#&gt;    best      min      max latex                            </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #BB0000;">NA</span>   <span style="color: #949494;"> </span>   <span style="color: #949494;">"</span>$-$<span style="color: #949494;">"</span>                            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  1<span style="color: #949494;">e</span>21  8.77<span style="color: #949494;">e</span>20  1.12<span style="color: #949494;">e</span>21 <span style="color: #949494;">"</span>$(1.00\\pm0.12)~\\times10^{21}$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  3<span style="color: #949494;">e</span>22  2.98<span style="color: #949494;">e</span>22  3.02<span style="color: #949494;">e</span>22 <span style="color: #949494;">"</span>$(3.00\\pm0.02)~\\times10^{22}$<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  1<span style="color: #949494;">e</span>23  3.21<span style="color: #949494;">e</span>22  1.68<span style="color: #949494;">e</span>23 <span style="color: #949494;">"</span>$(1.00\\pm0.68)~\\times10^{23}$<span style="color: #949494;">"</span></span></span></code></pre></div>
 <div class="section level4">
 <h4 id="html-output">HTML output<a class="anchor" aria-label="anchor" href="#html-output"></a>
 </h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df1</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">latex</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'html'</span>, 
-               escape <span class="op">=</span> <span class="cn">FALSE</span>,
-               booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
-               linesep<span class="op">=</span><span class="st">''</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df1</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">latex</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'html'</span>, </span>
+<span>               escape <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>               booktabs <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>               linesep<span class="op">=</span><span class="st">''</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr>
 <th style="text-align:left;">
@@ -264,39 +262,39 @@ latex
 <h4 id="latex-output">Latex output<a class="anchor" aria-label="anchor" href="#latex-output"></a>
 </h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df1</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">latex</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'latex'</span>, 
-               escape <span class="op">=</span> <span class="cn">FALSE</span>,
-               booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
-               linesep<span class="op">=</span><span class="st">''</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; \begin{tabular}{l}</span>
-<span class="co">#&gt; \toprule</span>
-<span class="co">#&gt; latex\\</span>
-<span class="co">#&gt; \midrule</span>
-<span class="co">#&gt; $-$\\</span>
-<span class="co">#&gt; $(1.00\pm0.12)~\times10^{21}$\\</span>
-<span class="co">#&gt; $(3.00\pm0.02)~\times10^{22}$\\</span>
-<span class="co">#&gt; $(1.00\pm0.68)~\times10^{23}$\\</span>
-<span class="co">#&gt; \bottomrule</span>
-<span class="co">#&gt; \end{tabular}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df1</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">latex</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'latex'</span>, </span>
+<span>               escape <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>               booktabs <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>               linesep<span class="op">=</span><span class="st">''</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; \begin{tabular}{l}</span></span>
+<span><span class="co">#&gt; \toprule</span></span>
+<span><span class="co">#&gt; latex\\</span></span>
+<span><span class="co">#&gt; \midrule</span></span>
+<span><span class="co">#&gt; $-$\\</span></span>
+<span><span class="co">#&gt; $(1.00\pm0.12)~\times10^{21}$\\</span></span>
+<span><span class="co">#&gt; $(3.00\pm0.02)~\times10^{22}$\\</span></span>
+<span><span class="co">#&gt; $(1.00\pm0.68)~\times10^{23}$\\</span></span>
+<span><span class="co">#&gt; \bottomrule</span></span>
+<span><span class="co">#&gt; \end{tabular}</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="unsymmetric-output">Unsymmetric output<a class="anchor" aria-label="anchor" href="#unsymmetric-output"></a>
 </h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df2</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>max <span class="op">=</span> <span class="va">max</span><span class="op">*</span><span class="fl">1.1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex <span class="op">=</span> <span class="fu"><a href="../reference/latex_range_sci.html">latex_range_sci</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="va">df2</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">latex</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'html'</span>, 
-               escape <span class="op">=</span> <span class="cn">FALSE</span>,
-               booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
-               linesep<span class="op">=</span><span class="st">''</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>max <span class="op">=</span> <span class="va">max</span><span class="op">*</span><span class="fl">1.1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex <span class="op">=</span> <span class="fu"><a href="../reference/latex_range_sci.html">latex_range_sci</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df2</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">latex</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'html'</span>, </span>
+<span>               escape <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>               booktabs <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>               linesep<span class="op">=</span><span class="st">''</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr>
 <th style="text-align:left;">
@@ -331,15 +329,15 @@ latex
 <h3 id="the-same-power-for-all-values-base_pow">The same power for all values <code>base_pow</code><a class="anchor" aria-label="anchor" href="#the-same-power-for-all-values-base_pow"></a>
 </h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df3</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>max <span class="op">=</span> <span class="fl">1.1</span><span class="op">*</span><span class="va">max</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex <span class="op">=</span> <span class="fu"><a href="../reference/latex_range_sci.html">latex_range_sci</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">2</span>, base_pow<span class="op">=</span><span class="fl">22</span><span class="op">)</span><span class="op">)</span>
-<span class="va">df3</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">latex</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'html'</span>, 
-               escape <span class="op">=</span> <span class="cn">FALSE</span>,
-               booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
-               linesep<span class="op">=</span><span class="st">''</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df3</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>max <span class="op">=</span> <span class="fl">1.1</span><span class="op">*</span><span class="va">max</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex <span class="op">=</span> <span class="fu"><a href="../reference/latex_range_sci.html">latex_range_sci</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="fl">2</span>, base_pow<span class="op">=</span><span class="fl">22</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df3</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">latex</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'html'</span>, </span>
+<span>               escape <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>               booktabs <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>               linesep<span class="op">=</span><span class="st">''</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr>
 <th style="text-align:left;">
@@ -375,37 +373,37 @@ latex
 <h2 id="row-oriented-workflow">Row-oriented workflow<a class="anchor" aria-label="anchor" href="#row-oriented-workflow"></a>
 </h2>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span><span class="op">~</span><span class="va">param_name</span>, <span class="op">~</span><span class="va">x</span>, <span class="op">~</span><span class="va">xmin</span>, <span class="op">~</span><span class="va">xmax</span>,
-        <span class="st">'nH'</span>, <span class="fl">1e21</span>, <span class="fl">0.81e21</span>, <span class="fl">1.2e21</span>,
-        <span class="st">'p'</span>, <span class="fl">1.7</span>, <span class="fl">1.6</span>, <span class="fl">2.5</span><span class="op">)</span>
-<span class="va">df</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 4</span></span>
-<span class="co">#&gt;   param_name      x   xmin   xmax</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> nH         1  <span style="color: #949494;">e</span>21 8.1<span style="color: #949494;">e</span>20 1.2<span style="color: #949494;">e</span>21</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> p          1.7<span style="color: #949494;">e</span> 0 1.6<span style="color: #949494;">e</span> 0 2.5<span style="color: #949494;">e</span> 0</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span><span class="op">~</span><span class="va">param_name</span>, <span class="op">~</span><span class="va">x</span>, <span class="op">~</span><span class="va">xmin</span>, <span class="op">~</span><span class="va">xmax</span>,</span>
+<span>        <span class="st">'nH'</span>, <span class="fl">1e21</span>, <span class="fl">0.81e21</span>, <span class="fl">1.2e21</span>,</span>
+<span>        <span class="st">'p'</span>, <span class="fl">1.7</span>, <span class="fl">1.6</span>, <span class="fl">2.5</span><span class="op">)</span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 4</span></span></span>
+<span><span class="co">#&gt;   param_name      x   xmin   xmax</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> nH         1  <span style="color: #949494;">e</span>21 8.1<span style="color: #949494;">e</span>20 1.2<span style="color: #949494;">e</span>21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> p          1.7<span style="color: #949494;">e</span> 0 1.6<span style="color: #949494;">e</span> 0 2.5<span style="color: #949494;">e</span> 0</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">foo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, <span class="va">param_name</span>, <span class="va">param_options</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>nH<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="cn">T</span><span class="op">)</span>,
-                                                        phoind<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="cn">F</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
-  
-  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html" class="external-link">pmap_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, <span class="va">param_name</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, <span class="va">param_name</span><span class="op">)</span><span class="op">{</span>
-    
-    <span class="kw">if</span><span class="op">(</span><span class="va">param_options</span><span class="op">[[</span><span class="va">param_name</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">{</span>
-      <span class="fu"><a href="../reference/latex_range_sci.html">latex_range_sci</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="va">param_options</span><span class="op">[[</span><span class="va">param_name</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-    <span class="op">}</span> <span class="kw">else</span><span class="op">{</span>
-      <span class="fu"><a href="../reference/latex_range.html">latex_range</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="va">param_options</span><span class="op">[[</span><span class="va">param_name</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-    <span class="op">}</span>
-    
-  <span class="op">}</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex <span class="op">=</span> <span class="fu">foo</span><span class="op">(</span><span class="va">x</span>, <span class="va">xmin</span>, <span class="va">xmax</span>, <span class="va">param_name</span>, param_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>nH<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="cn">T</span><span class="op">)</span>, p<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="cn">F</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'html'</span>, 
-               escape <span class="op">=</span> <span class="cn">FALSE</span>,
-               booktabs <span class="op">=</span> <span class="cn">TRUE</span>,
-               linesep<span class="op">=</span><span class="st">''</span>
-               <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">foo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, <span class="va">param_name</span>, <span class="va">param_options</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>nH<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="cn">T</span><span class="op">)</span>,</span>
+<span>                                                        phoind<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="cn">F</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html" class="external-link">pmap_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, <span class="va">param_name</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, <span class="va">param_name</span><span class="op">)</span><span class="op">{</span></span>
+<span>    </span>
+<span>    <span class="kw">if</span><span class="op">(</span><span class="va">param_options</span><span class="op">[[</span><span class="va">param_name</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">{</span></span>
+<span>      <span class="fu"><a href="../reference/latex_range_sci.html">latex_range_sci</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="va">param_options</span><span class="op">[[</span><span class="va">param_name</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span>    <span class="op">}</span> <span class="kw">else</span><span class="op">{</span></span>
+<span>      <span class="fu"><a href="../reference/latex_range.html">latex_range</a></span><span class="op">(</span><span class="va">best</span>, <span class="va">min</span>, <span class="va">max</span>, ndigits <span class="op">=</span> <span class="va">param_options</span><span class="op">[[</span><span class="va">param_name</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span>    </span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>latex <span class="op">=</span> <span class="fu">foo</span><span class="op">(</span><span class="va">x</span>, <span class="va">xmin</span>, <span class="va">xmax</span>, <span class="va">param_name</span>, param_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>nH<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="cn">T</span><span class="op">)</span>, p<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="cn">F</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">'html'</span>, </span>
+<span>               escape <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>               booktabs <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>               linesep<span class="op">=</span><span class="st">''</span></span>
+<span>               <span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr>
 <th style="text-align:left;">
@@ -481,7 +479,7 @@ p
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

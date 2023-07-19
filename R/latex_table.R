@@ -8,7 +8,7 @@ check_ndigits <- function(x, ndigits=0){
 #' @param best best value
 #' @param min lower boundary value
 #' @param max upper boundary value
-#' @param ndigits number of digits after decimal point
+#' @param ndigits 'auto' (default) or number of digits after decimal point
 #' @param na show NA value as na. default na='-'
 #'
 #' @return character vector
@@ -23,32 +23,47 @@ check_ndigits <- function(x, ndigits=0){
 #'
 #' latex_range(best = x, min = x - err, max = x + 2*err, ndigits = 2, na='')
 #'
-latex_range <- function(best, min, max, ndigits=0, na='-'){
+latex_range <- function(best, min, max, ndigits = 'auto', na='-') {
   is_na <- is.na(best) | is.na(min) | is.na(max)
   n <- length(best)
 
-  best <- best[!is_na]
-  lo <- round(min[!is_na]-best, ndigits)
-  up <- round(max[!is_na]-best, ndigits)
+  x <- best[!is_na]
+  xmin <- min[!is_na]
+  xmax <- max[!is_na]
 
 
-  check_ndigits(x=c(lo,up), ndigits)
+  if (ndigits == 'auto') {
+    err_min <- pmin(xmax - x, x - xmin)
+    ndigits <- calc_signif_digits(err_min)
+  }
+
+  lo <- round(x - xmin, ndigits)
+  up <- round(xmax - x, ndigits)
+
+  if (length(ndigits) == 1L) check_ndigits(x = c(lo, up), ndigits)
 
   out <- character(n)
-
   fmt_par <- paste0('%.', ndigits, 'f')
 
-  if(all(-lo == up)){
+
+  if(all(lo == up)){
     out[!is_na] <- paste0("$",
-                          sprintf(fmt = fmt_par, best),
-                          "\\pm", sprintf(fmt=fmt_par, up),
+                          # sprintf(fmt = fmt_par, x),
+                          format_number(x, ndigits),
+                          # "\\pm", sprintf(fmt=fmt_par, up),
+                          "\\pm", format_number(lo, ndigits),
                           "$")
 
   } else{
+    # out[!is_na] <- paste0("$",
+    #                       sprintf(fmt = fmt_par, x),
+    #                       "_{", sprintf(fmt=fmt_par, lo),
+    #                       "}^{+", sprintf(fmt=fmt_par, up),
+    #                       "}$")
     out[!is_na] <- paste0("$",
-                          sprintf(fmt = fmt_par, best),
-                          "_{", sprintf(fmt=fmt_par, lo),
-                          "}^{+", sprintf(fmt=fmt_par, up),
+                          format_number(x, ndigits),
+                          "_{-", format_number(lo, ndigits),
+                          "}^{+", format_number(up, ndigits),
                           "}$")
   }
 
@@ -57,6 +72,8 @@ latex_range <- function(best, min, max, ndigits=0, na='-'){
 
   return(out)
 }
+
+
 
 #' Make latex notation for best value and confidence boundaries.
 #'
@@ -84,7 +101,7 @@ latex_range <- function(best, min, max, ndigits=0, na='-'){
 latex_range_sci <- function(best, min, max, ndigits=0,
                             na='-', symmetry=FALSE, base_pow=NULL){
   # symmetry if available
-  is_na <- is.na(best) | is.na(min) | is.na(max)
+  is_na <- any(is.na(c(best, min, max)))
   n <- length(best)
 
   pow <- if(is.null(base_pow)) trunc(log10(abs(best))) else rep(base_pow, n)
@@ -102,6 +119,7 @@ latex_range_sci <- function(best, min, max, ndigits=0,
 
   out <- character(n)
   fmt_par <- paste0('%.', ndigits, 'f')
+
 
   if(all(-lo == up) & symmetry){
     out[!is_na] <- paste0("$(",
@@ -122,3 +140,50 @@ latex_range_sci <- function(best, min, max, ndigits=0,
 
   return(out)
 }
+
+get_n_signif_digits <- function(x) {
+  first_digit <- abs(10^round(abs(log10(abs(x))), 0) * x) %/% 1
+  n_signif_digits <- abs(ceiling(-log10(abs(x))))
+  n_signif_digits <- ifelse(first_digit == 1, n_signif_digits + 1, n_signif_digits)
+  n_signif_digits[abs(x) >= 2] <- 0
+
+  n_signif_digits
+}
+
+calc_signif_digits <- function(x) {
+  n_signif_digits <- get_n_signif_digits(x)
+  rounded_x <- round(x, n_signif_digits)
+  n_signif_digits <- ifelse(
+    get_n_signif_digits(rounded_x) < n_signif_digits,
+    n_signif_digits - 1,
+    n_signif_digits
+  )
+
+  n_signif_digits
+}
+
+
+format_number <- function(x, n_signif_digits) {
+  # 0.198 -> 0.2, (NOT 0.20)
+  not_na <- ! (is.na(x) | is.na(n_signif_digits))
+  out <- character(length(x))
+  if (length(n_signif_digits) > 1L) n_signif_digits <- n_signif_digits[not_na]
+  rounded_x <- round(x[not_na], n_signif_digits)
+  out[not_na] <- sprintf(fmt = glue::glue("%.{n_signif_digits}f"), rounded_x)
+  out[!not_na] <- NA
+
+  out
+}
+
+# numbers <- c(runif(11))
+# errors <- c(runif(10, max = 0.1), 0.00123)
+#
+# tibble(
+#   number = numbers,
+#   error = errors,
+#   fmt = paste0(format_number(numbers, n_signif_digits = get_n_signif_digits(errors)),
+#                "+/-",
+#                format_number(errors, get_n_signif_digits(errors))
+#   )
+# )
+

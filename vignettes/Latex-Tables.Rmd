@@ -24,10 +24,10 @@ library(dplyr)
 ```{r}
 x <- c(NA,1:10)
 x <- x + rnorm(length(x))
-err <- rnorm(length(x))
+err <- runif(length(x))
 df <- tibble(best = x,
-             min = x + err,
-             max = x - err)
+             min = x - err,
+             max = x + err)
 df
 ```
 

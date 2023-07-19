@@ -49,7 +49,7 @@ cross_match_r <- function(x, y, column_src, column_coord, r_arcsec = 30) {
 #' the `sep_col` column in the output data.frame.
 #'
 #'
-#' @return data.frame
+#' @return A data.frame containing all rows from `x`.
 #' @export
 #'
 angsep_left_join <- function(x, y, by = NULL, max_sep = 1, sep_col = NULL) {
@@ -121,22 +121,17 @@ angsep_left_join <- function(x, y, by = NULL, max_sep = 1, sep_col = NULL) {
 
   df_out[[.sep_col]] <- xrayr::separation(df_out[[i1]], df_out[[i2]])
 
-  n_col <- ncol(df_out)
+  i_start <- ncol(x) + 1L
+  i_stop <- ncol(df_out)
+  i_na <- which(df_out[[.sep_col]] > max_sep)
+  df_out[i_na, i_start:i_stop] <- NA
 
-  df_out[, i2:(n_col - 1)] <- lapply(
-   df_out[, i2:(n_col - 1)],
-   \(col) ifelse(df_out[["sep"]] <= max_sep, NA, col)
- )
+  df_cross <- df_out[!is.na(df_out[[.sep_col]]), ]
 
+  if (is.null(sep_col)) df_cross[[.sep_col]] <- NULL
 
-  if (is.null(sep_col)) df_out[[.sep_col]] <- NULL
-
-  df_out
-
+  dplyr::left_join(x, df_cross, by = colnames(x))
 }
-
-
-
 
 
 

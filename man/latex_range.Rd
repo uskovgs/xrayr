@@ -4,7 +4,7 @@
 \alias{latex_range}
 \title{Make latex notation for best value and confidence boundaries.}
 \usage{
-latex_range(best, min, max, ndigits = 0, na = "-")
+latex_range(best, min, max, ndigits = "auto", na = "-")
 }
 \arguments{
 \item{best}{best value}
@@ -13,7 +13,7 @@ latex_range(best, min, max, ndigits = 0, na = "-")
 
 \item{max}{upper boundary value}
 
-\item{ndigits}{number of digits after decimal point}
+\item{ndigits}{'auto' (default) or number of digits after decimal point}
 
 \item{na}{show NA value as na. default na='-'}
 }

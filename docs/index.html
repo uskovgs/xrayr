@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">xrayr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -89,51 +89,51 @@
 
 
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"uskovgs/xrayr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"uskovgs/xrayr"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/uskovgs/xrayr/" class="external-link">xrayr</a></span><span class="op">)</span>
-<span class="fu"><a href="reference/nh.html">nh</a></span><span class="op">(</span><span class="fl">213.1612728</span>, <span class="op">-</span><span class="fl">65.38967664</span>, r_arcmin<span class="op">=</span><span class="fl">5</span>, showInfo <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
-<span class="co">#&gt;       _r    recno      HPX  RAJ2000  DEJ2000     GLON     GLAT      NHI </span>
-<span class="co">#&gt; "arcmin"      " "      " "    "deg"    "deg"    "deg"    "deg"   "cm-2" </span>
-<span class="co">#&gt; # A tibble: 5 × 8</span>
-<span class="co">#&gt;    `_r`   recno     HPX RAJ2000 DEJ2000  GLON  GLAT     NHI</span>
-<span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1  1.93 6710742 6710741    213.   -65.4  311. -3.81 5.14e21</span>
-<span class="co">#&gt; 2  2.30 6714838 6714837    213.   -65.4  311. -3.84 5.02e21</span>
-<span class="co">#&gt; 3  2.61 6718934 6718933    213.   -65.4  311. -3.88 5.03e21</span>
-<span class="co">#&gt; 4  3.01 6714839 6714838    213.   -65.4  311. -3.84 5.12e21</span>
-<span class="co">#&gt; 5  4.72 6706646 6706645    213.   -65.3  311. -3.77 5.13e21</span>
-<span class="co">#&gt; ----</span>
-<span class="co">#&gt; This value is derived from the 2D HI4PI map, </span>
-<span class="co">#&gt;  a full-sky HI survey by the HI4PI collaboration 2016,</span>
-<span class="co">#&gt;  Astronomy &amp; Astrophysics, 594, A116.</span>
-<span class="co">#&gt; ----</span>
-<span class="co">#&gt; *RA target: 213.1612728</span>
-<span class="co">#&gt; *DEC target: -65.38967664</span>
-<span class="co">#&gt; RA range [213.0238, 213.2793]</span>
-<span class="co">#&gt; DEC range [-65.4288, -65.3357]</span>
-<span class="co">#&gt; Average mean nH (cm**-2): 5.09e+21 </span>
-<span class="co">#&gt; Weighted average nH (cm**-2): 5.109e+21</span>
-<span class="co">#&gt; [1] 5.108978e+21</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/uskovgs/xrayr/" class="external-link">xrayr</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/nh.html">nh</a></span><span class="op">(</span><span class="fl">213.1612728</span>, <span class="op">-</span><span class="fl">65.38967664</span>, r_arcmin<span class="op">=</span><span class="fl">5</span>, showInfo <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       _r    recno      HPX  RAJ2000  DEJ2000     GLON     GLAT      NHI </span></span>
+<span><span class="co">#&gt; "arcmin"      " "      " "    "deg"    "deg"    "deg"    "deg"   "cm-2" </span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 8</span></span>
+<span><span class="co">#&gt;    `_r`   recno     HPX RAJ2000 DEJ2000  GLON  GLAT     NHI</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1  1.93 6710742 6710741    213.   -65.4  311. -3.81 5.14e21</span></span>
+<span><span class="co">#&gt; 2  2.30 6714838 6714837    213.   -65.4  311. -3.84 5.02e21</span></span>
+<span><span class="co">#&gt; 3  2.61 6718934 6718933    213.   -65.4  311. -3.88 5.03e21</span></span>
+<span><span class="co">#&gt; 4  3.01 6714839 6714838    213.   -65.4  311. -3.84 5.12e21</span></span>
+<span><span class="co">#&gt; 5  4.72 6706646 6706645    213.   -65.3  311. -3.77 5.13e21</span></span>
+<span><span class="co">#&gt; ----</span></span>
+<span><span class="co">#&gt; This value is derived from the 2D HI4PI map, </span></span>
+<span><span class="co">#&gt;  a full-sky HI survey by the HI4PI collaboration 2016,</span></span>
+<span><span class="co">#&gt;  Astronomy &amp; Astrophysics, 594, A116.</span></span>
+<span><span class="co">#&gt; ----</span></span>
+<span><span class="co">#&gt; *RA target: 213.1612728</span></span>
+<span><span class="co">#&gt; *DEC target: -65.38967664</span></span>
+<span><span class="co">#&gt; RA range [213.0238, 213.2793]</span></span>
+<span><span class="co">#&gt; DEC range [-65.4288, -65.3357]</span></span>
+<span><span class="co">#&gt; Average mean nH (cm**-2): 5.09e+21 </span></span>
+<span><span class="co">#&gt; Weighted average nH (cm**-2): 5.109e+21</span></span>
+<span><span class="co">#&gt; [1] 5.108978e+21</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/uskovgs/xrayr/" class="external-link">xrayr</a></span><span class="op">)</span>
-
-<span class="co"># in degrees</span>
-<span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ra_dec.html">ra_dec</a></span><span class="op">(</span>ra <span class="op">=</span> <span class="fl">213.1</span>, dec <span class="op">=</span> <span class="op">-</span><span class="fl">75.1</span><span class="op">)</span>
-<span class="co"># in hms dms</span>
-<span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/radec.html">radec</a></span><span class="op">(</span><span class="st">'14h1m1s -75d15m23.68s'</span><span class="op">)</span>
-
-<span class="co"># separation in arcsec</span>
-<span class="fu">separation</span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span><span class="op">)</span>
-<span class="co">#&gt; [1] 2680.447</span>
-
-
-<span class="co"># get RA value</span>
-<span class="fu">ra</span><span class="op">(</span><span class="va">x2</span><span class="op">)</span>
-<span class="co">#&gt; [1] 210.2542</span>
-<span class="co"># get DEC value</span>
-<span class="fu">dec</span><span class="op">(</span><span class="va">x2</span><span class="op">)</span>
-<span class="co">#&gt; [1] -75.25658</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/uskovgs/xrayr/" class="external-link">xrayr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># in degrees</span></span>
+<span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ra_dec.html">ra_dec</a></span><span class="op">(</span>ra <span class="op">=</span> <span class="fl">213.1</span>, dec <span class="op">=</span> <span class="op">-</span><span class="fl">75.1</span><span class="op">)</span></span>
+<span><span class="co"># in hms dms</span></span>
+<span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/radec.html">radec</a></span><span class="op">(</span><span class="st">'14h1m1s -75d15m23.68s'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># separation in arcsec</span></span>
+<span><span class="fu">separation</span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2680.447</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># get RA value</span></span>
+<span><span class="fu">ra</span><span class="op">(</span><span class="va">x2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 210.2542</span></span>
+<span><span class="co"># get DEC value</span></span>
+<span><span class="fu">dec</span><span class="op">(</span><span class="va">x2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] -75.25658</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
 </h2>
@@ -198,7 +198,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

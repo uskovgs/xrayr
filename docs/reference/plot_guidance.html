@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xrayr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -72,82 +72,115 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">plot_guidance</span><span class="op">(</span>
-  <span class="va">image</span>,
-  <span class="va">hdr</span>,
-  pixel_scale <span class="op">=</span> <span class="cn">NULL</span>,
-  r_arcsec <span class="op">=</span> <span class="cn">NULL</span>,
-  radec <span class="op">=</span> <span class="cn">NULL</span>,
-  colors <span class="op">=</span> <span class="cn">NULL</span>,
-  label <span class="op">=</span> <span class="cn">NULL</span>,
-  label_size <span class="op">=</span> <span class="fl">2</span>,
-  circle_lwd <span class="op">=</span> <span class="fl">1</span>,
-  scale_lwd <span class="op">=</span> <span class="fl">1</span>,
-  scale_txt_size <span class="op">=</span> <span class="fl">1</span>,
-  compass_lwd <span class="op">=</span> <span class="fl">1</span>,
-  level.lo <span class="op">=</span> <span class="fl">0.6</span>,
-  level.hi <span class="op">=</span> <span class="fl">0.99</span>,
-  arrow_radec <span class="op">=</span> <span class="cn">NULL</span>,
-  arrow_size <span class="op">=</span> <span class="fl">1</span>,
-  arrow_lwd <span class="op">=</span> <span class="fl">1</span>,
-  arrow_color <span class="op">=</span> <span class="st">"red"</span>,
-  show_wcs_compass <span class="op">=</span> <span class="cn">TRUE</span>,
-  show_image_scale <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_guidance</span><span class="op">(</span></span>
+<span>  <span class="va">image</span>,</span>
+<span>  <span class="va">hdr</span>,</span>
+<span>  pixel_scale <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  r_arcsec <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  radec <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  colors <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  label <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  label_size <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  circle_lwd <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale_lwd <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale_txt_size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  compass_lwd <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  level.lo <span class="op">=</span> <span class="fl">0.6</span>,</span>
+<span>  level.hi <span class="op">=</span> <span class="fl">0.99</span>,</span>
+<span>  arrow_radec <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  arrow_size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  arrow_lwd <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  arrow_color <span class="op">=</span> <span class="st">"red"</span>,</span>
+<span>  show_wcs_compass <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  show_image_scale <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>image</dt>
 <dd><p>image of class matrix...</p></dd>
+
+
 <dt>hdr</dt>
 <dd><p>header with keywords...</p></dd>
+
+
 <dt>pixel_scale</dt>
 <dd><p>scale in units arcsec/pixel; for ps1dr2 0.25"/pixel</p></dd>
+
+
 <dt>r_arcsec</dt>
 <dd><p>vector of radiuses of each circle</p></dd>
+
+
 <dt>radec</dt>
 <dd><p>astro_radec vector</p></dd>
+
+
 <dt>colors</dt>
 <dd><p>colors of circles</p></dd>
+
+
 <dt>label</dt>
 <dd><p>main image label</p></dd>
+
+
 <dt>label_size</dt>
 <dd><p>size of main label</p></dd>
+
+
 <dt>circle_lwd</dt>
 <dd><p>linewidth of circle regions</p></dd>
+
+
 <dt>scale_lwd</dt>
 <dd><p>linewidth of scale line</p></dd>
+
+
 <dt>scale_txt_size</dt>
 <dd><p>text size of scale</p></dd>
+
+
 <dt>compass_lwd</dt>
 <dd><p>linewidth of compass lines</p></dd>
+
+
 <dt>level.lo</dt>
 <dd><p>level of image grayscale; default 0.6</p></dd>
+
+
 <dt>level.hi</dt>
 <dd><p>level of image grayscale; default 0.99</p></dd>
+
+
 <dt>arrow_color</dt>
 <dd></dd>
+
+
 <dt>show_wcs_compass</dt>
 <dd><p>If FALSE, do not show WCS compass on image. If TRUE show the WCS compass...</p></dd>
+
+
 <dt>show_image_scale</dt>
 <dd><p>If FALSE, do not show scale legend on image. If TRUE show the legend of scale on image...</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>oma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">plot_guidance2</span><span class="op">(</span><span class="va">f</span><span class="op">$</span><span class="va">imDat</span>,</span>
-<span class="r-in">hdr <span class="op">=</span> <span class="fu"><a href="fix_header_ps1.html">fix_header_ps1</a></span><span class="op">(</span><span class="va">f</span><span class="op">$</span><span class="va">hdr</span><span class="op">)</span>,</span>
-<span class="r-in">radec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="radec.html">radec</a></span><span class="op">(</span><span class="st">"J010744.2+574428"</span><span class="op">)</span>,</span>
-<span class="r-in">          <span class="fu"><a href="radec.html">radec</a></span><span class="op">(</span><span class="st">"J010745.2+574432"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">r_arcsec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">5</span><span class="op">)</span>,</span>
-<span class="r-in">colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'blue'</span>, <span class="st">'red'</span><span class="op">)</span>,</span>
-<span class="r-in">pixel_scale <span class="op">=</span> <span class="fl">0.25</span>,label <span class="op">=</span> <span class="st">"SRGA"</span>,</span>
-<span class="r-in">show_image_scale <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">show_wcs_compass <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>oma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plot_guidance2</span><span class="op">(</span><span class="va">f</span><span class="op">$</span><span class="va">imDat</span>,</span></span>
+<span class="r-in"><span>hdr <span class="op">=</span> <span class="fu"><a href="fix_header_ps1.html">fix_header_ps1</a></span><span class="op">(</span><span class="va">f</span><span class="op">$</span><span class="va">hdr</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>radec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="radec.html">radec</a></span><span class="op">(</span><span class="st">"J010744.2+574428"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>          <span class="fu"><a href="radec.html">radec</a></span><span class="op">(</span><span class="st">"J010745.2+574432"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>r_arcsec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'blue'</span>, <span class="st">'red'</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>pixel_scale <span class="op">=</span> <span class="fl">0.25</span>,label <span class="op">=</span> <span class="st">"SRGA"</span>,</span></span>
+<span class="r-in"><span>show_image_scale <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>show_wcs_compass <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -162,7 +195,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

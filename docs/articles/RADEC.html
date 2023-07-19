@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xrayr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -98,79 +98,77 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/uskovgs/xrayr/" class="external-link">xrayr</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: replacing previous import 'constants::syms' by 'dplyr::syms' when</span>
-<span class="co">#&gt; loading 'xrayr'</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/uskovgs/xrayr/" class="external-link">xrayr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="creating-radec-vectors">Creating RADEC vectors<a class="anchor" aria-label="anchor" href="#creating-radec-vectors"></a>
 </h2>
 <p>To create RADEC vector using values in <em>deg</em> use
 <code>ra_dec</code> function.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">5</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ra_dec.html">ra_dec</a></span><span class="op">(</span>ra <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">360</span><span class="op">)</span>, 
-            dec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">90</span>, <span class="fl">90</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ra_dec.html">ra_dec</a></span><span class="op">(</span>ra <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">360</span><span class="op">)</span>, 
-            dec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">90</span>, <span class="fl">90</span><span class="op">)</span><span class="op">)</span>
-<span class="va">x</span>
-<span class="co">#&gt; &lt;astro_radec[5]&gt;</span>
-<span class="co">#&gt; [1] 07h15m31.9s +61°23'12" 10h44m33.0s +05°23'44" 08h02m25.9s -05°09'13"</span>
-<span class="co">#&gt; [4] 21h31m25.3s -33°06'45" 15h12m44.4s +44°01'45"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ra_dec.html">ra_dec</a></span><span class="op">(</span>ra <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">360</span><span class="op">)</span>, </span>
+<span>            dec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">90</span>, <span class="fl">90</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ra_dec.html">ra_dec</a></span><span class="op">(</span>ra <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">360</span><span class="op">)</span>, </span>
+<span>            dec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">90</span>, <span class="fl">90</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; &lt;astro_radec[5]&gt;</span></span>
+<span><span class="co">#&gt; [1] 00h27m25.8s -82°21'28" 05h44m38.4s -42°00'41" 13h35m16.5s +09°55'39"</span></span>
+<span><span class="co">#&gt; [4] 00h27m32.8s +63°37'44" 18h32m52.5s -64°51'18"</span></span></code></pre></div>
 <p>Also we can create RADEC vectors using <code>radec</code> function.
 Coords in the ‘hms dms’ format</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"21h16m19.6s -16d30m31.2s"</span>, <span class="st">"12 14 19.6 34 1 1.2s"</span>, <span class="st">"J112233.44+551122.33"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/radec.html">radec</a></span><span class="op">(</span><span class="va">coords</span><span class="op">)</span>
-<span class="co">#&gt; &lt;astro_radec[3]&gt;</span>
-<span class="co">#&gt; [1] 21h16m19.6s -16°30'31" 12h14m19.6s +34°01'01" 11h22m33.4s +55°11'22"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"21h16m19.6s -16d30m31.2s"</span>, <span class="st">"12 14 19.6 34 1 1.2s"</span>, <span class="st">"J112233.44+551122.33"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/radec.html">radec</a></span><span class="op">(</span><span class="va">coords</span><span class="op">)</span></span>
+<span><span class="co">#&gt; &lt;astro_radec[3]&gt;</span></span>
+<span><span class="co">#&gt; [1] 21h16m19.6s -16°30'31" 12h14m19.6s +34°01'01" 11h22m33.4s +55°11'22"</span></span></code></pre></div>
 <p>At the current time NAs support is limited.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/ra_dec.html">ra_dec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">2</span><span class="op">)</span>, dec<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">29</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; &lt;astro_radec[2]&gt;</span>
-<span class="co">#&gt; [1] &lt;NA&gt;                   00h08m00.0s +29°00'00"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/ra_dec.html">ra_dec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">2</span><span class="op">)</span>, dec<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">29</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; &lt;astro_radec[2]&gt;</span></span>
+<span><span class="co">#&gt; [1] &lt;NA&gt;                   00h08m00.0s +29°00'00"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="show-in-tibble">Show in tibble<a class="anchor" aria-label="anchor" href="#show-in-tibble"></a>
 </h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_cols</a></span><span class="op">(</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span>
-<span class="va">t</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 2</span></span>
-<span class="co">#&gt;   x                      y                     </span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;RA DEC&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;RA DEC&gt;</span>              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 07<span style="color: #949494;">h</span>15<span style="color: #949494;">m</span>31.9<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>61<span style="color: #949494;">°</span>23<span style="color: #949494;">'</span>12<span style="color: #949494;">"</span> 01<span style="color: #949494;">h</span>10<span style="color: #949494;">m</span>59.1<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>01<span style="color: #949494;">°</span>40<span style="color: #949494;">'</span>38<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 10<span style="color: #949494;">h</span>44<span style="color: #949494;">m</span>33.0<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>05<span style="color: #949494;">°</span>23<span style="color: #949494;">'</span>44<span style="color: #949494;">"</span> 07<span style="color: #949494;">h</span>00<span style="color: #949494;">m</span>36.9<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>70<span style="color: #949494;">°</span>18<span style="color: #949494;">'</span>33<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 08<span style="color: #949494;">h</span>02<span style="color: #949494;">m</span>25.9<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>05<span style="color: #949494;">°</span>09<span style="color: #949494;">'</span>13<span style="color: #949494;">"</span> 07<span style="color: #949494;">h</span>28<span style="color: #949494;">m</span>18.6<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>08<span style="color: #949494;">°</span>02<span style="color: #949494;">'</span>07<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 21<span style="color: #949494;">h</span>31<span style="color: #949494;">m</span>25.3<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>33<span style="color: #949494;">°</span>06<span style="color: #949494;">'</span>45<span style="color: #949494;">"</span> 06<span style="color: #949494;">h</span>25<span style="color: #949494;">m</span>57.6<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>65<span style="color: #949494;">°</span>06<span style="color: #949494;">'</span>02<span style="color: #949494;">"</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 15<span style="color: #949494;">h</span>12<span style="color: #949494;">m</span>44.4<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>44<span style="color: #949494;">°</span>01<span style="color: #949494;">'</span>45<span style="color: #949494;">"</span> 22<span style="color: #949494;">h</span>28<span style="color: #949494;">m</span>56.6<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>74<span style="color: #949494;">°</span>36<span style="color: #949494;">'</span>06<span style="color: #949494;">"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_cols</a></span><span class="op">(</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">t</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 2</span></span></span>
+<span><span class="co">#&gt;   x                      y                     </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;RA DEC&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;RA DEC&gt;</span>              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 00<span style="color: #949494;">h</span>27<span style="color: #949494;">m</span>25.8<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>82<span style="color: #949494;">°</span>21<span style="color: #949494;">'</span>28<span style="color: #949494;">"</span> 21<span style="color: #949494;">h</span>30<span style="color: #949494;">m</span>59.0<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>48<span style="color: #949494;">°</span>00<span style="color: #949494;">'</span>40<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 05<span style="color: #949494;">h</span>44<span style="color: #949494;">m</span>38.4<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>42<span style="color: #949494;">°</span>00<span style="color: #949494;">'</span>41<span style="color: #949494;">"</span> 18<span style="color: #949494;">h</span>45<span style="color: #949494;">m</span>49.9<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>86<span style="color: #949494;">°</span>59<span style="color: #949494;">'</span>60<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 13<span style="color: #949494;">h</span>35<span style="color: #949494;">m</span>16.5<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>09<span style="color: #949494;">°</span>55<span style="color: #949494;">'</span>39<span style="color: #949494;">"</span> 08<span style="color: #949494;">h</span>49<span style="color: #949494;">m</span>53.5<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>86<span style="color: #949494;">°</span>33<span style="color: #949494;">'</span>01<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 00<span style="color: #949494;">h</span>27<span style="color: #949494;">m</span>32.8<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>63<span style="color: #949494;">°</span>37<span style="color: #949494;">'</span>44<span style="color: #949494;">"</span> 07<span style="color: #949494;">h</span>13<span style="color: #949494;">m</span>09.7<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>59<span style="color: #949494;">°</span>24<span style="color: #949494;">'</span>13<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 18<span style="color: #949494;">h</span>32<span style="color: #949494;">m</span>52.5<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>64<span style="color: #949494;">°</span>51<span style="color: #949494;">'</span>18<span style="color: #949494;">"</span> 07<span style="color: #949494;">h</span>17<span style="color: #949494;">m</span>06.1<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>37<span style="color: #949494;">°</span>42<span style="color: #949494;">'</span>02<span style="color: #949494;">"</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="calc-separation-between-two-points">Calc separation between two points<a class="anchor" aria-label="anchor" href="#calc-separation-between-two-points"></a>
 </h2>
 <p>Great circle distance in arcseconds</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">t</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>sep <span class="op">=</span> <span class="fu">separation</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 3</span></span>
-<span class="co">#&gt;   x                      y                          sep</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;RA DEC&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;RA DEC&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 07<span style="color: #949494;">h</span>15<span style="color: #949494;">m</span>31.9<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>61<span style="color: #949494;">°</span>23<span style="color: #949494;">'</span>12<span style="color: #949494;">"</span> 01<span style="color: #949494;">h</span>10<span style="color: #949494;">m</span>59.1<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>01<span style="color: #949494;">°</span>40<span style="color: #949494;">'</span>38<span style="color: #949494;">"</span> <span style="text-decoration: underline;">331</span>260.</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 10<span style="color: #949494;">h</span>44<span style="color: #949494;">m</span>33.0<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>05<span style="color: #949494;">°</span>23<span style="color: #949494;">'</span>44<span style="color: #949494;">"</span> 07<span style="color: #949494;">h</span>00<span style="color: #949494;">m</span>36.9<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>70<span style="color: #949494;">°</span>18<span style="color: #949494;">'</span>33<span style="color: #949494;">"</span> <span style="text-decoration: underline;">303</span>520.</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 08<span style="color: #949494;">h</span>02<span style="color: #949494;">m</span>25.9<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>05<span style="color: #949494;">°</span>09<span style="color: #949494;">'</span>13<span style="color: #949494;">"</span> 07<span style="color: #949494;">h</span>28<span style="color: #949494;">m</span>18.6<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>08<span style="color: #949494;">°</span>02<span style="color: #949494;">'</span>07<span style="color: #949494;">"</span>  <span style="text-decoration: underline;">56</span>504.</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 21<span style="color: #949494;">h</span>31<span style="color: #949494;">m</span>25.3<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>33<span style="color: #949494;">°</span>06<span style="color: #949494;">'</span>45<span style="color: #949494;">"</span> 06<span style="color: #949494;">h</span>25<span style="color: #949494;">m</span>57.6<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>65<span style="color: #949494;">°</span>06<span style="color: #949494;">'</span>02<span style="color: #949494;">"</span> <span style="text-decoration: underline;">495</span>483.</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 15<span style="color: #949494;">h</span>12<span style="color: #949494;">m</span>44.4<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>44<span style="color: #949494;">°</span>01<span style="color: #949494;">'</span>45<span style="color: #949494;">"</span> 22<span style="color: #949494;">h</span>28<span style="color: #949494;">m</span>56.6<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>74<span style="color: #949494;">°</span>36<span style="color: #949494;">'</span>06<span style="color: #949494;">"</span> <span style="text-decoration: underline;">189</span>260.</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">t</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>sep <span class="op">=</span> <span class="fu">separation</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 3</span></span></span>
+<span><span class="co">#&gt;   x                      y                          sep</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;RA DEC&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;RA DEC&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 00<span style="color: #949494;">h</span>27<span style="color: #949494;">m</span>25.8<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>82<span style="color: #949494;">°</span>21<span style="color: #949494;">'</span>28<span style="color: #949494;">"</span> 21<span style="color: #949494;">h</span>30<span style="color: #949494;">m</span>59.0<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>48<span style="color: #949494;">°</span>00<span style="color: #949494;">'</span>40<span style="color: #949494;">"</span> <span style="text-decoration: underline;">132</span>543.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 05<span style="color: #949494;">h</span>44<span style="color: #949494;">m</span>38.4<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>42<span style="color: #949494;">°</span>00<span style="color: #949494;">'</span>41<span style="color: #949494;">"</span> 18<span style="color: #949494;">h</span>45<span style="color: #949494;">m</span>49.9<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>86<span style="color: #949494;">°</span>59<span style="color: #949494;">'</span>60<span style="color: #949494;">"</span> <span style="text-decoration: underline;">183</span>193.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 13<span style="color: #949494;">h</span>35<span style="color: #949494;">m</span>16.5<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>09<span style="color: #949494;">°</span>55<span style="color: #949494;">'</span>39<span style="color: #949494;">"</span> 08<span style="color: #949494;">h</span>49<span style="color: #949494;">m</span>53.5<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>86<span style="color: #949494;">°</span>33<span style="color: #949494;">'</span>01<span style="color: #949494;">"</span> <span style="text-decoration: underline;">284</span>350.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 00<span style="color: #949494;">h</span>27<span style="color: #949494;">m</span>32.8<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>63<span style="color: #949494;">°</span>37<span style="color: #949494;">'</span>44<span style="color: #949494;">"</span> 07<span style="color: #949494;">h</span>13<span style="color: #949494;">m</span>09.7<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>59<span style="color: #949494;">°</span>24<span style="color: #949494;">'</span>13<span style="color: #949494;">"</span> <span style="text-decoration: underline;">156</span>263.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 18<span style="color: #949494;">h</span>32<span style="color: #949494;">m</span>52.5<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>64<span style="color: #949494;">°</span>51<span style="color: #949494;">'</span>18<span style="color: #949494;">"</span> 07<span style="color: #949494;">h</span>17<span style="color: #949494;">m</span>06.1<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>37<span style="color: #949494;">°</span>42<span style="color: #949494;">'</span>02<span style="color: #949494;">"</span> <span style="text-decoration: underline;">277</span>481.</span></span></code></pre></div>
 </div>
   </div>
 
@@ -191,7 +189,7 @@ Coords in the ‘hms dms’ format</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
