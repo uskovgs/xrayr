@@ -8,7 +8,7 @@ latex_range_sci(
   best,
   min,
   max,
-  ndigits = 0,
+  ndigits = "auto",
   na = "-",
   symmetry = FALSE,
   base_pow = NULL
@@ -21,7 +21,7 @@ latex_range_sci(
 
 \item{max}{upper boundary value}
 
-\item{ndigits}{number of digits after decimal point}
+\item{ndigits}{'auto' (default) or number of digits after decimal point}
 
 \item{na}{show NA value as na. default na='-'}
 

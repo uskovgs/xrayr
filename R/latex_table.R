@@ -32,9 +32,11 @@ latex_range <- function(best, min, max, ndigits = 'auto', na='-') {
   xmax <- max[!is_na]
 
 
-  if (ndigits == 'auto') {
+  if (ndigits == 'auto' && !all(is_na)) {
     err_min <- pmin(xmax - x, x - xmin)
     ndigits <- calc_signif_digits(err_min)
+  } else { # if all values is na
+    ndigits <- 1
   }
 
   lo <- round(x - xmin, ndigits)
