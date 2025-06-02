@@ -2,13 +2,13 @@
 % Please edit documentation in R/radec.R
 \name{separation.astro_radec}
 \alias{separation.astro_radec}
-\title{Title}
+\title{Angular distance between two points}
 \usage{
-\method{separation}{astro_radec}(x, y)
+\method{separation}{astro_radec}(x, y, metric = distance_vincenty)
 }
 \arguments{
-\item{y}{}
+\item{metric}{\code{\link[=distance_vincenty]{distance_vincenty()}} (default) or \code{\link[=distance_haversine]{distance_haversine()}}}
 }
 \description{
-Title
+Angular distance between two points
 }

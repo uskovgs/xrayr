@@ -182,39 +182,87 @@ dec.astro_radec <- function(x){
 # Separation --------------------------------------------------------------
 
 #' @export
-separation <- function(x, y){
+separation <- function(x, y, metric) {
   UseMethod('separation')
 }
-separation.default <- function(x, y){
+separation.default <- function(x, y, metric){
   stop('Not radec obj')
 }
 
 
-#' Title
+#' Angular distance between two points
 #'
 #' @param x
 #' @param y
+#' @param metric [distance_vincenty()] (default) or [distance_haversine()]
 #'
 #' @return
 #' @export
 #'
 #' @examples
-separation.astro_radec <- function(x, y){
-  # see https://en.wikipedia.org/wiki/Great-circle_distance
-  ra_x <- ra(x) * pi / 180
-  dec_x <- dec(x) * pi / 180
+separation.astro_radec <- function(x, y, metric = distance_vincenty){
+  metric(ra(x), dec(x), ra(y), dec(y))
+}
 
-  ra_y <- ra(y) * pi / 180
-  dec_y <- dec(y) * pi / 180
+#' Angular distance
+#'
+#' @param ra1,dec1 equatorial coordinates of object 1 in degrees
+#' @param ra2,dec2 equatorial coordinates of object 2 in degrees
+#'
+#' @returns distance in arcsec
+#'
+#' @seealso [distance_vincenty()]
+#' @export
+#'
+#' @examples
+distance_haversine <- function(ra1, dec1, ra2, dec2) {
 
-  del_l <- abs(ra_x - ra_y)
-  # del_l <- ifelse(del_l > pi, del_l - pi, del_l)
+  to_rad <- pi / 180
+  dphi   <- (dec2 - dec1) * to_rad
+  dlambda <- (ra2 - ra1)  * to_rad
 
-  numerator <- (cos(dec_y)*sin(del_l))^2 + (cos(dec_x)*sin(dec_y) - sin(dec_x)*cos(dec_y)*cos(del_l))^2
-  denomin <- sin(dec_x)*sin(dec_y) + cos(dec_x)*cos(dec_y)*cos(del_l)
+  dlambda <- abs(dlambda)
+  dlambda[dlambda > pi] <- 2 * pi - dlambda[dlambda > pi]
 
-  r <- atan2(sqrt(numerator), denomin) * 3600 * 180 / pi
-  return(r)
+  dec1 <- dec1 * to_rad
+  dec2 <- dec2 * to_rad
+
+  d <- sin(dphi / 2)^2 +
+    cos(dec1) * cos(dec2) * sin(dlambda / 2)^2
+
+  d <- 2 * asin(sqrt(d)) * 3600 / to_rad
+  return(d)
+}
+
+#' Angular distance
+#'
+#' @param ra1,dec1 equatorial coordinates of object 1 in degrees
+#' @param ra2,dec2 equatorial coordinates of object 2 in degrees
+#'
+#' @return distance in arcsec
+#'
+#' @seealso [distance_haversine()]
+#' @export
+distance_vincenty <- function(ra1, dec1, ra2, dec2) {
+
+  to_rad <- pi / 180
+  ra1  <- ra1 * to_rad
+  ra2  <- ra2 * to_rad
+  dec1 <- dec1 * to_rad
+  dec2 <- dec2 * to_rad
+
+  dlambda <- abs(ra1 - ra2)
+  dlambda[dlambda > pi] <- 2 * pi - dlambda[dlambda > pi]
+
+  num <- (cos(dec2) * sin(dlambda))^2 +
+    (cos(dec1) * sin(dec2) -
+       sin(dec1) * cos(dec2) * cos(dlambda))^2
+
+  den <- sin(dec1) * sin(dec2) +
+    cos(dec1) * cos(dec2) * cos(dlambda)
+
+  d <- atan2(sqrt(num), den) * 3600 / to_rad
+  return(d)
 }
 
 
@@ -419,7 +467,7 @@ formatter_latex <- function(x, ra_or_dec, nsec=1, ...){
 
   x0 <- abs(x)
   x1 <- as.integer(x0)
-  x2_tmp <- x2_tmp <- sprintf("%.10f",(x0 - x1) * 60) |> as.numeric()
+  x2_tmp <- sprintf("%.10f",(x0 - x1) * 60) |> as.numeric()
   x2 <- as.integer(x2_tmp)
   x3 <- (x2_tmp - x2) * 60
 
