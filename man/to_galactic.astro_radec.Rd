@@ -7,10 +7,13 @@
 \method{to_galactic}{astro_radec}(x, obs_epoch = "J2000")
 }
 \arguments{
-\item{x}{radec obj}
+\item{x}{\code{astro_radec} object}
 
 \item{epoch}{"J2000" (default) or "B1950"}
 }
+\value{
+list(l=longitude\link{deg}, b = latitude\link{deg})
+}
 \description{
-See formula from www.atnf.csiro.au/people/Tobias.Westmeier/tools_coords.php
+Convert radec to galactic coords.
 }

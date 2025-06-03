@@ -278,43 +278,50 @@ to_galactic.default <- function(x, obs_epoch="J2000"){
 
 #' Convert radec to galactic coords.
 #'
-#' See formula from www.atnf.csiro.au/people/Tobias.Westmeier/tools_coords.php
 #'
-#' @param x radec obj
+#' @param x `astro_radec` object
 #' @param epoch "J2000" (default) or "B1950"
 #'
-#' @return
+#' @return list(l=longitude[deg], b = latitude[deg])
 #' @export
 #'
 #' @examples
 to_galactic.astro_radec <- function(x, obs_epoch = "J2000"){
   checkmate::checkChoice(obs_epoch, c("J2000", "B1950"))
 
-  cat("***Experimental function `to_galactic`\n")
-  # Coords of galactic north pole
-  if(obs_epoch == 'B1950'){
-    ra_gal <- 282.25 * pi / 180
-    dec_gal <- 27.40 * pi / 180
-    l_gal <- 33.00 * pi / 180
+  to_rad <- pi / 180
+  ra <- ra(x) * to_rad
+  dec <- dec(x) * to_rad
+
+  v_eq <- rbind(cos(dec) * cos(ra), cos(dec) * sin(ra), sin(dec))
+
+  R <- if (obs_epoch == "J2000") {
+    # ESA 1997, Perryman & ESA (1997)
+    matrix(c(
+      -0.0548755604, -0.8734370902, -0.4838350155,
+      0.4941094279, -0.4448296300,  0.7469822445,
+      -0.8676661490, -0.1980763734,  0.4559837762),
+      nrow = 3, byrow = TRUE)
   } else {
-    ra_gal <- 282.855 * pi / 180
-    dec_gal <- 27.128250000000001307 * pi / 180
-    l_gal <- 32.932192 * pi / 180
+    # SLALIB / PAL (B1950)
+    matrix(c(
+      -0.066988739415, -0.872755765853, -0.483538914632,
+      0.492728466075, -0.450346958020,  0.744584633283,
+      -0.867600811151, -0.188374601722,  0.460199784784),
+      nrow = 3, byrow = TRUE)
   }
 
-  ra_x <- ra(x) * pi / 180
-  dec_x <- dec(x) * pi / 180
+  v_gal <- R %*% v_eq
+  b  <- asin(v_gal[3, ])
+  l  <- atan2(v_gal[2, ], v_gal[1, ])
 
-  # n1 <- sin(dec_x) * cos(dec_gal) + cos(dec_x) * sin(dec_gal) * sin(ra_x - ra_gal)
-  # d1 <- cos(dec_x) * cos(ra_x - ra_gal)
-  # l <- l_gal + atan2(n1, d1)
 
-  b <- asin(sin(dec_x) * sin(dec_gal) -
-              cos(dec_x) * cos(dec_gal) * sin(ra_x - ra_gal))
-  l <- l_gal + acos(cos(ra_x - ra_gal) * cos(dec_x) / cos(b))
-
-  return(list(l = l * 180 / pi,
-              b = b * 180 / pi))
+  return(
+    list(
+      l = (l * 180 / pi) %% 360,
+      b = b * 180 / pi
+    )
+  )
 }
 
 
