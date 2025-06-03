@@ -156,18 +156,38 @@ Coords in the ‘hms dms’ format</p>
 <div class="section level2">
 <h2 id="calc-separation-between-two-points">Calc separation between two points<a class="anchor" aria-label="anchor" href="#calc-separation-between-two-points"></a>
 </h2>
-<p>Great circle distance in arcseconds</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">t</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>sep <span class="op">=</span> <span class="fu">separation</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 3</span></span></span>
-<span><span class="co">#&gt;   x                      y                          sep</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;RA DEC&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;RA DEC&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 01<span style="color: #949494;">h</span>56<span style="color: #949494;">m</span>16.8<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>06<span style="color: #949494;">°</span>02<span style="color: #949494;">'</span>57<span style="color: #949494;">"</span> 20<span style="color: #949494;">h</span>59<span style="color: #949494;">m</span>25.5<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>54<span style="color: #949494;">°</span>46<span style="color: #949494;">'</span>46<span style="color: #949494;">"</span> <span style="text-decoration: underline;">273</span>559.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 20<span style="color: #949494;">h</span>01<span style="color: #949494;">m</span>26.4<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>00<span style="color: #949494;">°</span>24<span style="color: #949494;">'</span>00<span style="color: #949494;">"</span> 04<span style="color: #949494;">h</span>11<span style="color: #949494;">m</span>54.9<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>17<span style="color: #949494;">°</span>21<span style="color: #949494;">'</span>47<span style="color: #949494;">"</span> <span style="text-decoration: underline;">434</span>963.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 14<span style="color: #949494;">h</span>25<span style="color: #949494;">m</span>05.7<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>37<span style="color: #949494;">°</span>50<span style="color: #949494;">'</span>31<span style="color: #949494;">"</span> 00<span style="color: #949494;">h</span>49<span style="color: #949494;">m</span>18.4<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>78<span style="color: #949494;">°</span>32<span style="color: #949494;">'</span>27<span style="color: #949494;">"</span> <span style="text-decoration: underline;">225</span>901.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 03<span style="color: #949494;">h</span>46<span style="color: #949494;">m</span>22.8<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>41<span style="color: #949494;">°</span>55<span style="color: #949494;">'</span>08<span style="color: #949494;">"</span> 07<span style="color: #949494;">h</span>41<span style="color: #949494;">m</span>21.3<span style="color: #949494;">s</span> <span style="color: #949494;">-</span>20<span style="color: #949494;">°</span>02<span style="color: #949494;">'</span>02<span style="color: #949494;">"</span> <span style="text-decoration: underline;">296</span>307.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 00<span style="color: #949494;">h</span>10<span style="color: #949494;">m</span>39.3<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>49<span style="color: #949494;">°</span>03<span style="color: #949494;">'</span>14<span style="color: #949494;">"</span> 09<span style="color: #949494;">h</span>39<span style="color: #949494;">m</span>21.2<span style="color: #949494;">s</span> <span style="color: #949494;">+</span>85<span style="color: #949494;">°</span>35<span style="color: #949494;">'</span>55<span style="color: #949494;">"</span> <span style="text-decoration: underline;">160</span>164.</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ra_dec.html">ra_dec</a></span><span class="op">(</span>ra <span class="op">=</span> <span class="fl">0</span>,   dec <span class="op">=</span> <span class="op">-</span><span class="fl">29</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ra_dec.html">ra_dec</a></span><span class="op">(</span>ra <span class="op">=</span> <span class="fl">180</span>, dec <span class="op">=</span>  <span class="fl">29</span><span class="op">)</span></span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sep_vinc</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">separation</span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sep_hav</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">separation</span><span class="op">(</span><span class="va">y</span>, metric <span class="op">=</span> <span class="va">distance_haversine</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">waldo</span><span class="fu">::</span><span class="fu"><a href="https://waldo.r-lib.org/reference/compare.html" class="external-link">compare</a></span><span class="op">(</span><span class="va">sep_vinc</span>, <span class="va">sep_hav</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `old`: <span style="color: #00BB00;">648000.0000</span></span></span>
+<span><span class="co">#&gt; `new`: <span style="color: #00BB00;">647999.9939</span></span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="convert-to-galactic">Convert to galactic<a class="anchor" aria-label="anchor" href="#convert-to-galactic"></a>
+</h2>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">to_galactic</span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $l</span></span>
+<span><span class="co">#&gt; [1]  20.56922 200.56922</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $b</span></span>
+<span><span class="co">#&gt; [1] -78.50533  78.50533</span></span>
+<span></span>
+<span><span class="fu">to_galactic</span><span class="op">(</span><span class="va">z</span>, obs_epoch <span class="op">=</span> <span class="st">"B1950"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $l</span></span>
+<span><span class="co">#&gt; [1]  21.69863 201.69863</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $b</span></span>
+<span><span class="co">#&gt; [1] -79.09132  79.09132</span></span></code></pre></div>
 </div>
   </div>
 
