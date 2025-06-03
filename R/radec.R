@@ -287,7 +287,7 @@ to_galactic.default <- function(x, obs_epoch="J2000"){
 #'
 #' @examples
 to_galactic.astro_radec <- function(x, obs_epoch = "J2000"){
-  checkmate::checkChoice(obs_epoch, c("J2000", "B1950"))
+  checkmate::assert_choice(obs_epoch, c("J2000", "B1950"))
 
   to_rad <- pi / 180
   ra <- ra(x) * to_rad

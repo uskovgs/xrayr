@@ -59,9 +59,26 @@ t
 
 # Calc separation between two points
 
-Great circle distance in arcseconds
+
 
 ```{r}
-t %>% 
-  mutate(sep = separation(x, y))
+x <- ra_dec(ra = 0,   dec = -29)
+y <- ra_dec(ra = 180, dec =  29)
+z <- c(x, y)
+
+sep_vinc <- x |> 
+  separation(y)
+
+sep_hav <- x |> 
+  separation(y, metric = distance_haversine)
+
+waldo::compare(sep_vinc, sep_hav)
+```
+
+# Convert to galactic
+
+```{r}
+to_galactic(z)
+
+to_galactic(z, obs_epoch = "B1950")
 ```
