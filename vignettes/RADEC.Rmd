@@ -73,6 +73,8 @@ sep_hav <- x |>
   separation(y, metric = distance_haversine)
 
 waldo::compare(sep_vinc, sep_hav)
+
+
 ```
 
 # Convert to galactic

@@ -45,14 +45,15 @@ nh <- function(ra=NULL, dec=NULL, r_arcmin = 10, showInfo = FALSE){
                   collapse = ' ')
 
 
-  base_url <- 'http://vizier.u-strasbg.fr/viz-bin/asu-tsv'
-  args <- list('-source' = "J/A+A/594/A116/nhi_hpx", # nh_table
-               '-c' = target,
-               '-c.rm' = r_arcmin,
-               '-out' = '_r RAJ2000 DEJ2000 NHI', #  get all columns
-               '-sort' = '_r',
-               '-mime' = '|'
-               )
+  base_url <- 'https://vizier.cds.unistra.fr/viz-bin/asu-tsv'
+  args <- list(
+    "-source" = "J/A+A/594/A116/nhi_hpx",
+    "-c" = target,
+    "-c.rm" = r_arcmin,
+    "-sort" = "_r",
+    "-out.form" = "| -Separated-Values"
+  )
+
 
 
 
